@@ -105,7 +105,7 @@ svg.ic{width:var(--s,28px);height:var(--s,28px);flex:none;overflow:visible}
 @media (prefers-reduced-motion:no-preference){.live::before{animation:blink 1.4s infinite}}
 @keyframes blink{50%{opacity:.2}}
 .mapbox{position:relative;min-height:0}
-.risk-pane{filter:blur(5px)}
+.risk-pane{filter:blur(1.5px)}
 .mbar{position:absolute;left:10px;right:10px;bottom:10px;z-index:800;display:flex;gap:10px;align-items:center;background:#0b1220e0;backdrop-filter:blur(6px);border-radius:14px;padding:7px 10px}
 .mbar button{padding:6px 10px;min-width:36px;justify-content:center;font-size:12px}
 .mbar input{flex:1;min-width:0;accent-color:var(--rain)}
@@ -375,7 +375,7 @@ async function load(){
 /* --- Mapa de riesgo propio: cuadrícula sobre la zona, mismo análisis, hora por hora --- */
 const GRID={lat0:-31.22,lat1:-31.72,lon0:-64.47,lon1:-63.93,n:9};
 const HOME=[-31.42,-64.19],HOMEZ=11;
-let gmap,gcells=[],gdata=null,gmode="rain",gidx=0,gplaying=true,gtimer=null,gpins=[];
+let gmap,gimg,gcv=document.createElement("canvas"),gcells=[],gdata=null,gmode="rain",gidx=0,gplaying=true,gtimer=null,gpins=[];
 const RED="#ff3b4f",ORG="#ff9d2e";
 const RAINC=[[.2,"#5ad8e6"],[.5,"#2f4bff"],[1,"#6ef05a"],[2,"#2e9e3a"],[4,"#ffe14a"],[8,"#ff9d2e"],[15,"#ff3b4f"],[30,"#b0122a"]];
 const LEG={hail:[[ORG,"Granizo posible"],[RED,"Granizo probable"]],rain:[["#5ad8e6","Débil"],["#6ef05a","Moderada"],["#ffe14a","Fuerte"],[RED,"Muy fuerte"]]};
@@ -398,8 +398,8 @@ function initGrid(){
   gmap.createPane("risk").style.zIndex=350;gmap.getPane("risk").classList.add("risk-pane");gmap.getPane("risk").style.pointerEvents="none";
   gmap.createPane("labels").style.zIndex=450;gmap.getPane("labels").style.pointerEvents="none";
   L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",{maxZoom:13,pane:"labels"}).addTo(gmap);
-  const dl=(GRID.lat1-GRID.lat0)/GRID.n,dn=(GRID.lon1-GRID.lon0)/GRID.n;
-  gcells=gridPts().map(p=>L.rectangle([[p.lat-dl*.55,p.lon-dn*.55],[p.lat+dl*.55,p.lon+dn*.55]],{pane:"risk",stroke:false,fillOpacity:0,interactive:false}).addTo(gmap));
+  const pts=gridPts(),a=pts[0],b=pts[pts.length-1];
+  gimg=L.imageOverlay("data:image/gif;base64,R0lGODlhAQABAAAAACw=",[[a.lat,a.lon],[b.lat,b.lon]],{pane:"risk",interactive:false}).addTo(gmap);
   gpins=PLACES.map((p,i)=>L.marker([p.lat,p.lon],{icon:L.divIcon({className:"",html:`<div class="pin" style="--c:${i?"var(--hail)":"var(--rain)"};background:${i?"var(--hail)":"var(--rain)"}"></div>`,iconSize:[16,16],iconAnchor:[8,8]})})
     .addTo(gmap).bindTooltip(p.name,{permanent:true,direction:"right",offset:[10,0],className:"lbl"}));
   setMode("rain");loadGrid();
@@ -427,9 +427,22 @@ async function loadGrid(){
   }catch(e){$("#mtime").textContent="Sin datos"}
 }
 function nearest(p){let b=0,d=1e9;gridPts().forEach((q,k)=>{const e=(q.lat-p.lat)**2+(q.lon-p.lon)**2;if(e<d){d=e;b=k}});return b}
+/* Dibuja manchas suaves: interpola la grilla (bilineal) y pinta por umbrales, como un radar */
+function hexRGB(h){return[1,3,5].map(k=>parseInt(h.slice(k,k+2),16))}
+function drawField(i){
+  const n=GRID.n,W=260;gcv.width=gcv.height=W;const x=gcv.getContext("2d"),img=x.createImageData(W,W),d=img.data;
+  const v=gdata.map(r=>{const h=r[i];if(!h)return 0;const mm=h.h.precipitation??0;return gmode==="hail"?(mm>=.5?h.hl:0):mm});
+  const scale=gmode==="hail"?[[.5,ORG],[1.5,RED]]:RAINC,cols=scale.map(([t,c])=>[t,hexRGB(c)]);
+  for(let py=0;py<W;py++){const gy=py/(W-1)*(n-1),r0=Math.min(n-2,Math.floor(gy)),fy=gy-r0;
+    for(let px=0;px<W;px++){const gx=px/(W-1)*(n-1),c0=Math.min(n-2,Math.floor(gx)),fx=gx-c0;
+      const val=(v[r0*n+c0]*(1-fx)+v[r0*n+c0+1]*fx)*(1-fy)+(v[(r0+1)*n+c0]*(1-fx)+v[(r0+1)*n+c0+1]*fx)*fy;
+      let c=null;for(const[t,rgb]of cols)if(val>=t)c=rgb;
+      if(c){const o=(py*W+px)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=175}}}
+  x.putImageData(img,0,0);gimg.setUrl(gcv.toDataURL());
+}
 function showGrid(i){
   if(!gdata)return;gidx=i;
-  gdata.forEach((hrs,k)=>{const h=hrs[i];if(!h)return;const[c,o]=cellStyle(h);gcells[k].setStyle({fillColor:c||"#000",fillOpacity:c?o:0})});
+  drawField(i);
   const t=gdata[0][i].t,mn=i*15;$("#mtime").textContent=i===0?"Ahora":`${hhmm(t)} · +${Math.floor(mn/60)}:${String(mn%60).padStart(2,"0")}`;$("#mslider").value=i;
   gpins.forEach((m,k)=>{const h=gdata[nearest(PLACES[k])]?.[i];if(!h)return;
     m.setTooltipContent(`${PLACES[k].name} · ${gmode==="hail"?`granizo ${h.hs}%`:`${(h.h.precipitation??0).toFixed(1)} mm/h`}`)});
