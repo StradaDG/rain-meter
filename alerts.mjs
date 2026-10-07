@@ -81,7 +81,8 @@ for(const [i,p] of PLACES.entries()){
       if(m>=lo&&m<=hi&&!sent[key]){
         const red=e.peakH===2||e.peakR===2;
         const pk=Math.max(...hours.filter(h=>h.t>=e.t&&h.t<e.t+6*36e5).map(h=>h.hs));
-        const body=`${describe(e)} desde las ${hhmm(e.t)} · granizo hasta ${pk}%`;
+        const rr=Math.max(...hours.filter(h=>h.t>=e.t&&h.t<e.t+6*36e5).map(h=>h.h.precipitation??0));
+        const body=`${describe(e)} desde las ${hhmm(e.t)} · Granizo ${pk}% · Lluvia ${rr.toFixed(0)} mm/h`;
         await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body,headers:{
           Title:`${txt}: ${p.name}`.normalize("NFD").replace(/[\u0300-\u036f]/g,""),
           Priority:red?"urgent":"high",Tags:red?"rotating_light,cloud_with_lightning":"warning,cloud_with_rain"}});
@@ -103,13 +104,33 @@ for(const [i,p] of PLACES.entries()){
     for(const [tag,lo,hi,txt] of slots){
       const key=p.id+(tag==="now"?Math.floor(now/(6*36e5)):h.t)+tag;
       if(m>=lo&&m<=hi&&!sent[key]){
-        await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body:`${what} desde las ${hhmm(h.t)} · granizo hasta ${pk}%`,headers:{
+        await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body:`${what} desde las ${hhmm(h.t)} · Granizo ${pk}% · Lluvia ${Math.max(...hours.slice(k,k+6).map(x=>x.h.precipitation??0)).toFixed(0)} mm/h`,headers:{
           Title:`${txt}: ${p.name}`.normalize("NFD").replace(/[\u0300-\u036f]/g,""),Priority:"urgent",Tags:"rotating_light,cloud_with_lightning"}});
         sent[key]=now;console.log("Aviso rojo",key);
       }
     }
   }
 }
-for(const k in sent) if(now-sent[k]>2*864e5) delete sent[k];
+// Mientras está en ROJO: avisar cada vez que el granizo sube 10 puntos o la lluvia sube 10 mm/h
+const track=sent.track||{};
+for(const [i,p] of PLACES.entries()){
+  const hours=analyze(j[i]).slice(0,3);           // ahora y próximas 2 h
+  const isRed=hours.slice(0,2).some(h=>Math.max(h.hl,h.rl)===2);
+  if(!isRed){delete track[p.id];continue}
+  const hp=Math.max(...hours.map(h=>h.hs));
+  const rp=Math.max(...hours.map(h=>h.h.precipitation??0));
+  const prev=track[p.id];
+  if(!prev){track[p.id]={h:hp,r:rp};continue}      // el primer aviso rojo ya salió arriba
+  const upH=hp>=prev.h+10, upR=rp>=prev.r+10;
+  if(upH||upR){
+    const title=`Sube el riesgo: ${p.name}`.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+    const body=`Granizo ${hp}%${upH?` (antes ${prev.h}%)`:""} · Lluvia ${rp.toFixed(0)} mm/h${upR?` (antes ${prev.r.toFixed(0)})`:""}`;
+    await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body,headers:{Title:title,Priority:"urgent",Tags:"rotating_light,cloud_with_lightning"}});
+    console.log("Aviso sube",p.id,body);
+    track[p.id]={h:upH?hp:prev.h,r:upR?rp:prev.r};
+  }
+}
+sent.track=track;
+for(const k in sent) if(k!=="track"&&now-sent[k]>2*864e5) delete sent[k];
 fs.writeFileSync(STATE,JSON.stringify(sent));
 console.log("OK",new Date().toISOString());
