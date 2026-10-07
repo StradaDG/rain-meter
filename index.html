@@ -453,7 +453,8 @@ function playGrid(on){gplaying=on;clearInterval(gtimer);$("#mplay").textContent=
   if(on&&gdata)gtimer=setInterval(()=>showGrid((gidx+1)%gdata[0].length),900)}
 $("#mplay").onclick=()=>playGrid(!gplaying);
 $("#mslider").oninput=e=>{playGrid(false);showGrid(+e.target.value)};
-$("#b-hail").onclick=()=>setMode("hail");$("#b-rain").onclick=()=>setMode("rain");
+const switchMode=m=>{gidx=0;setMode(m);playGrid(true)};
+$("#b-hail").onclick=()=>switchMode("hail");$("#b-rain").onclick=()=>switchMode("rain");
 
 /* --- Avisos: 2 h y 1 h antes del inicio de cada tramo de riesgo --- */
 function notify(title,body){
