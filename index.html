@@ -478,14 +478,14 @@ function nearest(p){if(!DGRID||p.lat>DGRID.lat0||p.lat<DGRID.lat1||p.lon<DGRID.l
 /* Dibuja manchas suaves: interpola la grilla (bilineal) y pinta por umbrales, como un radar */
 function hexRGB(h){return[1,3,5].map(k=>parseInt(h.slice(k,k+2),16))}
 function drawField(i){
-  const n=DGRID.n,W=260;gcv.width=gcv.height=W;const x=gcv.getContext("2d"),img=x.createImageData(W,W),d=img.data;
+  const n=DGRID.n,W=420;gcv.width=gcv.height=W;const x=gcv.getContext("2d"),img=x.createImageData(W,W),d=img.data;
   const v=gdata.map(r=>{const h=r[i];if(!h)return 0;const mm=h.h.precipitation??0;return gmode==="hail"?(mm>=.5?h.hl:0):mm});
   const scale=gmode==="hail"?[[.5,ORG],[1.5,RED]]:RAINC,cols=scale.map(([t,c])=>[t,hexRGB(c)]);
   for(let py=0;py<W;py++){const gy=py/(W-1)*(n-1),r0=Math.min(n-2,Math.floor(gy)),fy=gy-r0;
     for(let px=0;px<W;px++){const gx=px/(W-1)*(n-1),c0=Math.min(n-2,Math.floor(gx)),fx=gx-c0;
       const val=(v[r0*n+c0]*(1-fx)+v[r0*n+c0+1]*fx)*(1-fy)+(v[(r0+1)*n+c0]*(1-fx)+v[(r0+1)*n+c0+1]*fx)*fy;
       let c=null;for(const[t,rgb]of cols)if(val>=t)c=rgb;
-      if(c){const e=Math.min(px,py,W-1-px,W-1-py),fade=Math.min(1,e/34);const o=(py*W+px)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=175*fade}}}
+      if(c){const e=Math.min(px,py,W-1-px,W-1-py),fade=Math.min(1,e/55);const o=(py*W+px)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=175*fade}}}
   x.putImageData(img,0,0);gimg.setUrl(gcv.toDataURL());
 }
 function showGrid(i){
