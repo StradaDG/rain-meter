@@ -105,7 +105,7 @@ svg.ic{width:var(--s,28px);height:var(--s,28px);flex:none;overflow:visible}
 @media (prefers-reduced-motion:no-preference){.live::before{animation:blink 1.4s infinite}}
 @keyframes blink{50%{opacity:.2}}
 .mapbox{position:relative;min-height:0}
-.risk-pane{filter:blur(10px)}
+.risk-pane{filter:blur(5px)}
 .mbar{position:absolute;left:10px;right:10px;bottom:10px;z-index:800;display:flex;gap:10px;align-items:center;background:#0b1220e0;backdrop-filter:blur(6px);border-radius:14px;padding:7px 10px}
 .mbar button{padding:6px 10px;min-width:36px;justify-content:center;font-size:12px}
 .mbar input{flex:1;min-width:0;accent-color:var(--rain)}
@@ -212,10 +212,10 @@ header{flex-wrap:nowrap;align-items:center}
 
   <section class="sat">
     <div class="sathead">
-      <h2><svg class="ic" style="--s:26px"><use href="#i-storm"/></svg>Mapa de riesgo</h2>
+      <h2><svg class="ic" style="--s:26px"><use href="#i-storm"/></svg>Mapa de lluvia</h2>
       <div class="seg" role="group" aria-label="Qué mostrar">
-        <button type="button" id="b-hail" aria-pressed="true">Granizo</button>
-        <button type="button" id="b-rain" aria-pressed="false">Lluvia</button>
+        <button type="button" id="b-rain" aria-pressed="true">Lluvia</button>
+        <button type="button" id="b-hail" aria-pressed="false">Granizo</button>
       </div>
     </div>
     <div class="mapbox">
@@ -227,7 +227,7 @@ header{flex-wrap:nowrap;align-items:center}
         <span id="mtime">Ahora</span>
       </div>
     </div>
-    <div class="satnote">Pronóstico propio de las próximas 12 h, cada 15 min. Arrastrá el mapa para ver Alta Gracia.</div>
+    <div class="satnote">Pronóstico de lluvia de las próximas 12 h, cada 15 min. Granizo: solo donde además se espera lluvia. Arrastrá el mapa para ver Alta Gracia.</div>
   </section>
 
 </div>
@@ -373,17 +373,19 @@ async function load(){
 
 
 /* --- Mapa de riesgo propio: cuadrícula sobre la zona, mismo análisis, hora por hora --- */
-const GRID={lat0:-31.24,lat1:-31.72,lon0:-64.48,lon1:-63.98,n:8};
+const GRID={lat0:-31.22,lat1:-31.72,lon0:-64.47,lon1:-63.93,n:9};
 const HOME=[-31.42,-64.19],HOMEZ=11;
-let gmap,gcells=[],gdata=null,gmode="hail",gidx=0,gplaying=true,gtimer=null,gpins=[];
+let gmap,gcells=[],gdata=null,gmode="rain",gidx=0,gplaying=true,gtimer=null,gpins=[];
 const RED="#ff3b4f",ORG="#ff9d2e";
-const LEG={hail:[["#3ee0a5","Bajo"],[ORG,"Atención"],[RED,"Alto"]],rain:[["#4cc3ff","Débil"],[ORG,"Fuerte"],[RED,"Muy fuerte"]]};
+const RAINC=[[.2,"#5ad8e6"],[.5,"#2f4bff"],[1,"#6ef05a"],[2,"#2e9e3a"],[4,"#ffe14a"],[8,"#ff9d2e"],[15,"#ff3b4f"],[30,"#b0122a"]];
+const LEG={hail:[[ORG,"Granizo posible"],[RED,"Granizo probable"]],rain:[["#5ad8e6","Débil"],["#6ef05a","Moderada"],["#ffe14a","Fuerte"],[RED,"Muy fuerte"]]};
 function gridPts(){const pts=[];for(let r=0;r<GRID.n;r++)for(let c=0;c<GRID.n;c++)
   pts.push({lat:GRID.lat0+(GRID.lat1-GRID.lat0)*(r+.5)/GRID.n,lon:GRID.lon0+(GRID.lon1-GRID.lon0)*(c+.5)/GRID.n});return pts}
+/* Lluvia: colores tipo radar según mm/h. Granizo: solo donde además se espera lluvia. */
 function cellStyle(h){
-  if(gmode==="hail"){if(h.hl===2)return[RED,.6];if(h.hl===1)return[ORG,.55];if(h.hs>=12)return["#3ee0a5",.3];return[null,0]}
   const mm=h.h.precipitation??0;
-  if(h.rl===2)return[RED,.6];if(h.rl===1)return[ORG,.55];if(mm>=.3)return["#4cc3ff",Math.min(.25+mm*.06,.5)];return[null,0];
+  if(gmode==="hail"){if(mm<.5||!h.hl)return[null,0];return[h.hl===2?RED:ORG,.7]}
+  let c=null;for(const[t,col]of RAINC)if(mm>=t)c=col;return[c,c?.68:0];
 }
 function initGrid(){
   if(!window.L){$("#map").innerHTML='<p style="padding:16px">No se pudo cargar el mapa.</p>';return}
@@ -400,7 +402,7 @@ function initGrid(){
   gcells=gridPts().map(p=>L.rectangle([[p.lat-dl*.55,p.lon-dn*.55],[p.lat+dl*.55,p.lon+dn*.55]],{pane:"risk",stroke:false,fillOpacity:0,interactive:false}).addTo(gmap));
   gpins=PLACES.map((p,i)=>L.marker([p.lat,p.lon],{icon:L.divIcon({className:"",html:`<div class="pin" style="--c:${i?"var(--hail)":"var(--rain)"};background:${i?"var(--hail)":"var(--rain)"}"></div>`,iconSize:[16,16],iconAnchor:[8,8]})})
     .addTo(gmap).bindTooltip(p.name,{permanent:true,direction:"right",offset:[10,0],className:"lbl"}));
-  setMode("hail");loadGrid();
+  setMode("rain");loadGrid();
 }
 /* Pasa el análisis horario a pasos de 15 min: granizo interpolado entre horas, lluvia con datos cada 15 min */
 function to15(raw){
@@ -468,7 +470,7 @@ $("#notif").addEventListener("click",async()=>{
   if(on&&"Notification" in window&&Notification.permission==="default"){try{await Notification.requestPermission()}catch(e){}}
   store.set("avisos",on);syncBtn();check();
 });
-syncBtn();load();initGrid();setInterval(loadGrid,60*60e3);
+syncBtn();load();initGrid();setInterval(loadGrid,90*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>
