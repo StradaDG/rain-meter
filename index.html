@@ -10,6 +10,8 @@
 <meta name="apple-mobile-web-app-title" content="Rain Meter">
 <meta name="theme-color" content="#0b1220">
 <link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Unbounded:wght@600;800&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap">
 <style>
@@ -102,6 +104,14 @@ svg.ic{width:var(--s,28px);height:var(--s,28px);flex:none;overflow:visible}
 .live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--bad)}
 @media (prefers-reduced-motion:no-preference){.live::before{animation:blink 1.4s infinite}}
 @keyframes blink{50%{opacity:.2}}
+.mapbox{position:relative;min-height:0}
+.risk-pane{filter:blur(10px)}
+.mbar{position:absolute;left:10px;right:10px;bottom:10px;z-index:800;display:flex;gap:10px;align-items:center;background:#0b1220e0;backdrop-filter:blur(6px);border-radius:14px;padding:7px 10px}
+.mbar button{padding:6px 10px;min-width:36px;justify-content:center;font-size:12px}
+.mbar input{flex:1;min-width:0;accent-color:var(--rain)}
+#mtime{font:500 12px var(--f-data);min-width:96px;text-align:right}
+.mleg{position:absolute;top:10px;right:10px;z-index:800;display:flex;gap:10px;background:#0b1220e0;border-radius:10px;padding:6px 10px;font-size:11px;font-weight:700}
+.mleg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
 .satnote{padding:10px 16px 14px;font-size:12px;color:var(--muted)}
 .satnote a{color:var(--rain)}
 
@@ -125,7 +135,7 @@ header{grid-area:head} .alert{grid-area:alert} .sat{grid-area:map}
 .grid{grid-area:cards;grid-template-columns:1fr 1fr;min-height:0;gap:clamp(10px,1.2vw,18px)}
 .card{min-height:0;overflow:hidden;padding:clamp(12px,1.7vh,20px);gap:clamp(8px,1.4vh,16px);align-content:start}
 .sat{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-height:0}
-.frame{height:100%}
+.mapbox,.frame{height:100%}
 .alert{padding:clamp(10px,1.6vh,16px) 20px}
 .pill{padding:10px}
 .pill .ic{width:32px!important;height:32px!important}
@@ -165,7 +175,7 @@ header{flex-wrap:nowrap;align-items:center}
 .sathead{padding:7px 10px;flex-wrap:nowrap}
 .sathead h2{font-size:13px} .sathead h2 .ic{width:20px!important;height:20px!important}
 .seg button{padding:5px 9px;font-size:11px}
-.frame{height:100%}
+.mapbox,.frame{height:100%}
 }
 </style>
 </head>
@@ -202,14 +212,22 @@ header{flex-wrap:nowrap;align-items:center}
 
   <section class="sat">
     <div class="sathead">
-      <h2><svg class="ic" style="--s:26px"><use href="#i-sat"/></svg>Mapa de lluvia</h2>
-      <div class="seg" role="group" aria-label="Tipo de mapa">
-        <button type="button" id="b-fc" aria-pressed="true">Próximas horas</button>
-        <button type="button" id="b-rd" aria-pressed="false">Radar real</button>
+      <h2><svg class="ic" style="--s:26px"><use href="#i-storm"/></svg>Mapa de riesgo</h2>
+      <div class="seg" role="group" aria-label="Qué mostrar">
+        <button type="button" id="b-hail" aria-pressed="true">Granizo</button>
+        <button type="button" id="b-rain" aria-pressed="false">Lluvia</button>
       </div>
     </div>
-    <iframe id="map" class="frame" title="Mapa de lluvia de Córdoba y Alta Gracia" loading="lazy" allowfullscreen></iframe>
-    <div class="satnote" id="mapnote"></div>
+    <div class="mapbox">
+      <div id="map" class="frame"></div>
+      <div class="mleg" id="mleg"></div>
+      <div class="mbar">
+        <button type="button" id="mplay" aria-label="Pausar">❚❚</button>
+        <input type="range" id="mslider" min="0" max="12" value="0" aria-label="Hora del pronóstico">
+        <span id="mtime">Ahora</span>
+      </div>
+    </div>
+    <div class="satnote">Pronóstico propio de las próximas 12 h, con el mismo análisis que las alertas. Arrastrá, hacé zoom o mové la barra.</div>
   </section>
 
 </div>
@@ -354,16 +372,52 @@ async function load(){
 }
 
 
-/* --- Mapa: pronóstico de lluvia (Ventusky) o radar real (Windy, datos SMN) --- */
-const MAPS={
-  fc:{src:"https://embed.ventusky.com/?p=-31.53;-64.30;9&l=rain-1h&pin=-31.42;-64.19;dot;Casa;-31.645;-64.40;dot;Aut%C3%B3dromo",
-      note:"Lluvia pronosticada hora a hora. Mové la línea de tiempo de abajo para ver cómo avanza en las próximas horas."},
-  rd:{src:"https://embed.windy.com/embed2.html?lat=-31.53&lon=-64.30&detailLat=-31.42&detailLon=-64.19&width=900&height=520&zoom=9&level=surface&overlay=radar&product=radar&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1",
-      note:"Lo que está lloviendo de verdad ahora, según los radares del SMN. Tocá ▶ para ver las últimas horas."}
-};
-function setMap(k){$("#map").src=MAPS[k].src;$("#mapnote").textContent=MAPS[k].note;
-  $("#b-fc").setAttribute("aria-pressed",k==="fc");$("#b-rd").setAttribute("aria-pressed",k==="rd")}
-$("#b-fc").onclick=()=>setMap("fc");$("#b-rd").onclick=()=>setMap("rd");
+/* --- Mapa de riesgo propio: cuadrícula sobre la zona, mismo análisis, hora por hora --- */
+const GRID={lat0:-31.20,lat1:-31.86,lon0:-64.64,lon1:-63.96,n:9};
+let gmap,gcells=[],gdata=null,gmode="hail",gidx=0,gplaying=true,gtimer=null,gpins=[];
+const RED="#ff3b4f",ORG="#ff9d2e";
+const LEG={hail:[["#3ee0a5","Bajo"],[ORG,"Atención"],[RED,"Alto"]],rain:[["#4cc3ff","Débil"],[ORG,"Fuerte"],[RED,"Muy fuerte"]]};
+function gridPts(){const pts=[];for(let r=0;r<GRID.n;r++)for(let c=0;c<GRID.n;c++)
+  pts.push({lat:GRID.lat0+(GRID.lat1-GRID.lat0)*(r+.5)/GRID.n,lon:GRID.lon0+(GRID.lon1-GRID.lon0)*(c+.5)/GRID.n});return pts}
+function cellStyle(h){
+  if(gmode==="hail"){if(h.hl===2)return[RED,.6];if(h.hl===1)return[ORG,.55];if(h.hs>=12)return["#3ee0a5",.3];return[null,0]}
+  const mm=h.h.precipitation??0;
+  if(h.rl===2)return[RED,.6];if(h.rl===1)return[ORG,.55];if(mm>=.3)return["#4cc3ff",Math.min(.25+mm*.06,.5)];return[null,0];
+}
+function initGrid(){
+  if(!window.L){$("#map").innerHTML='<p style="padding:16px">No se pudo cargar el mapa.</p>';return}
+  gmap=L.map("map",{zoomSnap:.25,attributionControl:true}).fitBounds([[GRID.lat0,GRID.lon0],[GRID.lat1,GRID.lon1]]);
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",{maxZoom:13,attribution:"Mapa © Esri · Datos Open-Meteo"}).addTo(gmap);
+  gmap.createPane("risk").style.zIndex=350;gmap.getPane("risk").classList.add("risk-pane");gmap.getPane("risk").style.pointerEvents="none";
+  gmap.createPane("labels").style.zIndex=450;gmap.getPane("labels").style.pointerEvents="none";
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",{maxZoom:13,pane:"labels"}).addTo(gmap);
+  const dl=(GRID.lat1-GRID.lat0)/GRID.n,dn=(GRID.lon1-GRID.lon0)/GRID.n;
+  gcells=gridPts().map(p=>L.rectangle([[p.lat-dl*.55,p.lon-dn*.55],[p.lat+dl*.55,p.lon+dn*.55]],{pane:"risk",stroke:false,fillOpacity:0,interactive:false}).addTo(gmap));
+  gpins=PLACES.map((p,i)=>L.marker([p.lat,p.lon],{icon:L.divIcon({className:"",html:`<div class="pin" style="--c:${i?"var(--hail)":"var(--rain)"};background:${i?"var(--hail)":"var(--rain)"}"></div>`,iconSize:[16,16],iconAnchor:[8,8]})})
+    .addTo(gmap).bindTooltip(p.name,{permanent:true,direction:"right",offset:[10,0],className:"lbl"}));
+  setMode("hail");loadGrid();
+}
+async function loadGrid(){
+  const pts=gridPts();
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p=>p.lat.toFixed(3))}&longitude=${pts.map(p=>p.lon.toFixed(3))}&hourly=${VARS}&forecast_hours=26&timezone=America%2FArgentina%2FCordoba`;
+  try{let j=await (await fetch(url)).json();if(!Array.isArray(j))j=[j];
+    gdata=j.map(x=>analyze(x).slice(0,13));$("#mslider").max=gdata[0].length-1;showGrid(Math.min(gidx,gdata[0].length-1));playGrid(gplaying);
+  }catch(e){$("#mtime").textContent="Sin datos"}
+}
+function showGrid(i){
+  if(!gdata)return;gidx=i;
+  gdata.forEach((hrs,k)=>{const h=hrs[i];if(!h)return;const[c,o]=cellStyle(h);gcells[k].setStyle({fillColor:c||"#000",fillOpacity:c?o:0})});
+  const t=gdata[0][i].t;$("#mtime").textContent=i===0?"Ahora":`+${i} h · ${hhmm(t)}`;$("#mslider").value=i;
+  gpins.forEach((m,k)=>{const h=DATA[k]?.hours?.[i];if(!h)return;
+    m.setTooltipContent(`${PLACES[k].name} · ${gmode==="hail"?`granizo ${h.hs}%`:`${(h.h.precipitation??0).toFixed(1)} mm`}`)});
+}
+function setMode(m){gmode=m;$("#b-hail").setAttribute("aria-pressed",m==="hail");$("#b-rain").setAttribute("aria-pressed",m==="rain");
+  $("#mleg").innerHTML=LEG[m].map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join("");showGrid(gidx)}
+function playGrid(on){gplaying=on;clearInterval(gtimer);$("#mplay").textContent=on?"❚❚":"▶";$("#mplay").setAttribute("aria-label",on?"Pausar":"Reproducir");
+  if(on&&gdata)gtimer=setInterval(()=>showGrid((gidx+1)%gdata[0].length),1200)}
+$("#mplay").onclick=()=>playGrid(!gplaying);
+$("#mslider").oninput=e=>{playGrid(false);showGrid(+e.target.value)};
+$("#b-hail").onclick=()=>setMode("hail");$("#b-rain").onclick=()=>setMode("rain");
 
 /* --- Avisos: 2 h y 1 h antes del inicio de cada tramo de riesgo --- */
 function notify(title,body){
@@ -393,7 +447,7 @@ $("#notif").addEventListener("click",async()=>{
   if(on&&"Notification" in window&&Notification.permission==="default"){try{await Notification.requestPermission()}catch(e){}}
   store.set("avisos",on);syncBtn();check();
 });
-syncBtn();load();setMap("fc");
+syncBtn();load();initGrid();setInterval(loadGrid,60*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>
