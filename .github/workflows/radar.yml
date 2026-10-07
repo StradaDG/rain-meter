@@ -26,5 +26,5 @@ jobs:
         run: |
           git config user.name "rain-meter-bot"
           git config user.email "rain-meter-bot@users.noreply.github.com"
-          git add radar.json
+          git add -A radar.json radar-debug.txt 2>/dev/null; git add radar-debug.txt; git add radar.json || true
           git diff --cached --quiet || (git commit -m "Radar actualizado [skip ci]" && git pull --rebase -q && git push)
