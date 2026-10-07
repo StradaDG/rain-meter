@@ -420,6 +420,7 @@ function to15(raw){
   return out;
 }
 async function loadGrid(){
+  if(!gdata)$("#mtime").textContent="Cargando…";
   const pts=gridPts();
   const url=`https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p=>p.lat.toFixed(3))}&longitude=${pts.map(p=>p.lon.toFixed(3))}&hourly=${VARS}&minutely_15=precipitation&forecast_hours=26&forecast_minutely_15=60&timezone=America%2FArgentina%2FCordoba`;
   try{let j=await (await fetch(url)).json();if(!Array.isArray(j))j=[j];
