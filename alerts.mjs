@@ -80,11 +80,32 @@ for(const [i,p] of PLACES.entries()){
       const key=p.id+e.t+tag;
       if(m>=lo&&m<=hi&&!sent[key]){
         const red=e.peakH===2||e.peakR===2;
-        const body=`${describe(e)} desde las ${hhmm(e.t)} · granizo ${e.hs}%`;
+        const pk=Math.max(...hours.filter(h=>h.t>=e.t&&h.t<e.t+6*36e5).map(h=>h.hs));
+        const body=`${describe(e)} desde las ${hhmm(e.t)} · granizo hasta ${pk}%`;
         await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body,headers:{
           Title:`${txt}: ${p.name}`.normalize("NFD").replace(/[\u0300-\u036f]/g,""),
           Priority:red?"urgent":"high",Tags:red?"rotating_light,cloud_with_lightning":"warning,cloud_with_rain"}});
         sent[key]=now; console.log("Aviso",key,body);
+      }
+    }
+  }
+}
+// Avisos de ALERTA ROJA: cuando el riesgo sube a rojo (aunque ya hubiera riesgo menor antes)
+for(const [i,p] of PLACES.entries()){
+  const hours=analyze(j[i]);
+  const red=h=>Math.max(h.hl,h.rl)===2;
+  for(let k=0;k<hours.length;k++){
+    const h=hours[k];if(!red(h)||(k>0&&red(hours[k-1])))continue;
+    const m=(h.t-now)/60000;
+    const pk=Math.max(...hours.slice(k,k+6).map(x=>x.hs));
+    const what=[h.hl===2?"granizo":"",h.rl===2?"lluvia muy fuerte":""].filter(Boolean).join(" y ");
+    const slots=k===0?[["now",-60,30,"ALERTA ROJA ahora"]]:[["r2h",90,135,"ALERTA ROJA en 2 horas"],["r1h",30,75,"ALERTA ROJA en 1 hora"]];
+    for(const [tag,lo,hi,txt] of slots){
+      const key=p.id+(tag==="now"?Math.floor(now/(6*36e5)):h.t)+tag;
+      if(m>=lo&&m<=hi&&!sent[key]){
+        await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body:`${what} desde las ${hhmm(h.t)} · granizo hasta ${pk}%`,headers:{
+          Title:`${txt}: ${p.name}`.normalize("NFD").replace(/[\u0300-\u036f]/g,""),Priority:"urgent",Tags:"rotating_light,cloud_with_lightning"}});
+        sent[key]=now;console.log("Aviso rojo",key);
       }
     }
   }
