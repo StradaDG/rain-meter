@@ -387,8 +387,10 @@ function cellStyle(h){
 function initGrid(){
   if(!window.L){$("#map").innerHTML='<p style="padding:16px">No se pudo cargar el mapa.</p>';return}
   gmap=L.map("map",{zoomSnap:.25,attributionControl:true}).setView([-31.53,-64.30],9);
-  const fit=()=>{gmap.invalidateSize();gmap.fitBounds([[GRID.lat0,GRID.lon0],[GRID.lat1,GRID.lon1]])};
-  setTimeout(fit,250);setTimeout(fit,1200);addEventListener("resize",()=>gmap.invalidateSize());
+  let touched=false;const el=document.getElementById("map");
+  ["pointerdown","wheel","touchstart"].forEach(ev=>el.addEventListener(ev,()=>touched=true,{passive:true}));
+  const fit=()=>{gmap.invalidateSize();const sz=gmap.getSize();if(!touched&&sz.x>80&&sz.y>80)gmap.fitBounds([[GRID.lat0,GRID.lon0],[GRID.lat1,GRID.lon1]])};
+  new ResizeObserver(fit).observe(el);setTimeout(fit,300);
   L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",{maxZoom:13,attribution:"Mapa © Esri · Datos Open-Meteo"}).addTo(gmap);
   gmap.createPane("risk").style.zIndex=350;gmap.getPane("risk").classList.add("risk-pane");gmap.getPane("risk").style.pointerEvents="none";
   gmap.createPane("labels").style.zIndex=450;gmap.getPane("labels").style.pointerEvents="none";
