@@ -223,11 +223,11 @@ header{flex-wrap:nowrap;align-items:center}
       <div class="mleg" id="mleg"></div>
       <div class="mbar">
         <button type="button" id="mplay" aria-label="Pausar">❚❚</button>
-        <input type="range" id="mslider" min="0" max="12" value="0" aria-label="Hora del pronóstico">
+        <input type="range" id="mslider" min="0" max="48" value="0" aria-label="Hora del pronóstico">
         <span id="mtime">Ahora</span>
       </div>
     </div>
-    <div class="satnote">Pronóstico propio de las próximas 12 h, con el mismo análisis que las alertas. Arrastrá, hacé zoom o mové la barra.</div>
+    <div class="satnote">Pronóstico propio de las próximas 12 h, cada 15 min. Arrastrá el mapa para ver Alta Gracia.</div>
   </section>
 
 </div>
@@ -373,7 +373,8 @@ async function load(){
 
 
 /* --- Mapa de riesgo propio: cuadrícula sobre la zona, mismo análisis, hora por hora --- */
-const GRID={lat0:-31.20,lat1:-31.86,lon0:-64.64,lon1:-63.96,n:9};
+const GRID={lat0:-31.24,lat1:-31.72,lon0:-64.48,lon1:-63.98,n:8};
+const HOME=[-31.42,-64.19],HOMEZ=11;
 let gmap,gcells=[],gdata=null,gmode="hail",gidx=0,gplaying=true,gtimer=null,gpins=[];
 const RED="#ff3b4f",ORG="#ff9d2e";
 const LEG={hail:[["#3ee0a5","Bajo"],[ORG,"Atención"],[RED,"Alto"]],rain:[["#4cc3ff","Débil"],[ORG,"Fuerte"],[RED,"Muy fuerte"]]};
@@ -386,10 +387,10 @@ function cellStyle(h){
 }
 function initGrid(){
   if(!window.L){$("#map").innerHTML='<p style="padding:16px">No se pudo cargar el mapa.</p>';return}
-  gmap=L.map("map",{zoomSnap:.25,attributionControl:true}).setView([-31.53,-64.30],9);
+  gmap=L.map("map",{zoomSnap:.25,attributionControl:true}).setView(HOME,HOMEZ);
   let touched=false;const el=document.getElementById("map");
   ["pointerdown","wheel","touchstart"].forEach(ev=>el.addEventListener(ev,()=>touched=true,{passive:true}));
-  const fit=()=>{gmap.invalidateSize();const sz=gmap.getSize();if(!touched&&sz.x>80&&sz.y>80)gmap.fitBounds([[GRID.lat0,GRID.lon0],[GRID.lat1,GRID.lon1]])};
+  const fit=()=>{gmap.invalidateSize();const sz=gmap.getSize();if(!touched&&sz.x>80&&sz.y>80)gmap.setView(HOME,HOMEZ,{animate:false})};
   new ResizeObserver(fit).observe(el);setTimeout(fit,300);
   L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",{maxZoom:13,attribution:"Mapa © Esri · Datos Open-Meteo"}).addTo(gmap);
   gmap.createPane("risk").style.zIndex=350;gmap.getPane("risk").classList.add("risk-pane");gmap.getPane("risk").style.pointerEvents="none";
@@ -401,24 +402,40 @@ function initGrid(){
     .addTo(gmap).bindTooltip(p.name,{permanent:true,direction:"right",offset:[10,0],className:"lbl"}));
   setMode("hail");loadGrid();
 }
+/* Pasa el análisis horario a pasos de 15 min: granizo interpolado entre horas, lluvia con datos cada 15 min */
+function to15(raw){
+  const hrs=analyze(raw),off=raw.utc_offset_seconds*1000,M=raw.minutely_15||{time:[],precipitation:[]};
+  const mt=M.time.map(t=>Date.parse(t+":00Z")-off),now=Date.now(),out=[];
+  let t=Math.floor(now/9e5)*9e5;
+  for(let k=0;k<49;k++,t+=9e5){
+    let i=hrs.findIndex((h,n)=>hrs[n+1]&&hrs[n+1].t>t);if(i<0)break;
+    const a=hrs[i],b=hrs[i+1],f=Math.max(0,Math.min(1,(t-a.t)/36e5));
+    const hs=Math.round(a.hs+(b.hs-a.hs)*f);
+    const mi=mt.findIndex(x=>x>=t);const p15=mi>=0?(M.precipitation[mi]??0):((a.h.precipitation??0)/4);
+    const rate=p15*4,rl=rate>=15?2:rate>=6?1:0;
+    out.push({t,hs,hl:hailLevel(hs),rl,h:{precipitation:rate}});
+  }
+  return out;
+}
 async function loadGrid(){
   const pts=gridPts();
-  const url=`https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p=>p.lat.toFixed(3))}&longitude=${pts.map(p=>p.lon.toFixed(3))}&hourly=${VARS}&forecast_hours=26&timezone=America%2FArgentina%2FCordoba`;
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p=>p.lat.toFixed(3))}&longitude=${pts.map(p=>p.lon.toFixed(3))}&hourly=${VARS}&minutely_15=precipitation&forecast_hours=26&forecast_minutely_15=60&timezone=America%2FArgentina%2FCordoba`;
   try{let j=await (await fetch(url)).json();if(!Array.isArray(j))j=[j];
-    gdata=j.map(x=>analyze(x).slice(0,13));$("#mslider").max=gdata[0].length-1;showGrid(Math.min(gidx,gdata[0].length-1));playGrid(gplaying);
+    gdata=j.map(x=>to15(x));$("#mslider").max=gdata[0].length-1;showGrid(Math.min(gidx,gdata[0].length-1));playGrid(gplaying);
   }catch(e){$("#mtime").textContent="Sin datos"}
 }
+function nearest(p){let b=0,d=1e9;gridPts().forEach((q,k)=>{const e=(q.lat-p.lat)**2+(q.lon-p.lon)**2;if(e<d){d=e;b=k}});return b}
 function showGrid(i){
   if(!gdata)return;gidx=i;
   gdata.forEach((hrs,k)=>{const h=hrs[i];if(!h)return;const[c,o]=cellStyle(h);gcells[k].setStyle({fillColor:c||"#000",fillOpacity:c?o:0})});
-  const t=gdata[0][i].t;$("#mtime").textContent=i===0?"Ahora":`+${i} h · ${hhmm(t)}`;$("#mslider").value=i;
-  gpins.forEach((m,k)=>{const h=DATA[k]?.hours?.[i];if(!h)return;
-    m.setTooltipContent(`${PLACES[k].name} · ${gmode==="hail"?`granizo ${h.hs}%`:`${(h.h.precipitation??0).toFixed(1)} mm`}`)});
+  const t=gdata[0][i].t,mn=i*15;$("#mtime").textContent=i===0?"Ahora":`${hhmm(t)} · +${Math.floor(mn/60)}:${String(mn%60).padStart(2,"0")}`;$("#mslider").value=i;
+  gpins.forEach((m,k)=>{const h=gdata[nearest(PLACES[k])]?.[i];if(!h)return;
+    m.setTooltipContent(`${PLACES[k].name} · ${gmode==="hail"?`granizo ${h.hs}%`:`${(h.h.precipitation??0).toFixed(1)} mm/h`}`)});
 }
 function setMode(m){gmode=m;$("#b-hail").setAttribute("aria-pressed",m==="hail");$("#b-rain").setAttribute("aria-pressed",m==="rain");
   $("#mleg").innerHTML=LEG[m].map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join("");showGrid(gidx)}
 function playGrid(on){gplaying=on;clearInterval(gtimer);$("#mplay").textContent=on?"❚❚":"▶";$("#mplay").setAttribute("aria-label",on?"Pausar":"Reproducir");
-  if(on&&gdata)gtimer=setInterval(()=>showGrid((gidx+1)%gdata[0].length),1200)}
+  if(on&&gdata)gtimer=setInterval(()=>showGrid((gidx+1)%gdata[0].length),600)}
 $("#mplay").onclick=()=>playGrid(!gplaying);
 $("#mslider").oninput=e=>{playGrid(false);showGrid(+e.target.value)};
 $("#b-hail").onclick=()=>setMode("hail");$("#b-rain").onclick=()=>setMode("rain");
