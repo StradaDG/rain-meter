@@ -223,11 +223,11 @@ header{flex-wrap:nowrap;align-items:center}
       <div class="mleg" id="mleg"></div>
       <div class="mbar">
         <button type="button" id="mplay" aria-label="Pausar">❚❚</button>
-        <input type="range" id="mslider" min="0" max="48" value="0" aria-label="Hora del pronóstico">
+        <input type="range" id="mslider" min="0" max="12" value="0" aria-label="Hora del pronóstico">
         <span id="mtime">Ahora</span>
       </div>
     </div>
-    <div class="satnote">Pronóstico de lluvia de las próximas 12 h, cada 15 min. Granizo: solo donde además se espera lluvia. Arrastrá el mapa para ver Alta Gracia.</div>
+    <div class="satnote">Pronóstico de lluvia de las próximas 3 h, cada 15 min. Granizo: solo donde además se espera lluvia. Arrastrá el mapa para ver Alta Gracia.</div>
   </section>
 
 </div>
@@ -409,7 +409,7 @@ function to15(raw){
   const hrs=analyze(raw),off=raw.utc_offset_seconds*1000,M=raw.minutely_15||{time:[],precipitation:[]};
   const mt=M.time.map(t=>Date.parse(t+":00Z")-off),now=Date.now(),out=[];
   let t=Math.floor(now/9e5)*9e5;
-  for(let k=0;k<49;k++,t+=9e5){
+  for(let k=0;k<13;k++,t+=9e5){
     let i=hrs.findIndex((h,n)=>hrs[n+1]&&hrs[n+1].t>t);if(i<0)break;
     const a=hrs[i],b=hrs[i+1],f=Math.max(0,Math.min(1,(t-a.t)/36e5));
     const hs=Math.round(a.hs+(b.hs-a.hs)*f);
@@ -450,7 +450,7 @@ function showGrid(i){
 function setMode(m){gmode=m;$("#b-hail").setAttribute("aria-pressed",m==="hail");$("#b-rain").setAttribute("aria-pressed",m==="rain");
   $("#mleg").innerHTML=LEG[m].map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join("");showGrid(gidx)}
 function playGrid(on){gplaying=on;clearInterval(gtimer);$("#mplay").textContent=on?"❚❚":"▶";$("#mplay").setAttribute("aria-label",on?"Pausar":"Reproducir");
-  if(on&&gdata)gtimer=setInterval(()=>showGrid((gidx+1)%gdata[0].length),600)}
+  if(on&&gdata)gtimer=setInterval(()=>showGrid((gidx+1)%gdata[0].length),900)}
 $("#mplay").onclick=()=>playGrid(!gplaying);
 $("#mslider").oninput=e=>{playGrid(false);showGrid(+e.target.value)};
 $("#b-hail").onclick=()=>setMode("hail");$("#b-rain").onclick=()=>setMode("rain");
