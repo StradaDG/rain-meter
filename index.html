@@ -374,7 +374,7 @@ async function load(){
 
 /* --- Mapa de riesgo propio: cuadrícula sobre la zona, mismo análisis, hora por hora --- */
 const GRID={lat0:-31.22,lat1:-31.72,lon0:-64.47,lon1:-63.93,n:9};
-const HOME=[-31.42,-64.19],HOMEZ=11;
+const HOME=[-31.42,-64.19],HOMEZ=10.5;
 let gmap,gimg,gcv=document.createElement("canvas"),gcells=[],gdata=null,gmode="rain",gidx=0,gplaying=true,gtimer=null,gpins=[];
 const RED="#ff3b4f",ORG="#ff9d2e";
 const RAINC=[[.2,"#5ad8e6"],[.5,"#2f4bff"],[1,"#6ef05a"],[2,"#2e9e3a"],[4,"#ffe14a"],[8,"#ff9d2e"],[15,"#ff3b4f"],[30,"#b0122a"]];
