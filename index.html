@@ -178,27 +178,26 @@ header{flex-wrap:nowrap;align-items:center}
 .mapbox,.frame{height:100%}
 }
 
-/* ===== Mapa en pantalla completa: datos minimizados arriba, mapa ocupa el resto ===== */
+/* ===== Mapa en pantalla completa: una barra fina arriba con todo, el mapa ocupa el resto ===== */
 .sathead{gap:8px}
-.mfull{margin-left:auto;width:38px;height:38px;padding:0;justify-content:center;border-radius:12px;background:#ffffff14;color:var(--fg)}
+.mfull{margin-left:auto;width:38px;height:38px;padding:0;justify-content:center;border-radius:12px;background:#ffffff14;color:var(--fg);flex:none}
 .mfull svg{width:20px;height:20px}
 .mini{display:none}
-body.mapfull{height:100dvh;overflow:hidden}
-body.mapfull .wrap{display:flex!important;flex-direction:column;height:100%;gap:8px;max-width:none}
-body.mapfull header,body.mapfull .grid,body.mapfull .satnote{display:none!important}
-body.mapfull .alert{flex:none;flex-wrap:nowrap;padding:6px 12px;gap:10px;border-radius:14px;animation:none}
-body.mapfull .alert .ic{width:28px!important;height:28px!important}
-body.mapfull .alert .lvl{font-size:17px} body.mapfull .alert .sub{font-size:11px;line-height:1.25}
-body.mapfull .alert .pct{margin-left:auto;width:auto;display:grid;text-align:right}
-body.mapfull .alert .pct b{font-size:22px} body.mapfull .alert .pct span{font-size:8px}
-body.mapfull .mini{display:flex;flex:none;gap:8px;flex-wrap:wrap}
-.chip{flex:1 1 200px;min-width:0;display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:12px;background:#ffffff12;border:1px solid var(--line);font-size:12px;font-weight:700}
-.chip .ic{width:22px!important;height:22px!important}
-.chip .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.chip .vals{margin-left:auto;display:flex;gap:10px;font:500 11px var(--f-data);white-space:nowrap}
-.chip .l0{color:var(--ok)} .chip .l1{color:var(--warn)} .chip .l2{color:var(--bad)}
-body.mapfull .sat{flex:1 1 0;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr)}
+body.mapfull{height:100dvh;overflow:hidden;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)!important}
+body.mapfull .wrap{display:flex!important;flex-direction:column;height:100%;gap:0;max-width:none}
+body.mapfull header,body.mapfull .grid,body.mapfull .satnote,body.mapfull .alert,body.mapfull .sathead h2{display:none!important}
+body.mapfull .sat{flex:1 1 0;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr);border-radius:0;border:0}
+body.mapfull .sathead{padding:6px 8px;flex-wrap:wrap;gap:6px}
+body.mapfull .seg button{padding:5px 10px;font-size:12px}
+body.mapfull .mfull{width:32px;height:32px;margin-left:0}
 body.mapfull .mapbox,body.mapfull .frame{height:100%}
+body.mapfull .mini{display:flex;flex:1 1 0;min-width:0;gap:6px;align-items:center}
+.abadge{flex:none;font:400 15px/1 "Anton","Impact",sans-serif;letter-spacing:.03em;color:#fff;padding:6px 9px;border-radius:9px;text-transform:uppercase}
+.abadge.a0{background:#1fae73} .abadge.a1{background:#f07a12} .abadge.a2{background:#e8283c}
+.chip{min-width:0;display:flex;align-items:center;gap:5px;padding:5px 8px;border-radius:9px;background:#ffffff12;border:1px solid var(--line);font:700 11px var(--f-body);white-space:nowrap}
+.chip .ic{width:16px!important;height:16px!important}
+.chip .l0{color:var(--ok)} .chip .l1{color:var(--warn)} .chip .l2{color:var(--bad)}
+@media (max-width:700px){body.mapfull .mini{flex-basis:100%}body.mapfull .seg{margin-right:auto}}
 </style>
 </head>
 <body>
@@ -507,16 +506,18 @@ $("#b-hail").onclick=()=>switchMode("hail");$("#b-rain").onclick=()=>switchMode(
 /* --- Pantalla completa del mapa --- */
 const ICO_OPEN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>';
 const ICO_CLOSE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10h-6V4M4 14h6v6M14 10l7-7M10 14l-7 7"/></svg>';
-function setFull(on){document.body.classList.toggle("mapfull",on);const b=$("#mfull");b.innerHTML=on?ICO_CLOSE:ICO_OPEN;
+function setFull(on){document.body.classList.toggle("mapfull",on);
+  const mini=$("#mini"),sh=$(".sathead");if(on)sh.insertBefore(mini,sh.querySelector(".seg"));else $(".wrap").insertBefore(mini,$(".sat"));const b=$("#mfull");b.innerHTML=on?ICO_CLOSE:ICO_OPEN;
   b.setAttribute("aria-label",on?"Achicar mapa":"Agrandar mapa");b.title=on?"Volver":"Agrandar mapa";scrollTo(0,0);
   setTimeout(()=>gmap&&gmap.invalidateSize(),60);setTimeout(()=>gmap&&gmap.invalidateSize(),400)}
 $("#mfull").onclick=()=>setFull(!document.body.classList.contains("mapfull"));
 addEventListener("keydown",e=>{if(e.key==="Escape"&&document.body.classList.contains("mapfull"))setFull(false)});
 setFull(false);
 function renderMini(){
-  $("#mini").innerHTML=DATA.filter(d=>d.hours).map(d=>{const f=d.hours.slice(0,12),mh=Math.max(...f.map(h=>h.hl)),mr=Math.max(...f.map(h=>h.rl)),pc=Math.max(...f.map(h=>h.hs));
-    return `<div class="chip">${ic(nowIcon(d.hours[0].h),22)}<span class="nm">${d.p.name} · ${Math.round(d.hours[0].h.temperature_2m??0)}°</span>
-      <span class="vals"><span class="l${mh}">Granizo ${pc}%</span><span class="l${mr}">Lluvia ${LVL[mr]}</span></span></div>`}).join("");
+  const ok=DATA.filter(d=>d.hours);if(!ok.length){$("#mini").innerHTML="";return}
+  let w={lv:0,hs:0};for(const d of ok)for(const h of d.hours.slice(0,12)){const lv=Math.max(h.hl,h.rl);if(lv>w.lv||(lv===w.lv&&h.hs>w.hs))w={lv,hs:h.hs}}
+  $("#mini").innerHTML=`<span class="abadge a${w.lv}">${["Verde","Naranja","Roja"][w.lv]} ${w.hs}%</span>`+ok.map(d=>{const f=d.hours.slice(0,12),mh=Math.max(...f.map(h=>h.hl)),mr=Math.max(...f.map(h=>h.rl)),pc=Math.max(...f.map(h=>h.hs));
+    return `<span class="chip">${d.p.name.split(" ")[0]} <span class="l${mh}">${ic("hail",16)}${pc}%</span><span class="l${mr}">${ic("rain",16)}${LVL[mr]}</span></span>`}).join("");
 }
 
 /* --- Avisos: 2 h y 1 h antes del inicio de cada tramo de riesgo --- */
