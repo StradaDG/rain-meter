@@ -197,7 +197,11 @@ body.mapfull .mini{display:flex;flex:1 1 0;min-width:0;gap:6px;align-items:cente
 .chip{min-width:0;display:flex;align-items:center;gap:5px;padding:5px 8px;border-radius:9px;background:#ffffff12;border:1px solid var(--line);font:700 11px var(--f-body);white-space:nowrap}
 .chip .ic{width:16px!important;height:16px!important}
 .chip .l0{color:var(--ok)} .chip .l1{color:var(--warn)} .chip .l2{color:var(--bad)}
-@media (max-width:700px){body.mapfull .mini{flex-basis:100%}body.mapfull .seg{margin-right:auto}}
+body.mapfull{overflow-x:hidden}
+@media (max-width:700px){body.mapfull .mini{flex-basis:100%}body.mapfull .seg{margin-right:auto}
+  .abadge{font-size:13px;padding:5px 7px}
+  body.mapfull .chip{flex:1 1 0;overflow:hidden;padding:5px 6px;gap:3px;font-size:10.5px}
+  body.mapfull .chip .rt{display:none}}
 </style>
 </head>
 <body>
@@ -517,7 +521,7 @@ function renderMini(){
   const ok=DATA.filter(d=>d.hours);if(!ok.length){$("#mini").innerHTML="";return}
   let w={lv:0,hs:0};for(const d of ok)for(const h of d.hours.slice(0,12)){const lv=Math.max(h.hl,h.rl);if(lv>w.lv||(lv===w.lv&&h.hs>w.hs))w={lv,hs:h.hs}}
   $("#mini").innerHTML=`<span class="abadge a${w.lv}">${["Verde","Naranja","Roja"][w.lv]} ${w.hs}%</span>`+ok.map(d=>{const f=d.hours.slice(0,12),mh=Math.max(...f.map(h=>h.hl)),mr=Math.max(...f.map(h=>h.rl)),pc=Math.max(...f.map(h=>h.hs));
-    return `<span class="chip">${d.p.name.split(" ")[0]} <span class="l${mh}">${ic("hail",16)}${pc}%</span><span class="l${mr}">${ic("rain",16)}${LVL[mr]}</span></span>`}).join("");
+    return `<span class="chip">${d.p.name.split(" ")[0]} <span class="l${mh}">${ic("hail",16)}${pc}%</span><span class="l${mr}">${ic("rain",16)}<span class="rt">${LVL[mr]}</span></span></span>`}).join("");
 }
 
 /* --- Avisos: 2 h y 1 h antes del inicio de cada tramo de riesgo --- */
