@@ -373,7 +373,7 @@ async function load(){
 
 
 /* --- Mapa de riesgo propio: cuadrícula sobre la zona, mismo análisis, hora por hora --- */
-const GRID={lat0:-31.22,lat1:-31.72,lon0:-64.47,lon1:-63.93,n:9};
+const GRID={lat0:-31.02,lat1:-31.90,lon0:-64.72,lon1:-63.66,n:9};
 const HOME=[-31.42,-64.19],HOMEZ=10.5;
 let graw=null,gmap,gimg,gcv=document.createElement("canvas"),gcells=[],gdata=null,gmode="rain",gidx=0,gplaying=true,gtimer=null,gpins=[];
 const RED="#ff3b4f",ORG="#ff9d2e";
@@ -389,7 +389,7 @@ function cellStyle(h){
 }
 function initGrid(){
   if(!window.L){$("#map").innerHTML='<p style="padding:16px">No se pudo cargar el mapa.</p>';return}
-  gmap=L.map("map",{zoomSnap:.25,attributionControl:true}).setView(HOME,HOMEZ);
+  gmap=L.map("map",{zoomSnap:.25,attributionControl:true,minZoom:9.75,maxBounds:[[GRID.lat0+.05,GRID.lon0-.05],[GRID.lat1-.05,GRID.lon1+.05]],maxBoundsViscosity:.8}).setView(HOME,HOMEZ);
   let touched=false;const el=document.getElementById("map");
   ["pointerdown","wheel","touchstart"].forEach(ev=>el.addEventListener(ev,()=>touched=true,{passive:true}));
   const fit=()=>{gmap.invalidateSize();const sz=gmap.getSize();if(!touched&&sz.x>80&&sz.y>80)gmap.setView(HOME,HOMEZ,{animate:false})};
@@ -437,7 +437,7 @@ function drawField(i){
     for(let px=0;px<W;px++){const gx=px/(W-1)*(n-1),c0=Math.min(n-2,Math.floor(gx)),fx=gx-c0;
       const val=(v[r0*n+c0]*(1-fx)+v[r0*n+c0+1]*fx)*(1-fy)+(v[(r0+1)*n+c0]*(1-fx)+v[(r0+1)*n+c0+1]*fx)*fy;
       let c=null;for(const[t,rgb]of cols)if(val>=t)c=rgb;
-      if(c){const o=(py*W+px)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=175}}}
+      if(c){const e=Math.min(px,py,W-1-px,W-1-py),fade=Math.min(1,e/34);const o=(py*W+px)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=175*fade}}}
   x.putImageData(img,0,0);gimg.setUrl(gcv.toDataURL());
 }
 function showGrid(i){
