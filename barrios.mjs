@@ -41,7 +41,7 @@ for(const [src,url] of FEEDS){
       const observed=/cayo|granizada|granizo|piedras|se registro|sorprendio/.test(norm(title))&&!/^alerta|anticipan|posible|pronostic/.test(norm(title));
       let body="";
       if(observed){try{const u=link.includes("news.google.com")?await gnewsURL(link):link;
-        if(u){const ps=await articleParas(u);body=ps.filter(p=>/granizo|piedra|granizada|caida|cayo/.test(norm(p))).join(" ");debug.push(`* ${outlet}: ${title.slice(0,90)} -> ${u.slice(0,80)} (${ps.length} párrafos)`)}
+        if(u){const ps=await articleParas(u);body=ps.filter(p=>/granizo|piedra|granizada|caida|cayo/.test(norm(p))).join(" ");debug.push(`* ${outlet}: ${title.slice(0,90)} -> ${u} (${ps.length} párrafos) :: ${body.slice(0,400)}`)}
         else debug.push(`* ${outlet}: ${title.slice(0,90)} -> sin URL`)}catch(e){debug.push(`* ${outlet}: error nota ${e.message}`)}}
       else debug.push(`- ${outlet}: ${title.slice(0,90)} (pronóstico, se ignora)`);
       const txt2=norm(title+" "+(observed?desc+" "+body:""));
