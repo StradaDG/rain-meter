@@ -10,6 +10,19 @@ const FEEDS=[
  ["Bing","https://www.bing.com/news/search?q=cay%C3%B3+granizo+c%C3%B3rdoba+barrios&format=rss"],
 ];
 const UA={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"};
+// Google Noticias usa links codificados: se decodifican para leer la nota original
+async function gnewsURL(link){
+  const id=link.split("/articles/")[1]?.split("?")[0];if(!id)return link;
+  const h=await (await fetch(`https://news.google.com/articles/${id}`,{headers:UA})).text();
+  const sg=h.match(/data-n-a-sg="([^"]+)"/)?.[1],ts=h.match(/data-n-a-ts="([^"]+)"/)?.[1];if(!sg||!ts)return null;
+  const req=[[["Fbv4je",`["garturlreq",[["X","X",["X","X"],null,null,1,1,"US:en",null,1,null,null,null,null,null,0,1],"X","X",1,[1,1,1],1,1,null,0,0,null,0],"${id}",${ts},"${sg}"]`,null,"generic"]]];
+  const r=await (await fetch("https://news.google.com/_/DotsSplashUi/data/batchexecute",{method:"POST",headers:{...UA,"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},body:"f.req="+encodeURIComponent(JSON.stringify(req))})).text();
+  return r.match(/garturlres\\",\\"(https?:[^\\"]+)/)?.[1]||null;
+}
+async function articleParas(url){
+  const h=await (await fetch(url,{headers:UA,redirect:"follow"})).text();
+  return [...h.matchAll(/<p[^>]*>([\s\S]*?)<\/p>/gi)].map(m=>m[1].replace(/<[^>]+>/g," ").replace(/&nbsp;/g," ").replace(/&[a-z#0-9]+;/gi," ").replace(/\s+/g," ").trim()).filter(t=>t.length>30);
+}
 const tag=(x,t)=>{const m=x.match(new RegExp(`<${t}[^>]*>([\\s\\S]*?)</${t}>`,"i"));return m?m[1].replace(/<!\[CDATA\[|\]\]>/g,"").replace(/<[^>]+>/g," ").replace(/&amp;/g,"&").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/\s+/g," ").trim():""};
 const today=new Date(Date.now()-3*36e5).toISOString().slice(0,10);
 const isToday=d=>{const t=Date.parse(d);return !isNaN(t)&&new Date(t-3*36e5).toISOString().slice(0,10)===today};
@@ -23,9 +36,17 @@ for(const [src,url] of FEEDS){
       const txt=norm(title+" "+desc);
       if(!/granizo|piedras|granizada/.test(txt))continue;
       if(!/cordoba|carlos paz|alta gracia|sierras chicas/.test(txt))continue;
-      nItems++;debug.push(`* ${outlet}: ${title.slice(0,120)} | ${link.slice(0,90)}`);
+      nItems++;
+      // Solo notas de granizo que YA cayó (no pronósticos/alertas): se lee la nota y se buscan barrios en los párrafos que hablan del granizo
+      const observed=/cayo|granizada|granizo|piedras|se registro|sorprendio/.test(norm(title))&&!/^alerta|anticipan|posible|pronostic/.test(norm(title));
+      let body="";
+      if(observed){try{const u=link.includes("news.google.com")?await gnewsURL(link):link;
+        if(u){const ps=await articleParas(u);body=ps.filter(p=>/granizo|piedra|granizada|caida|cayo/.test(norm(p))).join(" ");debug.push(`* ${outlet}: ${title.slice(0,90)} -> ${u.slice(0,80)} (${ps.length} párrafos)`)}
+        else debug.push(`* ${outlet}: ${title.slice(0,90)} -> sin URL`)}catch(e){debug.push(`* ${outlet}: error nota ${e.message}`)}}
+      else debug.push(`- ${outlet}: ${title.slice(0,90)} (pronóstico, se ignora)`);
+      const txt2=norm(title+" "+(observed?desc+" "+body:""));
       for(const b of BARRIOS){const re=new RegExp(`(^|[^a-z])${norm(b).replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}([^a-z]|$)`);
-        if(re.test(txt)){const name=b==="Arguello"?"Argüello":b==="centro de la ciudad"||b==="Microcentro"?"Centro":b;
+        if(re.test(txt2)){const name=b==="Arguello"?"Argüello":b==="centro de la ciudad"||b==="Microcentro"?"Centro":b;
           (found[name]??=[]);if(!found[name].some(s=>s.link===link))found[name].push({src:outlet,time:new Date(Date.parse(date)).toISOString(),title:title.slice(0,140),link})}}
     }
   }catch(e){debug.push(`${src} ERROR ${e.message}`)}
