@@ -1,16 +1,25 @@
 {
- "updated": "2026-10-09T15:29:40.919Z",
+ "updated": "2026-10-09T15:31:07.312Z",
  "date": "2026-10-09",
- "noticias": 4,
+ "noticias": 5,
  "barrios": [],
+ "reportes": [
+  {
+   "src": "Cadena 3",
+   "time": "2026-10-09T13:40:01.000Z",
+   "title": "¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad",
+   "link": "https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018"
+  }
+ ],
  "debug": [
   "Google Noticias 200 37",
-  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos) :: Pasadas las 9.30 de este viernes, un episodio de granizo de pequeño tamaño sorprendió a vecinos de distintos sectores de la ciudad de Córdoba , en el marco de la jornada de lluvias e inestabilidad que atraviesa la capital provincial. No se registraron daños materiales ni personas afectadas . ¿Qué fenómeno meteorológico ocurrió en Córdoba? Un episodio de granizo de pequeño tamaño. ¿Quiénes se viero",
+  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
   "- Vía País: Las zonas de Córdoba bajo alerta por posible caída de granizo este viernes - Vía País (pronóstico, se ignora)",
+  "- La Nueva Mañana: Alerta meteorológica en Córdoba: advierten tormentas, granizo y lluvias intensas - La Nuev (pronóstico, se ignora)",
   "- Nuevo Enfoque Urbano: Alerta por tormentas en Córdoba: anticipan lluvias intensas, ráfagas y posible caída de gr (pronóstico, se ignora)",
   "Google Noticias 200 5",
-  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos) :: Pasadas las 9.30 de este viernes, un episodio de granizo de pequeño tamaño sorprendió a vecinos de distintos sectores de la ciudad de Córdoba , en el marco de la jornada de lluvias e inestabilidad que atraviesa la capital provincial. No se registraron daños materiales ni personas afectadas . ¿Qué fenómeno meteorológico ocurrió en Córdoba? Un episodio de granizo de pequeño tamaño. ¿Quiénes se viero",
-  "Bing 200 0",
+  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
+  "Bing 200 10",
   "Bing 200 9"
  ]
 }
