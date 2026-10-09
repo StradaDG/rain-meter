@@ -1,11 +1,15 @@
 {
- "updated": "2026-10-09T15:24:38.743Z",
+ "updated": "2026-10-09T15:25:42.727Z",
  "date": "2026-10-09",
- "noticias": 3,
+ "noticias": 4,
  "barrios": [],
  "debug": [
-  "Google Noticias 200 36",
+  "Google Noticias 200 37",
+  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3 Argentina | https://news.google.com/rss/articles/CBMivwFBVV95cUxQQXA4bk5EVnhXSXBzN2dRYVEwZWNwUmRXNmhJZ",
+  "* La Nueva Mañana: Alerta meteorológica en Córdoba: advierten tormentas, granizo y lluvias intensas - La Nueva Mañana | https://news.google.com/rss/articles/CBMitgFBVV95cUxPZk90aGdUVFBJTWh5UHNaN09NaDFKUGdPR2hTZ",
+  "* Nuevo Enfoque Urbano: Alerta por tormentas en Córdoba: anticipan lluvias intensas, ráfagas y posible caída de granizo - Nuevo Enfoque Urbano | https://news.google.com/rss/articles/CBMixwFBVV95cUxONzRBVVVWMTdCNUxlRS0ydFNSZGw0dWNuQW9zW",
   "Google Noticias 200 5",
+  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3 Argentina | https://news.google.com/rss/articles/CBMivwFBVV95cUxQQXA4bk5EVnhXSXBzN2dRYVEwZWNwUmRXNmhJZ",
   "La Voz 530 0",
   "Cadena 3 200 0",
   "El Doce 404 0"
