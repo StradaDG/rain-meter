@@ -47,6 +47,8 @@ h1 span.x{background:linear-gradient(90deg,var(--hail),var(--rain));-webkit-back
 .alert .txt{display:grid;gap:2px;min-width:0;flex:1}
 .alert .sub{font-weight:700;opacity:.95}
 .alert .pct{margin-left:auto;text-align:right;display:grid}
+.alert .hn{display:block;margin-top:4px;font-size:12px;font-weight:700;background:#0000002e;border-radius:8px;padding:4px 8px;width:fit-content;max-width:100%}
+.alert .hn a{color:inherit;text-decoration:underline}
 .alert .pct b{font:400 clamp(34px,7vw,52px)/1 "Anton","Impact",sans-serif}
 .alert .pct span{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
 @media (max-width:520px){.alert .txt{flex:1 1 200px}.alert .pct{margin-left:0;text-align:left;width:100%;display:flex;align-items:baseline;gap:8px}}
@@ -347,6 +349,19 @@ const hailIcon=l=>l===2?"storm":l===1?"hail":"ok";
 const rainIcon=l=>l===2?"heavy":l===1?"rain":"ok";
 
 /* --- Recuadro de alerta: peor caso de los dos lugares en 12 h --- */
+/* --- Barrios con granizo reportado hoy (noticias, actualizado cada 30 min) --- */
+let HN=null;
+async function loadHN(){try{const r=await fetch("granizo.json?t="+Date.now());if(r.ok){HN=await r.json();renderAlert()}}catch(e){}}
+function hnLine(){
+  const today=new Date(Date.now()-3*36e5).toISOString().slice(0,10);
+  if(!HN||HN.date!==today)return"";
+  const esc=t=>t.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  if(HN.barrios?.length){const s=HN.barrios[0].sources[0];
+    return `<span class="hn">🧊 Granizo hoy en: ${HN.barrios.map(b=>esc(b.name)).join(", ")} · <a href="${esc(s.link)}" target="_blank" rel="noopener">${esc(s.src)}</a></span>`}
+  if(HN.reportes?.length){const r=HN.reportes[0];
+    return `<span class="hn">🧊 Granizo reportado hoy en la ciudad (sin barrios precisos) · <a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.src)} ${hhmm(Date.parse(r.time))}</a></span>`}
+  return"";
+}
 function renderAlert(){
   const ok=DATA.filter(d=>d.hours);const box=$("#alert");
   if(!ok.length){box.className="alert a1";box.innerHTML=`<div class="txt"><span class="lvl">Sin datos</span><span class="sub">No pude bajar el pronóstico. Reintento pronto.</span></div>`;return}
@@ -357,7 +372,7 @@ function renderAlert(){
   const sub=w.lv===0?"Sin riesgo de granizo ni lluvia fuerte en las próximas 12 h"
     :`${w.d.p.name} · desde las ${hhmm(w.h.t)} · ${[w.h.hl?"granizo":"",w.h.rl?"lluvia fuerte":""].filter(Boolean).join(" y ")}`;
   box.className="alert a"+w.lv;
-  box.innerHTML=`${ic(w.lv===2?"storm":w.lv===1?"hail":"ok",48)}<div class="txt"><span class="lvl">${NAME[w.lv]}</span><span class="sub">${sub}</span></div>
+  box.innerHTML=`${ic(w.lv===2?"storm":w.lv===1?"hail":"ok",48)}<div class="txt"><span class="lvl">${NAME[w.lv]}</span><span class="sub">${sub}</span>${hnLine()}</div>
     <div class="pct"><b>${w.h.hs}%</b><span>Prob. granizo</span></div>`;
 }
 /* --- Render --- */
@@ -559,7 +574,7 @@ $("#notif").addEventListener("click",async()=>{
   if(on&&"Notification" in window&&Notification.permission==="default"){try{await Notification.requestPermission()}catch(e){}}
   store.set("avisos",on);syncBtn();check();
 });
-syncBtn();load();initGrid();setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
+syncBtn();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>

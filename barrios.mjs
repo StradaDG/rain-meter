@@ -26,7 +26,7 @@ async function articleParas(url){
 const tag=(x,t)=>{const m=x.match(new RegExp(`<${t}[^>]*>([\\s\\S]*?)</${t}>`,"i"));return m?m[1].replace(/<!\[CDATA\[|\]\]>/g,"").replace(/<[^>]+>/g," ").replace(/&amp;/g,"&").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/\s+/g," ").trim():""};
 const today=new Date(Date.now()-3*36e5).toISOString().slice(0,10);
 const isToday=d=>{const t=Date.parse(d);return !isNaN(t)&&new Date(t-3*36e5).toISOString().slice(0,10)===today};
-const found={},debug=[];let nItems=0;
+const found={},debug=[],reportes=[];let nItems=0;
 for(const [src,url] of FEEDS){
   try{const r=await fetch(url,{headers:UA});const x=await r.text();const items=x.split(/<item[\s>]/i).slice(1);debug.push(`${src} ${r.status} ${items.length}`);
     for(const it of items){
@@ -41,16 +41,16 @@ for(const [src,url] of FEEDS){
       const observed=/cayo|granizada|granizo|piedras|se registro|sorprendio/.test(norm(title))&&!/^alerta|anticipan|posible|pronostic/.test(norm(title));
       let body="";
       if(observed){try{const u=link.includes("news.google.com")?await gnewsURL(link):link;
-        if(u){const ps=await articleParas(u);body=ps.filter(p=>/granizo|piedra|granizada|caida|cayo/.test(norm(p))).join(" ");debug.push(`* ${outlet}: ${title.slice(0,90)} -> ${u} (${ps.length} párrafos) :: ${body.slice(0,400)}`)}
+        if(u){const ps=await articleParas(u);if(!reportes.some(r=>r.link===u))reportes.push({src:outlet.replace(/ Argentina$/,""),time:new Date(Date.parse(date)).toISOString(),title:title.replace(/ - [^-]+$/,"").slice(0,140),link:u});body=ps.filter(p=>/granizo|piedra|granizada|caida|cayo/.test(norm(p))).join(" ");debug.push(`* ${outlet}: ${title.slice(0,90)} -> ${u} (${ps.length} párrafos)`)}
         else debug.push(`* ${outlet}: ${title.slice(0,90)} -> sin URL`)}catch(e){debug.push(`* ${outlet}: error nota ${e.message}`)}}
       else debug.push(`- ${outlet}: ${title.slice(0,90)} (pronóstico, se ignora)`);
       const txt2=norm(title+" "+(observed?desc+" "+body:""));
       for(const b of BARRIOS){const re=new RegExp(`(^|[^a-z])${norm(b).replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}([^a-z]|$)`);
         if(re.test(txt2)){const name=b==="Arguello"?"Argüello":b==="centro de la ciudad"||b==="Microcentro"?"Centro":b;
-          (found[name]??=[]);if(!found[name].some(s=>s.link===link))found[name].push({src:outlet,time:new Date(Date.parse(date)).toISOString(),title:title.slice(0,140),link})}}
+          (found[name]??=[]);if(!found[name].some(s=>s.link===link))found[name].push({src:outlet.replace(/ Argentina$/,""),time:new Date(Date.parse(date)).toISOString(),title:title.slice(0,140),link})}}
     }
   }catch(e){debug.push(`${src} ERROR ${e.message}`)}
 }
 const barrios=Object.entries(found).map(([name,s])=>({name,first:s.map(x=>x.time).sort()[0],sources:s.slice(0,3)})).sort((a,b)=>a.first.localeCompare(b.first));
-fs.writeFileSync("granizo.json",JSON.stringify({updated:new Date().toISOString(),date:today,noticias:nItems,barrios,debug},null,1));
+fs.writeFileSync("granizo.json",JSON.stringify({updated:new Date().toISOString(),date:today,noticias:nItems,barrios,reportes,debug},null,1));
 console.log(debug.join("\n"),"\nnoticias",nItems,"barrios",barrios.map(b=>b.name).join(", "));
