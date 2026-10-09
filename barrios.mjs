@@ -6,9 +6,8 @@ const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 const FEEDS=[
  ["Google Noticias","https://news.google.com/rss/search?q=granizo+c%C3%B3rdoba+when:1d&hl=es-419&gl=AR&ceid=AR:es-419"],
  ["Google Noticias","https://news.google.com/rss/search?q=%22cay%C3%B3+granizo%22+c%C3%B3rdoba+when:1d&hl=es-419&gl=AR&ceid=AR:es-419"],
- ["La Voz","https://www.lavoz.com.ar/arc/outboundfeeds/rss/?outputType=xml"],
- ["Cadena 3","https://www.cadena3.com/rss/rss.xml"],
- ["El Doce","https://eldoce.tv/feed"],
+ ["Bing","https://www.bing.com/news/search?q=granizo+c%C3%B3rdoba&format=rss&qft=interval%3d%227%22"],
+ ["Bing","https://www.bing.com/news/search?q=cay%C3%B3+granizo+c%C3%B3rdoba+barrios&format=rss"],
 ];
 const UA={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"};
 const tag=(x,t)=>{const m=x.match(new RegExp(`<${t}[^>]*>([\\s\\S]*?)</${t}>`,"i"));return m?m[1].replace(/<!\[CDATA\[|\]\]>/g,"").replace(/<[^>]+>/g," ").replace(/&amp;/g,"&").replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/\s+/g," ").trim():""};
