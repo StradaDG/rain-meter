@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-09T15:31:07.312Z",
+ "updated": "2026-10-09T15:37:16.780Z",
  "date": "2026-10-09",
- "noticias": 5,
+ "noticias": 6,
  "barrios": [],
  "reportes": [
   {
@@ -12,14 +12,15 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 37",
+  "Google Noticias 200 36",
   "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
   "- Vía País: Las zonas de Córdoba bajo alerta por posible caída de granizo este viernes - Vía País (pronóstico, se ignora)",
-  "- La Nueva Mañana: Alerta meteorológica en Córdoba: advierten tormentas, granizo y lluvias intensas - La Nuev (pronóstico, se ignora)",
-  "- Nuevo Enfoque Urbano: Alerta por tormentas en Córdoba: anticipan lluvias intensas, ráfagas y posible caída de gr (pronóstico, se ignora)",
-  "Google Noticias 200 5",
+  "Google Noticias 200 6",
   "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
-  "Bing 200 10",
-  "Bing 200 9"
+  "Google Noticias 200 98",
+  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
+  "- La Nueva Mañana: Alerta meteorológica en Córdoba: advierten tormentas, granizo y lluvias intensas - La Nuev (pronóstico, se ignora)",
+  "Google Noticias 200 44",
+  "- Vía País: Las zonas de Córdoba bajo alerta por posible caída de granizo este viernes - Vía País (pronóstico, se ignora)"
  ]
 }
