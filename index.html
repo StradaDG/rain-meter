@@ -265,7 +265,7 @@ const PLACES=[
   {id:"cba",name:"Córdoba Capital",sub:"Casa",lat:-31.420,lon:-64.189},
   {id:"aut",name:"Autódromo Cabalén",sub:"Alta Gracia",lat:-31.645,lon:-64.400}
 ];
-const VARS="temperature_2m,is_day,precipitation,precipitation_probability,weather_code,cape,lifted_index,convective_inhibition,freezing_level_height,wind_speed_10m,wind_direction_10m,wind_speed_500hPa,wind_direction_500hPa,temperature_500hPa,wind_gusts_10m";
+const VARS="temperature_2m,is_day,precipitation,precipitation_probability,weather_code,cape,lifted_index,convective_inhibition,freezing_level_height,wind_speed_10m,wind_direction_10m,wind_speed_500hPa,wind_direction_500hPa,temperature_500hPa,wind_gusts_10m,temperature_700hPa,showers";
 const LVL=["Bajo","Atención","Alto"];
 const $=s=>document.querySelector(s);
 const ic=(n,s=28)=>`<svg class="ic" style="--s:${s}px" aria-hidden="true"><use href="#i-${n}"/></svg>`;
@@ -287,6 +287,13 @@ function hailScore(h){
     s+= li<-7?15 : li<-4?10 : li<-2?4:0;
     s+= (h.temperature_500hPa??0)<-12?5:0;
     if(cin<-150) s*=0.6;
+  }
+  /* Granizo chico de aire frío: poca energía en superficie pero mucho frío en altura y chaparrones */
+  const rainNow=(h.precipitation??0)>=.3||(h.showers??0)>=.2||[80,81,82,95,96,99].includes(h.weather_code);
+  if(rainNow&&cape>=100){
+    const t5=h.temperature_500hPa??0,t7=h.temperature_700hPa??t5+15,lapse=(t7-t5)/2.6;
+    let c=t5<=-18?35:t5<=-15?25:t5<=-12?15:0;
+    if(c){c+=fz<=3000?15:fz<=3500?10:0;c+=lapse>=7.2?15:lapse>=6.5?10:0;c+=cape>=300?5:0;s=Math.max(s,c)}
   }
   const wc=h.weather_code;
   if(wc===95) s+=10;
