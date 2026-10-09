@@ -24,7 +24,7 @@ for(const [src,url] of FEEDS){
       const txt=norm(title+" "+desc);
       if(!/granizo|piedras|granizada/.test(txt))continue;
       if(!/cordoba|carlos paz|alta gracia|sierras chicas/.test(txt))continue;
-      nItems++;
+      nItems++;debug.push(`* ${outlet}: ${title.slice(0,120)} | ${link.slice(0,90)}`);
       for(const b of BARRIOS){const re=new RegExp(`(^|[^a-z])${norm(b).replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}([^a-z]|$)`);
         if(re.test(txt)){const name=b==="Arguello"?"Argüello":b==="centro de la ciudad"||b==="Microcentro"?"Centro":b;
           (found[name]??=[]);if(!found[name].some(s=>s.link===link))found[name].push({src:outlet,time:new Date(Date.parse(date)).toISOString(),title:title.slice(0,140),link})}}
