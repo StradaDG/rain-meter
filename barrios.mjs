@@ -6,9 +6,12 @@ const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 const FEEDS=[
  ["Google Noticias","https://news.google.com/rss/search?q=granizo+c%C3%B3rdoba+when:1d&hl=es-419&gl=AR&ceid=AR:es-419"],
  ["Google Noticias","https://news.google.com/rss/search?q=%22cay%C3%B3+granizo%22+c%C3%B3rdoba+when:1d&hl=es-419&gl=AR&ceid=AR:es-419"],
- ["Bing","https://www.bing.com/news/search?q=granizo+c%C3%B3rdoba&format=rss&qft=interval%3d%227%22"],
- ["Bing","https://www.bing.com/news/search?q=cay%C3%B3+granizo+c%C3%B3rdoba+barrios&format=rss"],
+ ["Google Noticias","https://news.google.com/rss/search?q=granizo%20%28site%3Alavoz.com.ar%20OR%20site%3Acadena3.com%20OR%20site%3Aeldoce.tv%20OR%20site%3Acba24n.com.ar%20OR%20site%3Aperfil.com%20OR%20site%3Almdiario.com.ar%20OR%20site%3Ahoydia.com.ar%29%20when%3A1d&hl=es-419&gl=AR&ceid=AR:es-419"],
+ ["Google Noticias","https://news.google.com/rss/search?q=granizo%20%28site%3Alanuevamananacba.com%20OR%20site%3Aviapais.com.ar%20OR%20site%3Atelefenoticias.com.ar%20OR%20site%3Amitre810.com%29%20when%3A1d&hl=es-419&gl=AR&ceid=AR:es-419"],
 ];
+// Solo medios de Córdoba Capital
+const MEDIOS=["lavoz.com.ar", "cadena3.com", "eldoce.tv", "cba24n.com.ar", "perfil.com", "lmdiario.com.ar", "hoydia.com.ar", "lanuevamananacba.com", "viapais.com.ar", "telefenoticias.com.ar", "mitre810.com"];
+const isCbaMedia=u=>{try{const h=new URL(u).hostname;return MEDIOS.some(d=>h===d||h.endsWith("."+d))}catch(e){return false}};
 const UA={"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/130 Safari/537.36"};
 // Google Noticias usa links codificados: se decodifican para leer la nota original
 async function gnewsURL(link){
@@ -32,6 +35,8 @@ for(const [src,url] of FEEDS){
     for(const it of items){
       const title=tag(it,"title"),desc=tag(it,"description")+" "+tag(it,"content:encoded"),link=tag(it,"link"),date=tag(it,"pubDate");
       const outlet=tag(it,"source")||src;
+      const srcUrl=(it.match(/<source[^>]*url="([^"]+)"/i)||[])[1]||"";
+      if(!isCbaMedia(srcUrl))continue;
       if(!isToday(date))continue;
       const txt=norm(title+" "+desc);
       if(!/granizo|piedras|granizada/.test(txt))continue;
@@ -41,6 +46,7 @@ for(const [src,url] of FEEDS){
       const observed=/cayo|granizada|granizo|piedras|se registro|sorprendio/.test(norm(title))&&!/^alerta|anticipan|posible|pronostic/.test(norm(title));
       let body="";
       if(observed){try{const u=link.includes("news.google.com")?await gnewsURL(link):link;
+        if(u&&/perfil\.com/.test(u)&&!/\/cordoba\//.test(u)){debug.push(`- Perfil fuera de la sección Córdoba, se ignora`);continue}
         if(u){const ps=await articleParas(u);if(!reportes.some(r=>r.link===u))reportes.push({src:outlet.replace(/ Argentina$/,""),time:new Date(Date.parse(date)).toISOString(),title:title.replace(/ - [^-]+$/,"").slice(0,140),link:u});body=ps.filter(p=>/granizo|piedra|granizada|caida|cayo/.test(norm(p))).join(" ");debug.push(`* ${outlet}: ${title.slice(0,90)} -> ${u} (${ps.length} párrafos)`)}
         else debug.push(`* ${outlet}: ${title.slice(0,90)} -> sin URL`)}catch(e){debug.push(`* ${outlet}: error nota ${e.message}`)}}
       else debug.push(`- ${outlet}: ${title.slice(0,90)} (pronóstico, se ignora)`);
