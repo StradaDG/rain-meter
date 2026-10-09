@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-09T19:11:02.202Z",
+ "updated": "2026-10-09T19:44:01.873Z",
  "date": "2026-10-09",
  "noticias": 9,
  "barrios": [
@@ -14,6 +14,30 @@
      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQeWl1ZHhvWF9Wa3NxZGp4Zm94THFLdnF6dnBiaktQRFU3cU9iaVFfZ3ZYeDNfM0I2X1I1d1dLY2xTODVGV2ducUo0NmR1MURuaV9GWGhnS29BSDM3bXVyR2J0bVg0MWdBZnlLTDd5eEU5bHVVOG45dTh2Qng0UC1GOTU4eEdUZHRkSjhZaWNqdVdWWGZ2cERXblc3WHY5ZHh4Y0lpTExadnJGT1otRW9UV3ZyTy3SAbQBQVVfeXFMUHlpdWR4b1hfVmtzcWRqeGZveExxS3ZxenZwYmpLUERVN3FPYmlRX2d2WHgzXzNCNl9SNXdXS2NsUzg1RldnbnFKNDZkdTFEbmlfRlhoZ0tvQUgzN211ckdidG1YNDFnQWZ5S0w3eXhFOWx1VThuOXU4dkJ4NFAtRjk1OHhHVGR0ZEo4WWljanVXVlhmdnBEV25XN1h2OWR4eGNJaUxMWnZyRk9aLUVvVFd2ck8t?oc=5"
     }
    ]
+  },
+  {
+   "name": "Observatorio",
+   "first": "2026-10-09T15:25:29.000Z",
+   "sources": [
+    {
+     "src": "Vía País",
+     "time": "2026-10-09T15:25:29.000Z",
+     "title": "Cuáles son las zonas de Córdoba bajo alerta por granizo y tormentas este viernes 9 de octubre - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNY2lCMDNNVXBCWWFvVzJtbUs3cHJCYWU5Y0ZGeFgzcXE1R0t3RXZNakZscHlYdi1RVmlnb29DVGc0YnNyQVBCZU9KUzdyUFN3U0c2NzBHb2Q5TnotNHVSVVZaemVFUTRYR09EZ1lDS3diT3JRQlhhTV92dUxGb1VpVHJnMU0zdGIwRnp4dFVENFB4d2pCQWFWV3JqVG91NUltYzJfbi04cnE?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Carlos Paz",
+   "first": "2026-10-09T15:25:29.000Z",
+   "sources": [
+    {
+     "src": "Vía País",
+     "time": "2026-10-09T15:25:29.000Z",
+     "title": "Cuáles son las zonas de Córdoba bajo alerta por granizo y tormentas este viernes 9 de octubre - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNY2lCMDNNVXBCWWFvVzJtbUs3cHJCYWU5Y0ZGeFgzcXE1R0t3RXZNakZscHlYdi1RVmlnb29DVGc0YnNyQVBCZU9KUzdyUFN3U0c2NzBHb2Q5TnotNHVSVVZaemVFUTRYR09EZ1lDS3diT3JRQlhhTV92dUxGb1VpVHJnMU0zdGIwRnp4dFVENFB4d2pCQWFWV3JqVG91NUltYzJfbi04cnE?oc=5"
+    }
+   ]
   }
  ],
  "reportes": [
@@ -22,6 +46,12 @@
    "time": "2026-10-09T13:40:01.000Z",
    "title": "¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad",
    "link": "https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018"
+  },
+  {
+   "src": "Vía País",
+   "time": "2026-10-09T15:25:29.000Z",
+   "title": "Cuáles son las zonas de Córdoba bajo alerta por granizo y tormentas este viernes 9 de octubre",
+   "link": "https://viapais.com.ar/cordoba/zonas-cordoba-alerta-granizo-tormentas-viernes-9-octubre_0_VYL7tOmcqu.html"
   },
   {
    "src": "ElDoce.tv",
@@ -33,16 +63,16 @@
  "debug": [
   "Google Noticias 200 40",
   "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
-  "- Vía País: Las zonas de Córdoba bajo alerta por posible caída de granizo este viernes - Vía País (pronóstico, se ignora)",
+  "* Vía País: Cuáles son las zonas de Córdoba bajo alerta por granizo y tormentas este viernes 9 de octu -> https://viapais.com.ar/cordoba/zonas-cordoba-alerta-granizo-tormentas-viernes-9-octubre_0_VYL7tOmcqu.html (13 párrafos)",
   "- La Nueva Mañana: Alerta meteorológica en Córdoba: advierten tormentas, granizo y lluvias intensas - La Nuev (pronóstico, se ignora)",
   "* ElDoce.tv: Una granizada repentina sorprendió en Nueva Córdoba - ElDoce.tv -> https://eldoce.tv/videos/actualidad/2026/10/09/una-granizada-repentina-sorprendio-en-nueva-cordoba/?outputType (0 párrafos)",
-  "Google Noticias 200 6",
+  "Google Noticias 200 7",
   "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
-  "Google Noticias 200 79",
+  "Google Noticias 200 78",
   "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
   "- La Nueva Mañana: Alerta meteorológica en Córdoba: advierten tormentas, granizo y lluvias intensas - La Nuev (pronóstico, se ignora)",
   "* ElDoce.tv: Una granizada repentina sorprendió en Nueva Córdoba - ElDoce.tv -> https://eldoce.tv/videos/actualidad/2026/10/09/una-granizada-repentina-sorprendio-en-nueva-cordoba/?outputType (0 párrafos)",
-  "Google Noticias 200 68",
-  "- Vía País: Las zonas de Córdoba bajo alerta por posible caída de granizo este viernes - Vía País (pronóstico, se ignora)"
+  "Google Noticias 200 70",
+  "* Vía País: Cuáles son las zonas de Córdoba bajo alerta por granizo y tormentas este viernes 9 de octu -> https://viapais.com.ar/cordoba/zonas-cordoba-alerta-granizo-tormentas-viernes-9-octubre_0_VYL7tOmcqu.html (13 párrafos)"
  ]
 }
