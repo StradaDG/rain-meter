@@ -1,13 +1,27 @@
 {
- "updated": "2026-10-09T15:47:08.644Z",
+ "updated": "2026-10-09T16:13:24.613Z",
  "date": "2026-10-09",
- "noticias": 0,
+ "noticias": 7,
  "barrios": [],
- "reportes": [],
+ "reportes": [
+  {
+   "src": "Cadena 3",
+   "time": "2026-10-09T13:40:01.000Z",
+   "title": "¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad",
+   "link": "https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018"
+  }
+ ],
  "debug": [
-  "Google Noticias 503 0",
-  "Google Noticias 503 0",
-  "Google Noticias 503 0",
-  "Google Noticias 503 0"
+  "Google Noticias 200 35",
+  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
+  "- Vía País: Las zonas de Córdoba bajo alerta por posible caída de granizo este viernes - Vía País (pronóstico, se ignora)",
+  "- La Nueva Mañana: Alerta meteorológica en Córdoba: advierten tormentas, granizo y lluvias intensas - La Nuev (pronóstico, se ignora)",
+  "Google Noticias 200 5",
+  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
+  "Google Noticias 200 95",
+  "* Cadena 3 Argentina: ¿Sorpresa en la mañana? Cayó granizo en Córdoba y se mantiene la inestabilidad - Cadena 3  -> https://www.cadena3.com/noticia/juntos/sorpresa-en-la-manana-cayo-granizo-en-cordoba-y-se-mantiene-la-inestabilidad_602018 (57 párrafos)",
+  "- La Nueva Mañana: Alerta meteorológica en Córdoba: advierten tormentas, granizo y lluvias intensas - La Nuev (pronóstico, se ignora)",
+  "Google Noticias 200 48",
+  "- Vía País: Las zonas de Córdoba bajo alerta por posible caída de granizo este viernes - Vía País (pronóstico, se ignora)"
  ]
 }
