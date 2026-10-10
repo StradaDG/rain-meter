@@ -30,7 +30,7 @@
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 var(--f-body);padding-inline:16px;padding-block:28px 40px;
-  background-image:radial-gradient(900px 500px at 85% -10%,#22305a66,transparent 60%),radial-gradient(700px 400px at -10% 110%,#0f4a5c44,transparent 60%)}
+  }
 .wrap{max-width:900px;margin:0 auto;display:grid;gap:20px}
 header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
 h1{font:800 clamp(22px,4.5vw,32px)/1.05 var(--f-display);margin:0;letter-spacing:-.01em;text-wrap:balance}
@@ -49,7 +49,9 @@ h1 span.x{background:linear-gradient(90deg,var(--hail),var(--rain));-webkit-back
 .alert .pct{margin-left:auto;text-align:right;display:grid}
 .alert .hn{display:block;margin-top:4px;font-size:12px;font-weight:700;background:#0000002e;border-radius:8px;padding:4px 8px;width:fit-content;max-width:100%}
 .alert .hn a{color:inherit;text-decoration:underline}
-.alert .tick{transition:opacity .35s ease;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.alert .txt{grid-template-columns:minmax(0,1fr)}
+.alert{flex-wrap:wrap!important}
+.alert .tick{flex:1 0 100%;margin-top:0;text-align:center;transition:opacity .35s ease;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;box-sizing:border-box}
 .alert .tick.out{opacity:0}
 .alert .pct b{font:400 clamp(34px,7vw,52px)/1 "Anton","Impact",sans-serif}
 .alert .pct span{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
@@ -159,7 +161,7 @@ header{flex-wrap:nowrap;align-items:center}
 .alert{padding:10px 12px;gap:10px;flex-wrap:nowrap;border-radius:16px}
 .alert .ic{width:34px!important;height:34px!important}
 .alert .lvl{font-size:21px} .alert .sub{font-size:11px;line-height:1.3}
-.alert .txt{flex:1 1 auto}
+.alert .txt{flex:1 1 0;min-width:0}
 .alert .pct{margin-left:auto;width:auto;display:grid;text-align:right}
 .alert .pct b{font-size:28px} .alert .pct span{font-size:8px}
 .grid{grid-template-columns:1fr 1fr;gap:8px}
@@ -206,7 +208,8 @@ body.mapfull{overflow-x:hidden}
   .abadge{font-size:13px;padding:5px 7px}
   body.mapfull .chip{flex:1 1 0;overflow:hidden;padding:5px 6px;gap:3px;font-size:10.5px}
   body.mapfull .chip .rt{display:none}}
-html{background:#0b1220;min-height:100%}
+html{background-color:#0b1220;background-image:radial-gradient(900px 500px at 85% -10%,#22305a66,transparent 60%),radial-gradient(700px 400px at -10% 110%,#0f4a5c44,transparent 60%);background-attachment:fixed;min-height:100%}
+body{background:transparent!important}
 </style>
 </head>
 <body>
@@ -404,8 +407,8 @@ function renderAlert(){
   const sub=w.lv===0?"Sin riesgo de granizo ni lluvia fuerte en las próximas 12 h"
     :`${w.d.p.name} · desde las ${hhmm(w.h.t)} · ${[w.h.hl?"granizo":"",w.h.rl?"lluvia fuerte":""].filter(Boolean).join(" y ")}`;
   box.className="alert a"+w.lv;
-  box.innerHTML=`${ic(w.lv===2?"storm":w.lv===1?"hail":"ok",48)}<div class="txt"><span class="lvl">${NAME[w.lv]}</span><span class="sub">${sub}</span><span class="hn tick" id="tick"></span></div>
-    <div class="pct"><b>${w.h.hs}%</b><span>Prob. granizo</span></div>`;
+  box.innerHTML=`${ic(w.lv===2?"storm":w.lv===1?"hail":"ok",48)}<div class="txt"><span class="lvl">${NAME[w.lv]}</span><span class="sub">${sub}</span></div>
+    <div class="pct"><b>${w.h.hs}%</b><span>Prob. granizo</span></div><span class="hn tick" id="tick"></span>`;
   showTick();
 }
 /* --- Render --- */
@@ -562,6 +565,11 @@ $("#mslider").oninput=e=>{playGrid(false);showGrid(+e.target.value)};
 const switchMode=m=>{gidx=0;setMode(m);playGrid(true)};
 $("#b-hail").onclick=()=>switchMode("hail");$("#b-rain").onclick=()=>switchMode("rain");
 
+/* --- iPhone (app en pantalla de inicio): usar todo el alto real de la pantalla --- */
+function fitStandalone(){if(!navigator.standalone)return;const b=document.body;
+  if(innerHeight<screen.height&&innerWidth<innerHeight){b.style.bottom="auto";b.style.height=screen.height+"px"}else{b.style.bottom="";b.style.height=""}
+  gmap&&setTimeout(()=>gmap.invalidateSize(),100)}
+addEventListener("resize",fitStandalone);addEventListener("orientationchange",()=>setTimeout(fitStandalone,300));
 /* --- Pantalla completa del mapa --- */
 const ICO_OPEN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>';
 const ICO_CLOSE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10h-6V4M4 14h6v6M14 10l7-7M10 14l-7 7"/></svg>';
@@ -607,7 +615,7 @@ $("#notif").addEventListener("click",async()=>{
   if(on&&"Notification" in window&&Notification.permission==="default"){try{await Notification.requestPermission()}catch(e){}}
   store.set("avisos",on);syncBtn();check();
 });
-syncBtn();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
+syncBtn();fitStandalone();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>
