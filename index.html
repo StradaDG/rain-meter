@@ -147,7 +147,7 @@ header{grid-area:head} .alert{grid-area:alert} .sat{grid-area:map}
 @media (orientation:portrait) and (max-width:700px){
 /* ===== Versión iPhone 9:16: una sola pantalla vertical ===== */
 html,body{height:100%}
-body{height:100dvh;overflow:hidden;padding-inline:12px;padding-block:calc(8px + env(safe-area-inset-top,0px)) calc(8px + env(safe-area-inset-bottom,0px));font-size:13px}
+body{position:fixed;inset:0;height:auto;overflow:hidden;padding-inline:12px;padding-block:calc(8px + env(safe-area-inset-top,0px)) calc(8px + env(safe-area-inset-bottom,0px));font-size:13px}
 .wrap{height:100%;display:flex;flex-direction:column;gap:8px}
 header{flex-wrap:nowrap;align-items:center}
 .logo{height:30px} .rm{font-size:19px}
@@ -185,7 +185,7 @@ header{flex-wrap:nowrap;align-items:center}
 .mfull{margin-left:auto;width:38px;height:38px;padding:0;justify-content:center;border-radius:12px;background:#ffffff14;color:var(--fg);flex:none}
 .mfull svg{width:20px;height:20px}
 .mini{display:none}
-body.mapfull{height:100dvh;overflow:hidden;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)!important}
+body.mapfull{position:fixed;inset:0;height:auto;overflow:hidden;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)!important}
 body.mapfull .wrap{display:flex!important;flex-direction:column;height:100%;gap:0;max-width:none}
 body.mapfull header,body.mapfull .grid,body.mapfull .satnote,body.mapfull .alert,body.mapfull .sathead h2{display:none!important}
 body.mapfull .sat{flex:1 1 0;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr);border-radius:0;border:0}
@@ -204,6 +204,7 @@ body.mapfull{overflow-x:hidden}
   .abadge{font-size:13px;padding:5px 7px}
   body.mapfull .chip{flex:1 1 0;overflow:hidden;padding:5px 6px;gap:3px;font-size:10.5px}
   body.mapfull .chip .rt{display:none}}
+html{background:#0b1220;min-height:100%}
 </style>
 </head>
 <body>
