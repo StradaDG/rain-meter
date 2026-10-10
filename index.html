@@ -617,6 +617,19 @@ $("#notif").addEventListener("click",async()=>{
   if(on&&"Notification" in window&&Notification.permission==="default"){try{await Notification.requestPermission()}catch(e){}}
   store.set("avisos",on);syncBtn();check();
 });
+/* --- Auto-actualización: si se publicó una versión nueva, la carga sola (evita la caché de 10 min) --- */
+async function checkUpdate(){try{
+  const fresh=await (await fetch(location.pathname+"?nc="+Date.now(),{cache:"no-store"})).text();
+  const sig=t=>{t=t.trim();return t.length+":"+t.slice(-300)};
+  const m=fresh.match(/<script>\n([\s\S]*)<\/script>/);if(!m)return;
+  const mine=[...document.scripts].pop().textContent;
+  if(sig(m[1])===sig(mine))return;
+  let last=0;try{last=+sessionStorage.getItem("rmReload")||0}catch(e){}
+  if(Date.now()-last<120e3)return;try{sessionStorage.setItem("rmReload",Date.now())}catch(e){}
+  location.replace(location.pathname+"?v="+Date.now());
+}catch(e){}}
+setTimeout(checkUpdate,4000);setInterval(checkUpdate,3*60e3);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate()});
 syncBtn();fitStandalone();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
