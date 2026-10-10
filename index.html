@@ -49,6 +49,8 @@ h1 span.x{background:linear-gradient(90deg,var(--hail),var(--rain));-webkit-back
 .alert .pct{margin-left:auto;text-align:right;display:grid}
 .alert .hn{display:block;margin-top:4px;font-size:12px;font-weight:700;background:#0000002e;border-radius:8px;padding:4px 8px;width:fit-content;max-width:100%}
 .alert .hn a{color:inherit;text-decoration:underline}
+.alert .tick{transition:opacity .35s ease;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.alert .tick.out{opacity:0}
 .alert .pct b{font:400 clamp(34px,7vw,52px)/1 "Anton","Impact",sans-serif}
 .alert .pct span{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
 @media (max-width:520px){.alert .txt{flex:1 1 200px}.alert .pct{margin-left:0;text-align:left;width:100%;display:flex;align-items:baseline;gap:8px}}
@@ -363,6 +365,35 @@ function hnLine(){
     return `<span class="hn">🧊 Granizo reportado hoy en la ciudad (sin barrios precisos) · <a href="${esc(r.link)}" target="_blank" rel="noopener">${esc(r.src)} ${hhmm(Date.parse(r.time))}</a></span>`}
   return"";
 }
+/* Mercurio retrógrado: posiciones aproximadas JPL (Keplerianas 1800-2050) */
+function helio(el,T){const [a0,ad,e0,ed,I0,Id,L0,Ld,w0,wd,N0,Nd]=el,r=Math.PI/180;
+  const a=a0+ad*T,e=e0+ed*T,I=(I0+Id*T)*r,L=L0+Ld*T,wb=w0+wd*T,N=(N0+Nd*T)*r,w=wb*r-N;
+  let M=((L-wb)%360+540)%360-180;M*=r;let E=M;for(let k=0;k<8;k++)E=E-(E-e*Math.sin(E)-M)/(1-e*Math.cos(E));
+  const x=a*(Math.cos(E)-e),y=a*Math.sqrt(1-e*e)*Math.sin(E);
+  const cw=Math.cos(w),sw=Math.sin(w),cN=Math.cos(N),sN=Math.sin(N),cI=Math.cos(I);
+  return[(cw*cN-sw*sN*cI)*x+(-sw*cN-cw*sN*cI)*y,(cw*sN+sw*cN*cI)*x+(-sw*sN+cw*cN*cI)*y]}
+const MER=[0.38709927,0.00000037,0.20563593,0.00001906,7.00497902,-0.00594749,252.25032350,149472.67411175,77.45779628,0.16047689,48.33076593,-0.12534081];
+const EAR=[1.00000261,0.00000562,0.01671123,-0.00004392,-0.00001531,-0.01294668,100.46457166,35999.37244981,102.93768193,0.32327364,0,0];
+function mercLon(ms){const T=(ms/864e5+2440587.5-2451545)/36525;const m=helio(MER,T),e=helio(EAR,T);return (Math.atan2(m[1]-e[1],m[0]-e[0])*180/Math.PI+360)%360}
+function isRetro(ms){let d=mercLon(ms+432e5)-mercLon(ms-432e5);if(d>180)d-=360;if(d<-180)d+=360;return d<0}
+function mercInfo(now=Date.now()){const day=864e5,r=isRetro(now);let t=now;
+  for(let k=0;k<200;k++){t+=day;if(isRetro(t)!==r)break}
+  return{retro:r,until:t}}
+
+/* --- Franja que rota dentro del recuadro de alerta: barrios, riesgo de granizo y Mercurio --- */
+let tickIdx=0;
+const fmtD=t=>new Date(t).toLocaleDateString("es-AR",{day:"2-digit",month:"2-digit",timeZone:"America/Argentina/Cordoba"});
+function tickMsgs(){
+  const m=[];
+  m.push(hnLine()||'<span>🧊 Sin reportes de granizo hoy en Córdoba</span>');
+  const ok=DATA.filter(d=>d.hours);
+  if(ok.length)m.push(`<span>⛈️ Granizo 12 h: ${ok.map(d=>`${d.p.name.split(" ")[0]} ${Math.max(...d.hours.slice(0,12).map(h=>h.hs))}%`).join(" · ")}</span>`);
+  const mi=mercInfo();
+  m.push(mi.retro?`<span>☿ Mercurio retrógrado hasta el ${fmtD(mi.until)}</span>`:`<span>☿ Mercurio directo · retrógrado desde el ${fmtD(mi.until)}</span>`);
+  return m;
+}
+function showTick(){const el=document.getElementById("tick");if(!el)return;const m=tickMsgs();el.innerHTML=m[tickIdx%m.length].replace(/^<span[^>]*>/,"").replace(/<\/span>$/,"")}
+setInterval(()=>{const el=document.getElementById("tick");if(!el)return;el.classList.add("out");setTimeout(()=>{tickIdx++;showTick();el.classList.remove("out")},350)},5000);
 function renderAlert(){
   const ok=DATA.filter(d=>d.hours);const box=$("#alert");
   if(!ok.length){box.className="alert a1";box.innerHTML=`<div class="txt"><span class="lvl">Sin datos</span><span class="sub">No pude bajar el pronóstico. Reintento pronto.</span></div>`;return}
@@ -373,8 +404,9 @@ function renderAlert(){
   const sub=w.lv===0?"Sin riesgo de granizo ni lluvia fuerte en las próximas 12 h"
     :`${w.d.p.name} · desde las ${hhmm(w.h.t)} · ${[w.h.hl?"granizo":"",w.h.rl?"lluvia fuerte":""].filter(Boolean).join(" y ")}`;
   box.className="alert a"+w.lv;
-  box.innerHTML=`${ic(w.lv===2?"storm":w.lv===1?"hail":"ok",48)}<div class="txt"><span class="lvl">${NAME[w.lv]}</span><span class="sub">${sub}</span>${hnLine()}</div>
+  box.innerHTML=`${ic(w.lv===2?"storm":w.lv===1?"hail":"ok",48)}<div class="txt"><span class="lvl">${NAME[w.lv]}</span><span class="sub">${sub}</span><span class="hn tick" id="tick"></span></div>
     <div class="pct"><b>${w.h.hs}%</b><span>Prob. granizo</span></div>`;
+  showTick();
 }
 /* --- Render --- */
 function render(){
