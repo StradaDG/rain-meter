@@ -1,35 +1,13 @@
 {
- "updated": "2026-10-11T02:44:59.800Z",
- "date": "2026-10-10",
- "noticias": 2,
- "barrios": [
-  {
-   "name": "Carlos Paz",
-   "first": "2026-10-10T16:01:05.000Z",
-   "sources": [
-    {
-     "src": "Vía País",
-     "time": "2026-10-10T16:01:05.000Z",
-     "title": "La regla del \"30-30\": el método para calcular la distancia de una tormenta y evitar el granizo en Córdoba - Vía País",
-     "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNSW1HMmstRGtuaEt3emhqQWxCT1dnVG5seXl3V2d0b3R5aVdTOEZFWW4tazVDMFRLMzR6SlBYdTd3YmxBMHJaSDcxRFhKYmg1NF9ya21MX2d6Tktxb0hkckdGQmhFMHNsNTQwc3VOd1pENVVINGwwVkhaa2g4b0x2Y18xNm9GUFdkVTNieXVWNUxxM1h2ZWZubDdhT2VYQkE?oc=5"
-    }
-   ]
-  }
- ],
- "reportes": [
-  {
-   "src": "Vía País",
-   "time": "2026-10-10T16:01:05.000Z",
-   "title": "La regla del \"30-30\": el método para calcular la distancia de una tormenta y evitar el granizo en Córdoba",
-   "link": "https://viapais.com.ar/cordoba/tormentas-granizo-regladel3030-cordoba-relampagos_0_74FsnecDvT.html"
-  }
- ],
+ "updated": "2026-10-11T03:12:28.359Z",
+ "date": "2026-10-11",
+ "noticias": 0,
+ "barrios": [],
+ "reportes": [],
  "debug": [
   "Google Noticias 200 7",
-  "* Vía País: La regla del \"30-30\": el método para calcular la distancia de una tormenta y evitar el gra -> https://viapais.com.ar/cordoba/tormentas-granizo-regladel3030-cordoba-relampagos_0_74FsnecDvT.html (13 párrafos)",
   "Google Noticias 200 0",
   "Google Noticias 200 9",
-  "Google Noticias 200 5",
-  "* Vía País: La regla del \"30-30\": el método para calcular la distancia de una tormenta y evitar el gra -> https://viapais.com.ar/cordoba/tormentas-granizo-regladel3030-cordoba-relampagos_0_74FsnecDvT.html (13 párrafos)"
+  "Google Noticias 200 5"
  ]
 }
