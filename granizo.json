@@ -1,13 +1,17 @@
 {
- "updated": "2026-10-11T20:10:40.410Z",
+ "updated": "2026-10-11T20:44:07.108Z",
  "date": "2026-10-11",
- "noticias": 0,
+ "noticias": 4,
  "barrios": [],
  "reportes": [],
  "debug": [
-  "Google Noticias 200 8",
+  "Google Noticias 200 10",
+  "- ElDoce.tv: Feriado complicado: anticipan lluvias, tormentas fuertes y posible granizo en Córdoba hast (pronóstico, se ignora)",
+  "- Cba24n: Alerta por tormentas en Córdoba: advierten por lluvias intensas, ráfagas y granizo - Cba24 (pronóstico, se ignora)",
   "Google Noticias 200 1",
-  "Google Noticias 200 11",
+  "Google Noticias 200 12",
+  "- ElDoce.tv: Feriado complicado: anticipan lluvias, tormentas fuertes y posible granizo en Córdoba hast (pronóstico, se ignora)",
+  "- Cba24n: Alerta por tormentas en Córdoba: advierten por lluvias intensas, ráfagas y granizo - Cba24 (pronóstico, se ignora)",
   "Google Noticias 200 2"
  ]
 }
