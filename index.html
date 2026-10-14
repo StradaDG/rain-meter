@@ -257,8 +257,8 @@ body{background:transparent!important}
     <div class="sathead">
       <h2><svg class="ic" style="--s:26px"><use href="#i-storm"/></svg>Mapa de lluvia</h2>
       <div class="seg" role="group" aria-label="Qué mostrar">
-        <button type="button" id="b-rain" aria-pressed="false">Lluvia</button>
-        <button type="button" id="b-radar" aria-pressed="true">Radar</button>
+        <button type="button" id="b-rain" aria-pressed="true">Lluvia</button>
+        <button type="button" id="b-radar" aria-pressed="false">Radar</button>
         <button type="button" id="b-hail" aria-pressed="false">Granizo</button>
       </div>
       <button type="button" id="mfull" class="mfull" aria-label="Agrandar mapa" title="Agrandar mapa"></button>
@@ -684,7 +684,7 @@ async function checkUpdate(){try{
 }catch(e){}}
 setTimeout(checkUpdate,4000);setInterval(checkUpdate,3*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate()});
-syncBtn();fitStandalone();load();initGrid();setTimeout(()=>switchMode("radar"),0);loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
+syncBtn();fitStandalone();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>
