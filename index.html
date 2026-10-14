@@ -6,7 +6,7 @@
 <title>Rain Meter</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Rain Meter">
 <meta name="theme-color" content="#0b1220">
 <link rel="apple-touch-icon" href="icon.png">
@@ -219,11 +219,6 @@ body.mapfull{overflow-x:hidden}
   body.mapfull .chip .rt{display:none}}
 html{background-color:#0b1220;background-image:radial-gradient(900px 500px at 85% -10%,#22305a66,transparent 60%),radial-gradient(700px 400px at -10% 110%,#0f4a5c44,transparent 60%);background-attachment:fixed;min-height:100%}
 body{background:transparent!important}
-/* franja inferior del iPhone: solo el bloque del mapa la cubre */
-@media (orientation:portrait) and (max-width:700px){body{overflow:visible!important}.sat{margin-bottom:calc(-1 * var(--gap,0px))!important}
-  .mbar{bottom:calc(10px + max(var(--gap,0px), env(safe-area-inset-bottom,0px)))!important}}
-body.mapfull{overflow:visible!important}body.mapfull .sat{margin-bottom:calc(-1 * var(--gap,0px))!important}
-body.mapfull .mbar{bottom:calc(10px + max(var(--gap,0px), env(safe-area-inset-bottom,0px)))!important}
 </style>
 </head>
 <body>
@@ -633,7 +628,7 @@ function fitStandalone(){
   // iPhone (app desde el ícono): el sistema reporta un alto menor a la pantalla y deja una franja abajo.
   // No se agranda la página (rompe los toques): solo el mapa se estira para cubrir esa franja.
   let gap=0;if(navigator.standalone&&innerWidth<innerHeight){gap=screen.height-innerHeight;if(gap<0||gap>160)gap=0}
-  document.documentElement.style.setProperty("--gap",gap+"px");
+  document.documentElement.style.setProperty("--gap","0px");
   gmap&&setTimeout(()=>gmap.invalidateSize(),100)}
 addEventListener("resize",fitStandalone);addEventListener("orientationchange",()=>setTimeout(fitStandalone,300));
 /* --- Pantalla completa del mapa --- */
