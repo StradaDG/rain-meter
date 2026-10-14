@@ -219,6 +219,11 @@ body.mapfull{overflow-x:hidden}
   body.mapfull .chip .rt{display:none}}
 html{background-color:#0b1220;background-image:radial-gradient(900px 500px at 85% -10%,#22305a66,transparent 60%),radial-gradient(700px 400px at -10% 110%,#0f4a5c44,transparent 60%);background-attachment:fixed;min-height:100%}
 body{background:transparent!important}
+/* franja inferior del iPhone: solo el bloque del mapa la cubre */
+@media (orientation:portrait) and (max-width:700px){body{overflow:visible!important}.sat{margin-bottom:calc(-1 * var(--gap,0px))!important}
+  .mbar{bottom:calc(10px + max(var(--gap,0px), env(safe-area-inset-bottom,0px)))!important}}
+body.mapfull{overflow:visible!important}body.mapfull .sat{margin-bottom:calc(-1 * var(--gap,0px))!important}
+body.mapfull .mbar{bottom:calc(10px + max(var(--gap,0px), env(safe-area-inset-bottom,0px)))!important}
 </style>
 </head>
 <body>
@@ -624,7 +629,12 @@ const switchMode=m=>{gidx=0;setMode(m);if(m==="radar")return;playGrid(true);if(m
 $("#b-hail").onclick=()=>switchMode("hail");$("#b-radar").onclick=()=>switchMode("radar");$("#b-rain").onclick=()=>switchMode("rain");
 
 /* --- iPhone (app en pantalla de inicio): usar todo el alto real de la pantalla --- */
-function fitStandalone(){gmap&&setTimeout(()=>gmap.invalidateSize(),100)}
+function fitStandalone(){
+  // iPhone (app desde el ícono): el sistema reporta un alto menor a la pantalla y deja una franja abajo.
+  // No se agranda la página (rompe los toques): solo el mapa se estira para cubrir esa franja.
+  let gap=0;if(navigator.standalone&&innerWidth<innerHeight){gap=screen.height-innerHeight;if(gap<0||gap>160)gap=0}
+  document.documentElement.style.setProperty("--gap",gap+"px");
+  gmap&&setTimeout(()=>gmap.invalidateSize(),100)}
 addEventListener("resize",fitStandalone);addEventListener("orientationchange",()=>setTimeout(fitStandalone,300));
 /* --- Pantalla completa del mapa --- */
 const ICO_OPEN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7"/></svg>';
