@@ -516,39 +516,68 @@ function to15(raw){
   }
   return out;
 }
+/* Lluvia: pedido liviano (solo precipitación cada 15 min) en grilla densa -> rápido y con más detalle */
 async function loadGrid(force){
   if(!gmap)return;
   const b=gmap.getBounds().pad(.25),r=x=>Math.round(x*20)/20;
-  const g={lat0:r(b.getNorth()),lat1:r(b.getSouth()),lon0:r(b.getWest()),lon1:r(b.getEast()),n:8};
+  const g={lat0:r(b.getNorth()),lat1:r(b.getSouth()),lon0:r(b.getWest()),lon1:r(b.getEast()),n:14};
   const key=[g.lat0,g.lat1,g.lon0,g.lon1].join(),z=gmap.getZoom(),id=++gload;
   const hit=gcache.get(key);
-  if(hit&&!force&&Date.now()-hit.t<36e5){applyGrid(g,z,hit.raw);return}
+  if(hit&&!force&&Date.now()-hit.t<30*60e3){applyGrid(g,z,hit.raw);return}
   gloading=true;if(!gdata)$("#mtime").textContent="Cargando…";else showGrid(gidx);
   gabort?.abort();gabort=new AbortController();
   const pts=gridPts(g);
-  const url=`https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p=>p.lat.toFixed(3))}&longitude=${pts.map(p=>p.lon.toFixed(3))}&hourly=${VARS}&minutely_15=precipitation&forecast_hours=26&forecast_minutely_15=60&timezone=America%2FArgentina%2FCordoba`;
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p=>p.lat.toFixed(3))}&longitude=${pts.map(p=>p.lon.toFixed(3))}&minutely_15=precipitation&forecast_minutely_15=12&timezone=America%2FArgentina%2FCordoba`;
   try{let j=await (await fetch(url,{signal:gabort.signal})).json();if(!Array.isArray(j))j=[j];
     if(id!==gload)return;gcache.set(key,{t:Date.now(),raw:j});if(gcache.size>12)gcache.delete(gcache.keys().next().value);
     gloading=false;applyGrid(g,z,j);
   }catch(e){if(e.name==="AbortError")return;gloading=false;if(!gdata)$("#mtime").textContent="Sin datos";else showGrid(gidx)}
 }
+function rain15(raw){
+  const off=raw.utc_offset_seconds*1000,M=raw.minutely_15||{time:[],precipitation:[]};
+  const mt=M.time.map(t=>Date.parse(t+":00Z")-off),out=[];let t=Math.floor(Date.now()/9e5)*9e5;
+  for(let k=0;k<9;k++,t+=9e5){const mi=mt.findIndex(x=>x>=t);const mm=(mi>=0?(M.precipitation[mi]??0):0)*4;
+    out.push({t,hs:0,hl:0,rl:mm>=15?2:mm>=6?1:0,h:{precipitation:mm}})}
+  return out;
+}
 function applyGrid(g,z,j){
-  DGRID=g;gzoom=z;graw=j;gdata=j.map(x=>to15(x));
+  DGRID=g;gzoom=z;graw=j;gdata=j.map(x=>rain15(x));
   const pts=gridPts(g),a=pts[0],b=pts[pts.length-1];gimg.setBounds(L.latLngBounds([a.lat,a.lon],[b.lat,b.lon]));
   $("#mslider").max=gdata[0].length-1;showGrid(Math.min(gidx,gdata[0].length-1));playGrid(gplaying);
+  if(gmode==="hail")loadHail();
 }
+/* Granizo: necesita más variables -> grilla más gruesa, se pide solo al abrir "Granizo" */
+let HGRID=null,hraw=null,ghail=null,hkey="",hload=0;const hcache=new Map();
+async function loadHail(){
+  if(!DGRID)return;const g={...DGRID,n:6},key=[g.lat0,g.lat1,g.lon0,g.lon1].join();
+  if(key===hkey&&ghail)return;const hit=hcache.get(key),id=++hload;
+  if(hit&&Date.now()-hit.t<30*60e3){HGRID=g;hkey=key;hraw=hit.raw;ghail=hraw.map(x=>to15(x));showGrid(gidx);return}
+  gloading=true;showGrid(gidx);
+  const pts=gridPts(g);
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${pts.map(p=>p.lat.toFixed(3))}&longitude=${pts.map(p=>p.lon.toFixed(3))}&hourly=${VARS}&minutely_15=precipitation&forecast_hours=6&forecast_minutely_15=12&timezone=America%2FArgentina%2FCordoba`;
+  try{let j=await (await fetch(url)).json();if(!Array.isArray(j))j=[j];if(id!==hload)return;
+    hcache.set(key,{t:Date.now(),raw:j});HGRID=g;hkey=key;hraw=j;ghail=j.map(x=>to15(x));
+  }catch(e){}
+  gloading=false;showGrid(gidx);
+}
+function nearestIn(g,p){let b=0,d=1e9;gridPts(g).forEach((q,k)=>{const e=(q.lat-p.lat)**2+(q.lon-p.lon)**2;if(e<d){d=e;b=k}});return b}
 function nearest(p){if(!DGRID||p.lat>DGRID.lat0||p.lat<DGRID.lat1||p.lon<DGRID.lon0||p.lon>DGRID.lon1)return -1;let b=0,d=1e9;gridPts(DGRID).forEach((q,k)=>{const e=(q.lat-p.lat)**2+(q.lon-p.lon)**2;if(e<d){d=e;b=k}});return b}
 /* Dibuja manchas suaves: interpola la grilla (bilineal) y pinta por umbrales, como un radar */
 function hexRGB(h){return[1,3,5].map(k=>parseInt(h.slice(k,k+2),16))}
+function bil(v,n,gx,gy){gx=Math.max(0,Math.min(n-1,gx));gy=Math.max(0,Math.min(n-1,gy));
+  const c0=Math.min(n-2,Math.floor(gx)),r0=Math.min(n-2,Math.floor(gy)),fx=gx-c0,fy=gy-r0;
+  return (v[r0*n+c0]*(1-fx)+v[r0*n+c0+1]*fx)*(1-fy)+(v[(r0+1)*n+c0]*(1-fx)+v[(r0+1)*n+c0+1]*fx)*fy}
 function drawField(i){
-  const n=DGRID.n,W=420;gcv.width=gcv.height=W;const x=gcv.getContext("2d"),img=x.createImageData(W,W),d=img.data;
-  const v=gdata.map(r=>{const h=r[i];if(!h)return 0;const mm=h.h.precipitation??0;return gmode==="hail"?(mm>=.5?h.hl:0):mm});
+  const n=DGRID.n,W=480;gcv.width=gcv.height=W;const x=gcv.getContext("2d"),img=x.createImageData(W,W),d=img.data;
+  const rv=gdata.map(r=>r[i]?.h.precipitation??0);
+  const hv=gmode==="hail"&&ghail&&HGRID?ghail.map(r=>r[i]?.hl??0):null,hn=HGRID?.n||0;
   const scale=gmode==="hail"?[[.5,ORG],[1.5,RED]]:RAINC,cols=scale.map(([t,c])=>[t,hexRGB(c)]);
-  for(let py=0;py<W;py++){const gy=py/(W-1)*(n-1),r0=Math.min(n-2,Math.floor(gy)),fy=gy-r0;
-    for(let px=0;px<W;px++){const gx=px/(W-1)*(n-1),c0=Math.min(n-2,Math.floor(gx)),fx=gx-c0;
-      const val=(v[r0*n+c0]*(1-fx)+v[r0*n+c0+1]*fx)*(1-fy)+(v[(r0+1)*n+c0]*(1-fx)+v[(r0+1)*n+c0+1]*fx)*fy;
+  for(let py=0;py<W;py++){const gy=py/(W-1)*(n-1);const hy=hv?((gy+.5)/n)*hn-.5:0;
+    for(let px=0;px<W;px++){const gx=px/(W-1)*(n-1);
+      let val=bil(rv,n,gx,gy);
+      if(gmode==="hail"){if(!hv||val<.5)continue;val=bil(hv,hn,((gx+.5)/n)*hn-.5,hy)}
       let c=null;for(const[t,rgb]of cols)if(val>=t)c=rgb;
-      if(c){const e=Math.min(px,py,W-1-px,W-1-py),fade=Math.min(1,e/55);const o=(py*W+px)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=175*fade}}}
+      if(c){const e=Math.min(px,py,W-1-px,W-1-py),fade=Math.min(1,e/60);const o=(py*W+px)*4;d[o]=c[0];d[o+1]=c[1];d[o+2]=c[2];d[o+3]=175*fade}}}
   x.putImageData(img,0,0);gimg.setUrl(gcv.toDataURL());
 }
 function showGrid(i){
@@ -556,7 +585,9 @@ function showGrid(i){
   drawField(i);
   const t=gdata[0][i].t,mn=i*15;$("#mtime").textContent=(i===0?"Ahora":`${hhmm(t)} · +${Math.floor(mn/60)}:${String(mn%60).padStart(2,"0")}`)+(gloading?" ↻":"");$("#mslider").value=i;
   gpins.forEach((m,k)=>{const h=gdata[nearest(PLACES[k])]?.[i];if(!h){m.setTooltipContent(PLACES[k].name);return}
-    m.setTooltipContent(`${PLACES[k].name} · ${gmode==="hail"?`granizo ${h.hs}%`:`${(h.h.precipitation??0).toFixed(1)} mm/h`}`)});
+    let txt=`${(h.h.precipitation??0).toFixed(1)} mm/h`;
+    if(gmode==="hail"){const hh=ghail&&HGRID?ghail[nearestIn(HGRID,PLACES[k])]?.[i]:null;txt=hh?`granizo ${hh.hs}%`:"granizo …"}
+    m.setTooltipContent(`${PLACES[k].name} · ${txt}`)});
 }
 function setMode(m){gmode=m;$("#b-hail").setAttribute("aria-pressed",m==="hail");$("#b-rain").setAttribute("aria-pressed",m==="rain");
   $("#mleg").innerHTML=LEG[m].map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join("");showGrid(gidx)}
@@ -564,7 +595,7 @@ function playGrid(on){gplaying=on;clearInterval(gtimer);$("#mplay").textContent=
   if(on&&gdata)gtimer=setInterval(()=>showGrid((gidx+1)%gdata[0].length),900)}
 $("#mplay").onclick=()=>playGrid(!gplaying);
 $("#mslider").oninput=e=>{playGrid(false);showGrid(+e.target.value)};
-const switchMode=m=>{gidx=0;setMode(m);playGrid(true)};
+const switchMode=m=>{gidx=0;setMode(m);playGrid(true);if(m==="hail")loadHail()};
 $("#b-hail").onclick=()=>switchMode("hail");$("#b-rain").onclick=()=>switchMode("rain");
 
 /* --- iPhone (app en pantalla de inicio): usar todo el alto real de la pantalla --- */
@@ -630,7 +661,7 @@ async function checkUpdate(){try{
 }catch(e){}}
 setTimeout(checkUpdate,4000);setInterval(checkUpdate,3*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate()});
-syncBtn();fitStandalone();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
+syncBtn();fitStandalone();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>
