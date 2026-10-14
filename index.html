@@ -36,10 +36,10 @@ header{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between
 h1{font:800 clamp(22px,4.5vw,32px)/1.05 var(--f-display);margin:0;letter-spacing:-.01em;text-wrap:balance}
 h1 span.x{background:linear-gradient(90deg,var(--hail),var(--rain));-webkit-background-clip:text;background-clip:text;color:transparent}
 .brand{display:flex;align-items:center;gap:clamp(10px,2.5vw,20px);flex-wrap:wrap}
-.logo{height:clamp(40px,7vw,62px);width:auto;filter:drop-shadow(0 6px 14px #0007)}
+.logo{height:clamp(40px,7vw,62px);width:auto;image-rendering:-webkit-optimize-contrast}
 .rm{font:400 clamp(24px,4.8vw,40px)/.88 "Anton","Impact",sans-serif;text-transform:uppercase;letter-spacing:.01em;
   background:linear-gradient(180deg,#ffffff 0%,var(--rain) 55%,var(--hail) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 3px 0 #000) drop-shadow(0 8px 16px #0008)}
+  -webkit-font-smoothing:antialiased;transform:translateZ(0)}
 .alert{border-radius:22px;padding:16px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;color:#fff;
   background:var(--ac);box-shadow:0 14px 34px color-mix(in srgb,var(--ac) 45%,transparent);border:1px solid #ffffff33}
 .alert.a0{--ac:#1fae73} .alert.a1{--ac:#f07a12} .alert.a2{--ac:#e8283c}
