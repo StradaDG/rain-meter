@@ -252,9 +252,9 @@ body{background:transparent!important}
     <div class="sathead">
       <h2><svg class="ic" style="--s:26px"><use href="#i-storm"/></svg>Mapa de lluvia</h2>
       <div class="seg" role="group" aria-label="Qué mostrar">
-        <button type="button" id="b-rain" aria-pressed="true">Lluvia</button>
+        <button type="button" id="b-radar" aria-pressed="true">Radar</button>
+        <button type="button" id="b-rain" aria-pressed="false">Lluvia</button>
         <button type="button" id="b-hail" aria-pressed="false">Granizo</button>
-        <button type="button" id="b-radar" aria-pressed="false">Radar real</button>
       </div>
       <button type="button" id="mfull" class="mfull" aria-label="Agrandar mapa" title="Agrandar mapa"></button>
     </div>
@@ -598,12 +598,12 @@ function showGrid(i,f=0){
     m.setTooltipContent(`${PLACES[k].name} · ${txt}`)});
 }
 /* Radar real: radares del SMN vía Windy (lo que llueve ahora y las últimas horas) */
-const RADAR_URL="https://embed.windy.com/embed2.html?lat=-31.42&lon=-64.19&detailLat=-31.42&detailLon=-64.19&width=900&height=600&zoom=10&level=surface&overlay=radar&product=radar&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1";
+const RADAR_URL="https://embed.windy.com/embed2.html?lat=-31.415&lon=-64.187&detailLat=-31.415&detailLon=-64.187&width=900&height=600&zoom=11&level=surface&overlay=radar&product=radar&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1";
 function setMode(m){
   const rf=$("#radar"),box=$(".mapbox");$("#b-radar").setAttribute("aria-pressed",m==="radar");
   if(m==="radar"){$("#b-hail").setAttribute("aria-pressed",false);$("#b-rain").setAttribute("aria-pressed",false);
     if(!rf.src)rf.src=RADAR_URL;rf.hidden=false;box.classList.add("isradar");playGrid(false);
-    $(".satnote")&&($(".satnote").textContent="Radar real: lo que está lloviendo ahora, según los radares del SMN. Tocá ▶ abajo para ver las últimas horas.");return}
+    $(".satnote")&&($(".satnote").textContent="Radar real del SMN: lo que está lloviendo ahora. Tocá ▶ abajo para animar y el botón de velocidad para hacerlo más rápido.");return}
   rf.hidden=true;box.classList.remove("isradar");setTimeout(()=>gmap&&gmap.invalidateSize(),50);
   $(".satnote")&&($(".satnote").textContent="Pronóstico de lluvia de las próximas 2 h, cada 15 min. Granizo: solo donde además se espera lluvia. Arrastrá el mapa para ver Alta Gracia.");
   gmode=m;$("#b-hail").setAttribute("aria-pressed",m==="hail");$("#b-rain").setAttribute("aria-pressed",m==="rain");
@@ -681,7 +681,7 @@ async function checkUpdate(){try{
 }catch(e){}}
 setTimeout(checkUpdate,4000);setInterval(checkUpdate,3*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate()});
-syncBtn();fitStandalone();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
+syncBtn();fitStandalone();load();initGrid();setTimeout(()=>switchMode("radar"),0);loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>
