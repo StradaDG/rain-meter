@@ -113,6 +113,8 @@ svg.ic{width:var(--s,28px);height:var(--s,28px);flex:none;overflow:visible}
 @media (prefers-reduced-motion:no-preference){.live::before{animation:blink 1.4s infinite}}
 @keyframes blink{50%{opacity:.2}}
 .mapbox{position:relative;min-height:0}
+.radarf{position:absolute;inset:0;width:100%;height:100%;border:0;background:#05080f}
+.mapbox.isradar .mbar,.mapbox.isradar .mleg{display:none}
 .risk-pane{filter:blur(1.5px)}
 .mbar{position:absolute;left:10px;right:10px;bottom:10px;z-index:800;display:flex;gap:10px;align-items:center;background:#0b1220e0;backdrop-filter:blur(6px);border-radius:14px;padding:7px 10px}
 .mbar button{padding:6px 10px;min-width:36px;justify-content:center;font-size:12px}
@@ -181,7 +183,7 @@ header{flex-wrap:nowrap;align-items:center}
 .hours,.why,.satnote{display:none}
 .sat{flex:1 1 0;min-height:0;display:grid;grid-template-rows:auto minmax(0,1fr);border-radius:18px}
 .sathead{padding:7px 10px;flex-wrap:nowrap}
-.sathead h2{font-size:13px} .sathead h2 .ic{width:20px!important;height:20px!important}
+.sathead h2{font-size:0;gap:0} .sathead h2 .ic{width:20px!important;height:20px!important}
 .seg button{padding:5px 9px;font-size:11px}
 .mapbox,.frame{height:100%}
 }
@@ -252,11 +254,13 @@ body{background:transparent!important}
       <div class="seg" role="group" aria-label="Qué mostrar">
         <button type="button" id="b-rain" aria-pressed="true">Lluvia</button>
         <button type="button" id="b-hail" aria-pressed="false">Granizo</button>
+        <button type="button" id="b-radar" aria-pressed="false">Radar real</button>
       </div>
       <button type="button" id="mfull" class="mfull" aria-label="Agrandar mapa" title="Agrandar mapa"></button>
     </div>
     <div class="mapbox">
       <div id="map" class="frame"></div>
+      <iframe id="radar" class="frame radarf" title="Radar real del SMN (Windy)" hidden allowfullscreen></iframe>
       <div class="mleg" id="mleg"></div>
       <div class="mbar">
         <button type="button" id="mplay" aria-label="Pausar">❚❚</button>
@@ -593,7 +597,16 @@ function showGrid(i,f=0){
     if(gmode==="hail"){const hh=ghail&&HGRID?ghail[nearestIn(HGRID,PLACES[k])]?.[i]:null;txt=hh?`granizo ${hh.hs}%`:"granizo …"}
     m.setTooltipContent(`${PLACES[k].name} · ${txt}`)});
 }
-function setMode(m){gmode=m;$("#b-hail").setAttribute("aria-pressed",m==="hail");$("#b-rain").setAttribute("aria-pressed",m==="rain");
+/* Radar real: radares del SMN vía Windy (lo que llueve ahora y las últimas horas) */
+const RADAR_URL="https://embed.windy.com/embed2.html?lat=-31.42&lon=-64.19&detailLat=-31.42&detailLon=-64.19&width=900&height=600&zoom=10&level=surface&overlay=radar&product=radar&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1";
+function setMode(m){
+  const rf=$("#radar"),box=$(".mapbox");$("#b-radar").setAttribute("aria-pressed",m==="radar");
+  if(m==="radar"){$("#b-hail").setAttribute("aria-pressed",false);$("#b-rain").setAttribute("aria-pressed",false);
+    if(!rf.src)rf.src=RADAR_URL;rf.hidden=false;box.classList.add("isradar");playGrid(false);
+    $(".satnote")&&($(".satnote").textContent="Radar real: lo que está lloviendo ahora, según los radares del SMN. Tocá ▶ abajo para ver las últimas horas.");return}
+  rf.hidden=true;box.classList.remove("isradar");setTimeout(()=>gmap&&gmap.invalidateSize(),50);
+  $(".satnote")&&($(".satnote").textContent="Pronóstico de lluvia de las próximas 2 h, cada 15 min. Granizo: solo donde además se espera lluvia. Arrastrá el mapa para ver Alta Gracia.");
+  gmode=m;$("#b-hail").setAttribute("aria-pressed",m==="hail");$("#b-rain").setAttribute("aria-pressed",m==="rain");
   $("#mleg").innerHTML=LEG[m].map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join("");showGrid(gidx)}
 function playGrid(on){gplaying=on;clearInterval(gtimer);$("#mplay").textContent=on?"❚❚":"▶";$("#mplay").setAttribute("aria-label",on?"Pausar":"Reproducir");
   if(on&&gdata){let sub=0;gtimer=setInterval(()=>{const N=gdata[0].length;sub++;
@@ -602,8 +615,8 @@ function playGrid(on){gplaying=on;clearInterval(gtimer);$("#mplay").textContent=
 function playGridLoop(){if(!gplaying||!gdata)return;gidx=gdata[0].length-1;playGrid(true)}
 $("#mplay").onclick=()=>playGrid(!gplaying);
 $("#mslider").oninput=e=>{playGrid(false);showGrid(+e.target.value)};
-const switchMode=m=>{gidx=0;setMode(m);playGrid(true);if(m==="hail")loadHail()};
-$("#b-hail").onclick=()=>switchMode("hail");$("#b-rain").onclick=()=>switchMode("rain");
+const switchMode=m=>{gidx=0;setMode(m);if(m==="radar")return;playGrid(true);if(m==="hail")loadHail()};
+$("#b-hail").onclick=()=>switchMode("hail");$("#b-radar").onclick=()=>switchMode("radar");$("#b-rain").onclick=()=>switchMode("rain");
 
 /* --- iPhone (app en pantalla de inicio): usar todo el alto real de la pantalla --- */
 function fitStandalone(){if(!navigator.standalone)return;const b=document.body;
