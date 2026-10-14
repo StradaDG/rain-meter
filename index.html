@@ -569,7 +569,10 @@ function bil(v,n,gx,gy){gx=Math.max(0,Math.min(n-1,gx));gy=Math.max(0,Math.min(n
   return (v[r0*n+c0]*(1-fx)+v[r0*n+c0+1]*fx)*(1-fy)+(v[(r0+1)*n+c0]*(1-fx)+v[(r0+1)*n+c0+1]*fx)*fy}
 function drawField(i){
   const n=DGRID.n,W=480;gcv.width=gcv.height=W;const x=gcv.getContext("2d"),img=x.createImageData(W,W),d=img.data;
-  const rv=gdata.map(r=>r[i]?.h.precipitation??0);
+  const raw=gdata.map(r=>r[i]?.h.precipitation??0);
+  /* suaviza los escalones de la grilla del modelo (cada celda del modelo cubre ~9 km) */
+  const rv=raw.map((v0,k)=>{const r=Math.floor(k/n),c=k%n;let s=v0*.4,w=.4;
+    for(const[dr,dc,wt]of[[-1,0,.15],[1,0,.15],[0,-1,.15],[0,1,.15]]){const rr=r+dr,cc=c+dc;if(rr>=0&&rr<n&&cc>=0&&cc<n){s+=raw[rr*n+cc]*wt;w+=wt}}return s/w});
   const hv=gmode==="hail"&&ghail&&HGRID?ghail.map(r=>r[i]?.hl??0):null,hn=HGRID?.n||0;
   const scale=gmode==="hail"?[[.5,ORG],[1.5,RED]]:RAINC,cols=scale.map(([t,c])=>[t,hexRGB(c)]);
   for(let py=0;py<W;py++){const gy=py/(W-1)*(n-1);const hy=hv?((gy+.5)/n)*hn-.5:0;
