@@ -6,7 +6,7 @@ const PLACES=[
   {id:"cba",name:"Córdoba Capital",sub:"Casa",lat:-31.420,lon:-64.189},
   {id:"aut",name:"Autódromo Cabalén",sub:"Alta Gracia",lat:-31.645,lon:-64.400}
 ];
-const VARS="temperature_2m,is_day,precipitation,precipitation_probability,weather_code,cape,lifted_index,convective_inhibition,freezing_level_height,wind_speed_10m,wind_direction_10m,wind_speed_500hPa,wind_direction_500hPa,temperature_500hPa,wind_gusts_10m,temperature_700hPa,showers";
+const VARS="temperature_2m,is_day,precipitation,precipitation_probability,weather_code,cape,lifted_index,convective_inhibition,freezing_level_height,wind_speed_10m,wind_direction_10m,wind_speed_500hPa,wind_direction_500hPa,temperature_500hPa,wind_gusts_10m,temperature_700hPa,showers,temperature_850hPa";
 const LVL=["Bajo","Atención","Alto"];
 /* --- Análisis propio: índice de granizo (ingredientes de convección severa) --- */
 const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
@@ -24,7 +24,15 @@ function hailScore(h){
     s+= (h.temperature_500hPa??0)<-12?5:0;
     if(cin<-150) s*=0.6;
   }
-  /* Granizo chico de aire frío: poca energía en superficie pero mucho frío en altura y chaparrones */
+  /* Granizo de aire frío: mucho frío en altura + nivel de congelamiento bajo + chaparrones.
+     No depende de la energía (CAPE) de superficie, que el modelo subestima en estos casos. */
+  const pp0=(h.precipitation_probability??0),rainy=pp0>=50||(h.precipitation??0)>=.1||(h.showers??0)>=.1||[80,81,82,95,96,99].includes(h.weather_code);
+  if(rainy){
+    const t5=h.temperature_500hPa??0,t8=h.temperature_850hPa??(t5+25),vt=t8-t5;   // "Vertical Totals": >=26 inestable, >=28 muy inestable
+    let c=vt>=28?35:vt>=26?25:vt>=24?15:0;
+    if(c){c+=t5<=-18?15:t5<=-15?10:0;c+=fz<=3000?15:fz<=3500?8:0;c+=cape>=300?10:cape>=100?5:0;c+=li<=2?5:0;s=Math.max(s,c)}
+  }
+  /* Variante 9/10: chaparrones + aire muy frío entre 3 y 5,5 km (gradiente 700-500 hPa) */
   const rainNow=(h.precipitation??0)>=.3||(h.showers??0)>=.2||[80,81,82,95,96,99].includes(h.weather_code);
   if(rainNow&&cape>=100){
     const t5=h.temperature_500hPa??0,t7=h.temperature_700hPa??t5+15,lapse=(t7-t5)/2.6;
