@@ -410,7 +410,7 @@ function showTick(){const el=document.getElementById("tick");if(!el)return;const
 setInterval(()=>{const el=document.getElementById("tick");if(!el)return;el.classList.add("out");setTimeout(()=>{tickIdx++;showTick();el.classList.remove("out")},350)},5000);
 function renderAlert(){
   const ok=DATA.filter(d=>d.hours);const box=$("#alert");
-  if(!ok.length){box.className="alert a1";box.innerHTML=`<div class="txt"><span class="lvl">Sin datos</span><span class="sub">No pude bajar el pronóstico. Reintento pronto.</span></div>`;return}
+  if(!ok.length){box.className="alert a1";box.innerHTML=`<div class="txt"><span class="lvl">Sin datos</span><span class="sub">No pude bajar el pronóstico${window.lastErr?" ("+window.lastErr+")":""}. Reintento en 5 min.</span></div>`;return}
   let w=null;
   for(const d of ok) for(const h of d.hours.slice(0,12)){const lv=Math.max(h.hl,h.rl);
     if(!w||lv>w.lv||(lv===w.lv&&h.hs>w.h.hs)) w={lv,h,d}}
@@ -456,13 +456,13 @@ function render(){
 async function load(){
   const url=`https://api.open-meteo.com/v1/forecast?latitude=${PLACES.map(p=>p.lat)}&longitude=${PLACES.map(p=>p.lon)}&hourly=${VARS}&forecast_hours=36&timezone=America%2FArgentina%2FCordoba`;
   try{
-    const r=await fetch(url);if(!r.ok) throw new Error(r.status);
+    const r=await fetch(url);if(!r.ok){let why=r.status;try{why=(await r.json()).reason||why}catch(e){}throw new Error(why)}
     let j=await r.json();if(!Array.isArray(j)) j=[j];
     DATA=PLACES.map((p,i)=>({p,hours:analyze(j[i])}));
     $("#upd").textContent="Actualizado "+hhmm(Date.now())+" · se renueva cada 30 min";
   }catch(e){
     if(!DATA.length) DATA=PLACES.map(p=>({p}));
-    $("#upd").textContent=(location.protocol==="file:"?"No pude bajar el pronóstico. Revisá tu conexión.":"Esta vista previa bloquea internet: descargá el archivo y abrilo con doble clic en Chrome.");
+    window.lastErr=(/limit/i.test(e.message)?"límite de consultas del día":e.message);$("#upd").textContent="No pude bajar el pronóstico ("+(/limit/i.test(e.message)?"límite de consultas del día":e.message)+"). Reintento en 5 min.";setTimeout(load,5*60e3);
   }
   render();check();
 }
@@ -529,7 +529,7 @@ function to15(raw){
 async function loadGrid(force){
   if(!gmap)return;
   const b=gmap.getBounds().pad(.25),r=x=>Math.round(x*20)/20;
-  const g={lat0:r(b.getNorth()),lat1:r(b.getSouth()),lon0:r(b.getWest()),lon1:r(b.getEast()),n:14};
+  const g={lat0:r(b.getNorth()),lat1:r(b.getSouth()),lon0:r(b.getWest()),lon1:r(b.getEast()),n:10};
   const key=[g.lat0,g.lat1,g.lon0,g.lon1].join(),z=gmap.getZoom(),id=++gload;
   const hit=gcache.get(key);
   if(hit&&!force&&Date.now()-hit.t<30*60e3){applyGrid(g,z,hit.raw);return}
