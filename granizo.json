@@ -1,65 +1,13 @@
 {
- "updated": "2026-10-16T02:30:07.941Z",
- "date": "2026-10-15",
- "noticias": 8,
- "barrios": [
-  {
-   "name": "Observatorio",
-   "first": "2026-10-15T12:56:00.000Z",
-   "sources": [
-    {
-     "src": "La Voz del Interior",
-     "time": "2026-10-15T12:56:00.000Z",
-     "title": "El Niño. Clima en Córdoba: cómo tener los avisos meteorológicos oficiales de tormentas y granizo en WhatsApp - La Voz del Interior",
-     "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOQ2JFQnpaSHYtWlA4WXRBUUJCTjVieDJrV2RmZXY4Yi02Y0h0dnVmRTV0UHV5MGptVjU3RmZSaDIyRi1pS0x4MkdWbFlEQXZlVmNraENtdDRwbG1uSUpCVmV1QlpDS2c3NkU4a19zeW5RQVNCMzBoQkJ5YktwWUpaeV93TGVoUTNLU0JyQUptUDg5UmRQaVNycGdWTHlpX2lpMWptUFVscjRpWDhmZDNZbG5yME8wMW8tbXVpcXluZW9tRDNvY0F1N0NRMU0?oc=5"
-    }
-   ]
-  },
-  {
-   "name": "Mendiolaza",
-   "first": "2026-10-15T12:56:00.000Z",
-   "sources": [
-    {
-     "src": "La Voz del Interior",
-     "time": "2026-10-15T12:56:00.000Z",
-     "title": "El Niño. Clima en Córdoba: cómo tener los avisos meteorológicos oficiales de tormentas y granizo en WhatsApp - La Voz del Interior",
-     "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOQ2JFQnpaSHYtWlA4WXRBUUJCTjVieDJrV2RmZXY4Yi02Y0h0dnVmRTV0UHV5MGptVjU3RmZSaDIyRi1pS0x4MkdWbFlEQXZlVmNraENtdDRwbG1uSUpCVmV1QlpDS2c3NkU4a19zeW5RQVNCMzBoQkJ5YktwWUpaeV93TGVoUTNLU0JyQUptUDg5UmRQaVNycGdWTHlpX2lpMWptUFVscjRpWDhmZDNZbG5yME8wMW8tbXVpcXluZW9tRDNvY0F1N0NRMU0?oc=5"
-    }
-   ]
-  },
-  {
-   "name": "Unquillo",
-   "first": "2026-10-15T12:56:00.000Z",
-   "sources": [
-    {
-     "src": "La Voz del Interior",
-     "time": "2026-10-15T12:56:00.000Z",
-     "title": "El Niño. Clima en Córdoba: cómo tener los avisos meteorológicos oficiales de tormentas y granizo en WhatsApp - La Voz del Interior",
-     "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxOQ2JFQnpaSHYtWlA4WXRBUUJCTjVieDJrV2RmZXY4Yi02Y0h0dnVmRTV0UHV5MGptVjU3RmZSaDIyRi1pS0x4MkdWbFlEQXZlVmNraENtdDRwbG1uSUpCVmV1QlpDS2c3NkU4a19zeW5RQVNCMzBoQkJ5YktwWUpaeV93TGVoUTNLU0JyQUptUDg5UmRQaVNycGdWTHlpX2lpMWptUFVscjRpWDhmZDNZbG5yME8wMW8tbXVpcXluZW9tRDNvY0F1N0NRMU0?oc=5"
-    }
-   ]
-  }
- ],
- "reportes": [
-  {
-   "src": "La Voz del Interior",
-   "time": "2026-10-15T12:56:00.000Z",
-   "title": "El Niño. Clima en Córdoba: cómo tener los avisos meteorológicos oficiales de tormentas y granizo en WhatsApp",
-   "link": "https://www.lavoz.com.ar/ciudadanos/clima-cordoba-tener-avisos-meteorologicos-oficiales-tormentas-granizo-whatsapp_0_ffLejQXB0D.html"
-  }
- ],
+ "updated": "2026-10-16T03:02:10.499Z",
+ "date": "2026-10-16",
+ "noticias": 0,
+ "barrios": [],
+ "reportes": [],
  "debug": [
-  "Google Noticias 200 31",
-  "- Cadena 3 Argentina: Alerta amarilla por tormentas en Córdoba con posible caída de granizo: las zonas afectadas (pronóstico, se ignora)",
-  "* La Voz del Interior: El Niño. Clima en Córdoba: cómo tener los avisos meteorológicos oficiales de tormentas y g -> https://www.lavoz.com.ar/ciudadanos/clima-cordoba-tener-avisos-meteorologicos-oficiales-tormentas-granizo-whatsapp_0_ffLejQXB0D.html (18 párrafos)",
-  "- Vía País: Alerta amarilla por tormentas en Córdoba este jueves 15 de octubre: qué zonas pueden tener (pronóstico, se ignora)",
-  "- Vía País: Alerta por fuertes tormentas y posible granizo en Córdoba: las zonas afectadas - Vía País (pronóstico, se ignora)",
+  "Google Noticias 200 30",
   "Google Noticias 200 0",
   "Google Noticias 200 54",
-  "- Cadena 3 Argentina: Alerta amarilla por tormentas en Córdoba con posible caída de granizo: las zonas afectadas (pronóstico, se ignora)",
-  "* La Voz del Interior: El Niño. Clima en Córdoba: cómo tener los avisos meteorológicos oficiales de tormentas y g -> https://www.lavoz.com.ar/ciudadanos/clima-cordoba-tener-avisos-meteorologicos-oficiales-tormentas-granizo-whatsapp_0_ffLejQXB0D.html (18 párrafos)",
-  "Google Noticias 200 4",
-  "- Vía País: Alerta amarilla por tormentas en Córdoba este jueves 15 de octubre: qué zonas pueden tener (pronóstico, se ignora)",
-  "- Vía País: Alerta por fuertes tormentas y posible granizo en Córdoba: las zonas afectadas - Vía País (pronóstico, se ignora)"
+  "Google Noticias 200 4"
  ]
 }
