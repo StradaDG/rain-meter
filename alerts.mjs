@@ -86,6 +86,8 @@ const STATE="state.json";
 const sent=fs.existsSync(STATE)?JSON.parse(fs.readFileSync(STATE,"utf8")):{};
 const now=Date.now();
 let j=await (await fetch(url)).json(); if(!Array.isArray(j)) j=[j];
+// Copia de respaldo para la página (si la consulta directa del usuario falla)
+fs.writeFileSync("data.json",JSON.stringify({updated:Date.now(),raw:j}));
 const WIN=[["2h",90,135,"En 2 horas"],["1h",30,75,"En 1 hora"]];
 for(const [i,p] of PLACES.entries()){
   const hours=analyze(j[i]);

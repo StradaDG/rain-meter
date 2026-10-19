@@ -466,9 +466,13 @@ async function load(){
   try{
     const r=await fetch(url);if(!r.ok){let why=r.status;try{why=(await r.json()).reason||why}catch(e){}throw new Error(why)}
     let j=await r.json();if(!Array.isArray(j)) j=[j];
-    DATA=PLACES.map((p,i)=>({p,hours:analyze(j[i])}));
+    DATA=PLACES.map((p,i)=>({p,hours:analyze(j[i])}));window.lastErr="";
     $("#upd").textContent="Actualizado "+hhmm(Date.now())+" · se renueva cada 30 min";
   }catch(e){
+    /* Respaldo: el pronóstico que guarda el sistema de avisos cada ~15 min */
+    try{const b=await (await fetch("data.json?t="+Date.now(),{cache:"no-store"})).json();
+      if(b&&b.raw&&Date.now()-b.updated<6*36e5){DATA=PLACES.map((p,i)=>({p,hours:analyze(b.raw[i])}));window.lastErr="";
+        $("#upd").textContent="Pronóstico de respaldo de las "+hhmm(b.updated)+" · reintento en 5 min";setTimeout(load,5*60e3);render();check();return}}catch(e2){}
     if(!DATA.length) DATA=PLACES.map(p=>({p}));
     window.lastErr=(/limit/i.test(e.message)?"límite de consultas del día":e.message);$("#upd").textContent="No pude bajar el pronóstico ("+(/limit/i.test(e.message)?"límite de consultas del día":e.message)+"). Reintento en 5 min.";setTimeout(load,5*60e3);
   }
