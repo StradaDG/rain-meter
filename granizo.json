@@ -1,57 +1,13 @@
 {
- "updated": "2026-10-22T02:03:20.983Z",
- "date": "2026-10-21",
- "noticias": 6,
- "barrios": [
-  {
-   "name": "Observatorio",
-   "first": "2026-10-21T19:14:11.000Z",
-   "sources": [
-    {
-     "src": "eldoce",
-     "time": "2026-10-21T19:14:11.000Z",
-     "title": "De los 30 grados a la tormenta fuerte en Córdoba: cuándo llega la lluvia y el riesgo de granizo - eldoce",
-     "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQdjFaZ3BqbVFZWGxTVlRjZEJ6bHA3VnlZWGw3cVo4aXBma2RBdmxxUUZzXzZiaTc1NWZ2TklfbW5UTHBuZDdvdHl5cHdvTE1sNlV2WVhTNURWcHZnekk4cUx2TE9mMDA1czR3azVocE9mQ2NhV3REYnhDLWg3U0lWaklEb0xsdndXblNpbUlXZXR5anRwbWN2ZlhCejlYS1RUTmx5bnVJU2ZsOWZNQkJ3N3RJa1U0Rzl6d0tnUGdZd3JpNWJVcVpYa0tFS2I1YnY00gHkAUFVX3lxTE5PVVlfRTlVU1ZkU3BMRDJHUzNUODFYRFBNRWpSY1RVMVZ5QmdkanpuakR4ZTJOYlFjQm8zbHVTT2VrXzVKcDQ5VkM4cHcwWVdDSTFvcVJwRVdVU3VnR0RrQ3k5MUdka25hRU5Ec1RnY3Y5OFMzVmdkY01XTy11UGNNQ0FZMmdwUDJXN0R5ZG5tTUw4TXRKT0o4b3pXSDZtRUcyZkxEbnpORHpaN19URndsV2I3cVdHb1cxbWlrSmYwTWlNcTRxdmRRZVJZRFluOWc0VlNxQXhiNlpyMl9RUlZ4cGJ0dw?oc=5"
-    }
-   ]
-  },
-  {
-   "name": "Talleres",
-   "first": "2026-10-21T19:14:11.000Z",
-   "sources": [
-    {
-     "src": "eldoce",
-     "time": "2026-10-21T19:14:11.000Z",
-     "title": "De los 30 grados a la tormenta fuerte en Córdoba: cuándo llega la lluvia y el riesgo de granizo - eldoce",
-     "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQdjFaZ3BqbVFZWGxTVlRjZEJ6bHA3VnlZWGw3cVo4aXBma2RBdmxxUUZzXzZiaTc1NWZ2TklfbW5UTHBuZDdvdHl5cHdvTE1sNlV2WVhTNURWcHZnekk4cUx2TE9mMDA1czR3azVocE9mQ2NhV3REYnhDLWg3U0lWaklEb0xsdndXblNpbUlXZXR5anRwbWN2ZlhCejlYS1RUTmx5bnVJU2ZsOWZNQkJ3N3RJa1U0Rzl6d0tnUGdZd3JpNWJVcVpYa0tFS2I1YnY00gHkAUFVX3lxTE5PVVlfRTlVU1ZkU3BMRDJHUzNUODFYRFBNRWpSY1RVMVZ5QmdkanpuakR4ZTJOYlFjQm8zbHVTT2VrXzVKcDQ5VkM4cHcwWVdDSTFvcVJwRVdVU3VnR0RrQ3k5MUdka25hRU5Ec1RnY3Y5OFMzVmdkY01XTy11UGNNQ0FZMmdwUDJXN0R5ZG5tTUw4TXRKT0o4b3pXSDZtRUcyZkxEbnpORHpaN19URndsV2I3cVdHb1cxbWlrSmYwTWlNcTRxdmRRZVJZRFluOWc0VlNxQXhiNlpyMl9RUlZ4cGJ0dw?oc=5"
-    }
-   ]
-  }
- ],
- "reportes": [
-  {
-   "src": "eldoce",
-   "time": "2026-10-21T19:14:11.000Z",
-   "title": "De los 30 grados a la tormenta fuerte en Córdoba: cuándo llega la lluvia y el riesgo de granizo",
-   "link": "https://eldoce.tv/actualidad/2026/10/21/de-los-30-grados-a-la-tormenta-fuerte-en-cordoba-cuando-llega-la-lluvia-y-el-riesgo-de-granizo/"
-  },
-  {
-   "src": "Cadena 3",
-   "time": "2026-10-21T20:38:40.000Z",
-   "title": "Córdoba pasó los 30 grados y se esperan tormentas fuertes con riesgo de granizo",
-   "link": "https://www.cadena3.com/noticia/sociedad/cordoba-paso-los-30-grados-y-se-esperan-tormentas-fuertes-con-riesgo-de-granizo_605805"
-  }
- ],
+ "updated": "2026-10-22T03:01:29.891Z",
+ "date": "2026-10-22",
+ "noticias": 0,
+ "barrios": [],
+ "reportes": [],
  "debug": [
-  "Google Noticias 200 37",
-  "* eldoce: De los 30 grados a la tormenta fuerte en Córdoba: cuándo llega la lluvia y el riesgo de gr -> https://eldoce.tv/actualidad/2026/10/21/de-los-30-grados-a-la-tormenta-fuerte-en-cordoba-cuando-llega-la-lluvia-y-el-riesgo-de-granizo/ (8 párrafos)",
-  "* Cadena 3 Argentina: Córdoba pasó los 30 grados y se esperan tormentas fuertes con riesgo de granizo - Cadena 3 -> https://www.cadena3.com/noticia/sociedad/cordoba-paso-los-30-grados-y-se-esperan-tormentas-fuertes-con-riesgo-de-granizo_605805 (65 párrafos)",
-  "- La Voz del Interior: Clima en Córdoba: pronostican tormentas fuertes y caída de granizo para este jueves 22 de  (pronóstico, se ignora)",
+  "Google Noticias 200 41",
   "Google Noticias 200 1",
   "Google Noticias 200 100",
-  "* Cadena 3 Argentina: Córdoba pasó los 30 grados y se esperan tormentas fuertes con riesgo de granizo - Cadena 3 -> https://www.cadena3.com/noticia/sociedad/cordoba-paso-los-30-grados-y-se-esperan-tormentas-fuertes-con-riesgo-de-granizo_605805 (65 párrafos)",
-  "- La Voz del Interior: Clima en Córdoba: pronostican tormentas fuertes y caída de granizo para este jueves 22 de  (pronóstico, se ignora)",
-  "* eldoce: De los 30 grados a la tormenta fuerte en Córdoba: cuándo llega la lluvia y el riesgo de gr -> https://eldoce.tv/actualidad/2026/10/21/de-los-30-grados-a-la-tormenta-fuerte-en-cordoba-cuando-llega-la-lluvia-y-el-riesgo-de-granizo/ (8 párrafos)",
   "Google Noticias 200 1"
  ]
 }
