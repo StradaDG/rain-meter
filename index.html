@@ -248,6 +248,15 @@ body{background:transparent!important}
 .mapbox.nhon .radarf{top:var(--nhh,44px);height:calc(100% - var(--nhh,44px))}
 @media (max-width:700px){.nh{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:6px 8px}.nh .ttl{grid-column:1/-1;font-size:9px}
   .nh .ch{flex-direction:column;gap:2px;padding:4px 2px;font-size:10.5px;text-align:center;justify-content:center}}
+.nh{display:flex!important;flex-wrap:wrap;align-items:stretch;gap:10px}
+.nh[hidden]{display:none!important}
+.nhl{flex:1 1 300px;min-width:0;display:flex;flex-direction:column;gap:2px}
+.nhc{width:100%;height:74px;display:block}
+.nhc .bv{fill:#eaf2ff;font:600 10px var(--f-data)} .nhc .bl{fill:#8fa0bb;font:500 9px var(--f-data)}
+.nhr{flex:0 1 auto;display:flex;flex-direction:column;gap:6px;justify-content:center}
+.nh .mv{flex-direction:row!important;gap:6px;font-family:var(--f-body)} .nh .mv svg{flex:none}
+@media (max-width:700px){.nh{padding:6px 8px;gap:6px}.nhl{flex-basis:100%}.nhc{height:64px}.nhr{flex-direction:row;flex-wrap:wrap;width:100%}
+  .nh .ch{flex-direction:row!important;font-size:11px;padding:4px 8px}}
 </style>
 </head>
 <body>
@@ -651,15 +660,27 @@ let tlPlace=0;
 /* Próxima hora cada 15 min (pedido liviano) */
 let NEXT=null;
 async function loadNext(){try{
-  const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${PLACES.map(p=>p.lat)}&longitude=${PLACES.map(p=>p.lon)}&minutely_15=precipitation&forecast_minutely_15=6&timezone=America%2FArgentina%2FCordoba`);
-  if(!r.ok)return;let j=await r.json();if(!Array.isArray(j))j=[j];NEXT=j.map(x=>rain15(x).slice(1,5));renderNH()}catch(e){}}
+  const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${PLACES.map(p=>p.lat)}&longitude=${PLACES.map(p=>p.lon)}&minutely_15=precipitation&forecast_minutely_15=10&timezone=America%2FArgentina%2FCordoba`);
+  if(!r.ok)return;let j=await r.json();if(!Array.isArray(j))j=[j];NEXT=j.map(x=>rain15(x).slice(1,9));renderNH()}catch(e){}}
 function renderNH(){const el=$("#nh");if(!el||el.hidden)return;const d=DATA[tlPlace];
   const name=tlPlace?"Autódromo":"Casa";let steps=NEXT?.[tlPlace];
-  if(!steps&&d?.hours){const mm=d.hours[0].h.precipitation||0;steps=[1,2,3,4].map(k=>({t:Date.now()+k*9e5,h:{precipitation:mm}}))}
-  if(!steps){el.innerHTML='<span class="ttl">Próxima hora</span><span class="ch">Cargando…</span>';return}
+  if(!steps&&d?.hours){steps=[...Array(8)].map((_,k)=>({h:{precipitation:d.hours[k<4?0:1]?.h.precipitation||0}}))}
+  if(!steps){el.innerHTML='<span class="ttl">Próximas 2 h</span><span class="ch">Cargando…</span>';return}
+  /* gráfico de barras: lluvia cada 15 min */
+  const W=320,H=74,bw=W/8,mx=Math.max(2,...steps.map(x=>x.h.precipitation||0));
+  const bars=steps.map((x,k)=>{const mm=x.h.precipitation||0;let c="#5ad8e6";for(const[t,col]of RAINC)if(mm>=t)c=col;
+    const bh=mm>=.05?Math.max(4,(mm/mx)*(H-30)):2,xx=k*bw+5,y=H-16-bh;
+    return `<rect x="${xx}" y="${y}" width="${bw-10}" height="${bh}" rx="4" fill="${mm>=.05?c:"#ffffff22"}"/>`+
+      (mm>=.05?`<text x="${xx+(bw-10)/2}" y="${y-4}" text-anchor="middle" class="bv">${mm.toFixed(1)}</text>`:"")+
+      `<text x="${xx+(bw-10)/2}" y="${H-3}" text-anchor="middle" class="bl">+${(k+1)*15}'</text>`}).join("");
+  /* movimiento de las tormentas: viento en altura (las tormentas se desplazan con él) */
+  const h0=d?.hours?.[0]?.h;let mv="";
+  if(h0&&h0.wind_direction_500hPa!=null){const to=(h0.wind_direction_500hPa+180)%360,sp=Math.round((h0.wind_speed_500hPa||0)*.6);
+    const dirs=["N","NE","E","SE","S","SO","O","NO"],dn=dirs[Math.round(to/45)%8];
+    mv=`<span class="ch mv"><svg viewBox="0 0 24 24" width="22" height="22" style="transform:rotate(${to}deg)"><path d="M12 3l6 9h-4v9h-4v-9H6z" fill="#cfe3ff"/></svg><span>Tormentas van hacia <b>${dn}</b> · ${sp} km/h</span></span>`}
   const hz=d?.hours?Math.max(d.hours[0].hs,d.hours[1]?.hs||0):0,hl=hailLevel(hz);
-  el.innerHTML=`<span class="ttl">Próxima hora · ${name}</span>`+steps.map((x,k)=>{const mm=x.h.precipitation||0;let c="#ffffff22";for(const[t,col]of RAINC)if(mm>=t)c=col;
-    return `<span class="ch"><span>+${(k+1)*15}'</span><span><i style="background:${c}"></i> ${mm>=.05?mm.toFixed(1)+" mm":"—"}</span></span>`}).join("")+`<span class="ch hz l${hl}"><span>Granizo</span><span>🧊 ${hz}%</span></span>`;
+  el.innerHTML=`<div class="nhl"><span class="ttl">Próximas 2 h · ${name} · lluvia mm/h</span><svg class="nhc" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">${bars}</svg></div>
+    <div class="nhr">${mv}<span class="ch hz l${hl}">🧊 Granizo ${hz}%</span></div>`;
   $(".mapbox").style.setProperty("--nhh",el.offsetHeight+"px");
 }
 function setMode(m){
