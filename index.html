@@ -237,6 +237,17 @@ body{background:transparent!important}
 .tlr.now{background:#ffffff08;border-radius:8px}
 @media (max-width:700px){.tl{padding:8px 10px;gap:6px}.tlsum{font-size:11px}
   .tlr{grid-template-columns:30px 20px minmax(0,1fr) 50px 32px 58px;gap:5px;font-size:11.5px}.tlr .ic{width:18px!important;height:18px!important}.thail{font-size:11px}}
+/* Próxima hora (sobre el radar) */
+.nh{position:absolute;left:0;right:0;top:0;z-index:1001;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 12px;background:#070b14;border-bottom:1px solid #ffffff12;font-size:12px}
+.nh[hidden]{display:none!important}
+.nh .ttl{font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-size:10px}
+.nh .ch{display:flex;align-items:center;gap:5px;padding:4px 8px;border-radius:9px;background:#ffffff0d;font:500 12px var(--f-data)}
+.nh .ch i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.nh .hz{font-weight:700;font-family:var(--f-body)}
+.nh .hz.l0{color:var(--ok)}.nh .hz.l1{color:var(--warn)}.nh .hz.l2{color:var(--bad)}
+.mapbox.nhon .radarf{top:var(--nhh,44px);height:calc(100% - var(--nhh,44px))}
+@media (max-width:700px){.nh{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:4px;padding:6px 8px}.nh .ttl{grid-column:1/-1;font-size:9px}
+  .nh .ch{flex-direction:column;gap:2px;padding:4px 2px;font-size:10.5px;text-align:center;justify-content:center}}
 </style>
 </head>
 <body>
@@ -283,6 +294,7 @@ body{background:transparent!important}
     <div class="mapbox">
       <div id="map" class="frame"></div>
       <div id="tl" class="tl"></div>
+      <div id="nh" class="nh" hidden></div>
       <iframe id="radar" class="frame radarf" title="Radar real del SMN (Windy)" hidden allowfullscreen></iframe>
       <div class="mleg" id="mleg"></div>
       <div class="mbar">
@@ -291,7 +303,7 @@ body{background:transparent!important}
         <span id="mtime">Ahora</span>
       </div>
     </div>
-    <div class="satnote">Pronóstico hora por hora: barra = lluvia (mm), 🧊 = probabilidad de granizo. "Radar" muestra lo que llueve ahora.</div>
+    <div class="satnote">Pronóstico hora por hora: barra = lluvia (mm), 🧊 = probabilidad de granizo. "Radar": lo que llueve ahora (SMN) y arriba la próxima hora.</div>
   </section>
 
 </div>
@@ -484,7 +496,7 @@ async function load(){
   try{
     const r=await fetch(url);if(!r.ok){let why=r.status;try{why=(await r.json()).reason||why}catch(e){}throw new Error(why)}
     let j=await r.json();if(!Array.isArray(j)) j=[j];
-    DATA=PLACES.map((p,i)=>({p,hours:analyze(j[i])}));window.lastErr="";
+    DATA=PLACES.map((p,i)=>({p,hours:analyze(j[i])}));window.lastErr="";loadNext();
     $("#upd").textContent="Actualizado "+hhmm(Date.now())+" · se renueva cada 30 min";
   }catch(e){
     /* Respaldo: el pronóstico que guarda el sistema de avisos cada ~15 min */
@@ -636,14 +648,29 @@ function showGrid(i,f=0){
 const RADAR_URL="https://embed.windy.com/embed2.html?lat=-31.415&lon=-64.187&detailLat=-31.415&detailLon=-64.187&width=900&height=600&zoom=11&level=surface&overlay=radar&product=radar&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1";
 /* --- Pestañas: línea de tiempo (pronóstico) y radar real --- */
 let tlPlace=0;
+/* Próxima hora cada 15 min (pedido liviano) */
+let NEXT=null;
+async function loadNext(){try{
+  const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${PLACES.map(p=>p.lat)}&longitude=${PLACES.map(p=>p.lon)}&minutely_15=precipitation&forecast_minutely_15=6&timezone=America%2FArgentina%2FCordoba`);
+  if(!r.ok)return;let j=await r.json();if(!Array.isArray(j))j=[j];NEXT=j.map(x=>rain15(x).slice(1,5));renderNH()}catch(e){}}
+function renderNH(){const el=$("#nh");if(!el||el.hidden)return;const d=DATA[tlPlace];
+  const name=tlPlace?"Autódromo":"Casa";let steps=NEXT?.[tlPlace];
+  if(!steps&&d?.hours){const mm=d.hours[0].h.precipitation||0;steps=[1,2,3,4].map(k=>({t:Date.now()+k*9e5,h:{precipitation:mm}}))}
+  if(!steps){el.innerHTML='<span class="ttl">Próxima hora</span><span class="ch">Cargando…</span>';return}
+  const hz=d?.hours?Math.max(d.hours[0].hs,d.hours[1]?.hs||0):0,hl=hailLevel(hz);
+  el.innerHTML=`<span class="ttl">Próxima hora · ${name}</span>`+steps.map((x,k)=>{const mm=x.h.precipitation||0;let c="#ffffff22";for(const[t,col]of RAINC)if(mm>=t)c=col;
+    return `<span class="ch"><span>+${(k+1)*15}'</span><span><i style="background:${c}"></i> ${mm>=.05?mm.toFixed(1)+" mm":"—"}</span></span>`}).join("")+`<span class="ch hz l${hl}"><span>Granizo</span><span>🧊 ${hz}%</span></span>`;
+  $(".mapbox").style.setProperty("--nhh",el.offsetHeight+"px");
+}
 function setMode(m){
   const rf=$("#radar"),tl=$("#tl");$("#b-radar").setAttribute("aria-pressed",m==="radar");$("#b-tl").setAttribute("aria-pressed",m!=="radar");
-  if(m==="radar"){if(!rf.src)rf.src=RADAR_URL;rf.hidden=false;tl.hidden=true;return}
-  rf.hidden=true;tl.hidden=false;renderTL();
+  const nh=$("#nh"),box=$(".mapbox");
+  if(m==="radar"){if(!rf.src)rf.src=RADAR_URL;rf.hidden=false;tl.hidden=true;nh.hidden=false;box.classList.add("nhon");renderNH();return}
+  rf.hidden=true;nh.hidden=true;box.classList.remove("nhon");tl.hidden=false;renderTL();
 }
 const switchMode=m=>setMode(m);
 $("#b-tl").onclick=()=>setMode("tl");$("#b-radar").onclick=()=>setMode("radar");
-function renderTL(){
+function renderTL(){renderNH();
   const el=$("#tl");if(!el||el.hidden)return;const d=DATA[tlPlace];
   const seg=`<div class="seg" role="group" aria-label="Lugar">${PLACES.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===tlPlace}">${i?"Autódromo":"Casa"}</button>`).join("")}</div>`;
   if(!d||!d.hours){el.innerHTML=`<div class="tlhead">${seg}<div class="tlsum">Cargando pronóstico…</div></div>`;bindTL();return}
