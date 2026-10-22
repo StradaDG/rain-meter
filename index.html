@@ -219,6 +219,24 @@ body.mapfull{overflow-x:hidden}
   body.mapfull .chip .rt{display:none}}
 html{background-color:#0b1220;background-image:radial-gradient(900px 500px at 85% -10%,#22305a66,transparent 60%),radial-gradient(700px 400px at -10% 110%,#0f4a5c44,transparent 60%);background-attachment:fixed;min-height:100%}
 body{background:transparent!important}
+/* ===== Línea de tiempo: lluvia y granizo hora por hora ===== */
+#map{visibility:hidden}.mbar,.mleg{display:none!important}
+.tl{position:absolute;inset:0;display:flex;flex-direction:column;gap:8px;padding:12px 14px;background:#070b14;overflow:hidden}
+.tl[hidden]{display:none!important}
+.tlhead{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px}
+.tlsum{font-size:13px;color:var(--muted)} .tlsum b{color:var(--fg)}
+.tlrows{flex:1;min-height:0;display:grid;grid-template-rows:auto repeat(12,minmax(0,1fr));gap:1px}
+.tlr{display:grid;grid-template-columns:38px 26px minmax(0,1fr) 64px 40px 72px;align-items:center;gap:8px;font:500 14px var(--f-data);border-bottom:1px solid #ffffff0d;min-height:0}
+.tlr.hd{font:800 10px var(--f-body);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);border:0;padding-bottom:2px}
+.tlr .ic{width:22px!important;height:22px!important}
+.tbar{height:62%;max-height:20px;min-height:6px;background:#ffffff0f;border-radius:6px;overflow:hidden}
+.tbar i{display:block;height:100%;border-radius:6px;min-width:0}
+.tmm{text-align:right}.tpp{color:var(--muted);font-size:11px;text-align:right}
+.thail{font-weight:700;font-family:var(--f-body);font-size:13px}
+.tl .l0{color:var(--ok)}.tl .l1{color:var(--warn)}.tl .l2{color:var(--bad)}
+.tlr.now{background:#ffffff08;border-radius:8px}
+@media (max-width:700px){.tl{padding:8px 10px;gap:6px}.tlsum{font-size:11px}
+  .tlr{grid-template-columns:30px 20px minmax(0,1fr) 50px 32px 58px;gap:5px;font-size:11.5px}.tlr .ic{width:18px!important;height:18px!important}.thail{font-size:11px}}
 </style>
 </head>
 <body>
@@ -255,16 +273,16 @@ body{background:transparent!important}
   <div id="mini" class="mini"></div>
   <section class="sat">
     <div class="sathead">
-      <h2><svg class="ic" style="--s:26px"><use href="#i-storm"/></svg>Mapa de lluvia</h2>
+      <h2><svg class="ic" style="--s:26px"><use href="#i-storm"/></svg>Lluvia y granizo</h2>
       <div class="seg" role="group" aria-label="Qué mostrar">
-        <button type="button" id="b-rain" aria-pressed="true">Lluvia</button>
+        <button type="button" id="b-tl" aria-pressed="true">Próximas horas</button>
         <button type="button" id="b-radar" aria-pressed="false">Radar</button>
-        <button type="button" id="b-hail" aria-pressed="false">Granizo</button>
       </div>
       <button type="button" id="mfull" class="mfull" aria-label="Agrandar mapa" title="Agrandar mapa"></button>
     </div>
     <div class="mapbox">
       <div id="map" class="frame"></div>
+      <div id="tl" class="tl"></div>
       <iframe id="radar" class="frame radarf" title="Radar real del SMN (Windy)" hidden allowfullscreen></iframe>
       <div class="mleg" id="mleg"></div>
       <div class="mbar">
@@ -273,7 +291,7 @@ body{background:transparent!important}
         <span id="mtime">Ahora</span>
       </div>
     </div>
-    <div class="satnote">Pronóstico de lluvia de las próximas 2 h, cada 15 min. Se actualiza solo cada 15 min. Granizo: solo donde además se espera lluvia. Arrastrá el mapa para ver Alta Gracia.</div>
+    <div class="satnote">Pronóstico hora por hora: barra = lluvia (mm), 🧊 = probabilidad de granizo. "Radar" muestra lo que llueve ahora.</div>
   </section>
 
 </div>
@@ -432,7 +450,7 @@ function renderAlert(){
 }
 /* --- Render --- */
 function render(){
-  renderAlert();renderMini();
+  renderAlert();renderTL();renderMini();
   $("#grid").innerHTML=DATA.map(d=>{
     if(!d.hours) return `<section class="card s0"><div class="top"><h2>${d.p.name}</h2></div><div class="next">Sin datos. Reintento en unos minutos.</div></section>`;
     const hrs=d.hours, cur=hrs[0].h, f=hrs.slice(0,12);
@@ -616,24 +634,28 @@ function showGrid(i,f=0){
 }
 /* Radar real: radares del SMN vía Windy (lo que llueve ahora y las últimas horas) */
 const RADAR_URL="https://embed.windy.com/embed2.html?lat=-31.415&lon=-64.187&detailLat=-31.415&detailLon=-64.187&width=900&height=600&zoom=11&level=surface&overlay=radar&product=radar&menu=&message=true&marker=&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1";
+/* --- Pestañas: línea de tiempo (pronóstico) y radar real --- */
+let tlPlace=0;
 function setMode(m){
-  const rf=$("#radar"),box=$(".mapbox");$("#b-radar").setAttribute("aria-pressed",m==="radar");
-  if(m==="radar"){$("#b-hail").setAttribute("aria-pressed",false);$("#b-rain").setAttribute("aria-pressed",false);
-    if(!rf.src)rf.src=RADAR_URL;rf.hidden=false;box.classList.add("isradar");playGrid(false);
-    $(".satnote")&&($(".satnote").textContent="Radar real del SMN: lo que está lloviendo ahora. Tocá ▶ abajo para animar y el botón de velocidad para hacerlo más rápido.");return}
-  rf.hidden=true;box.classList.remove("isradar");setTimeout(()=>gmap&&gmap.invalidateSize(),50);
-  $(".satnote")&&($(".satnote").textContent="Pronóstico de lluvia de las próximas 2 h, cada 15 min. Granizo: solo donde además se espera lluvia. Arrastrá el mapa para ver Alta Gracia.");
-  gmode=m;$("#b-hail").setAttribute("aria-pressed",m==="hail");$("#b-rain").setAttribute("aria-pressed",m==="rain");
-  $("#mleg").innerHTML=LEG[m].map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join("");showGrid(gidx)}
-function playGrid(on){gplaying=on;clearInterval(gtimer);$("#mplay").textContent=on?"❚❚":"▶";$("#mplay").setAttribute("aria-label",on?"Pausar":"Reproducir");
-  if(on&&gdata){let sub=0;gtimer=setInterval(()=>{const N=gdata[0].length;sub++;
-    if(sub>=4){sub=0;gidx=(gidx+1)%N}
-    const last=gidx===N-1;showGrid(gidx,last?0:sub/4);if(last&&sub===0){clearInterval(gtimer);setTimeout(()=>{if(gplaying){gidx=N-1;playGridLoop()}},700)}},140)}}
-function playGridLoop(){if(!gplaying||!gdata)return;gidx=gdata[0].length-1;playGrid(true)}
-$("#mplay").onclick=()=>playGrid(!gplaying);
-$("#mslider").oninput=e=>{playGrid(false);showGrid(+e.target.value)};
-const switchMode=m=>{gidx=0;setMode(m);if(m==="radar")return;playGrid(true);if(m==="hail")loadHail()};
-$("#b-hail").onclick=()=>switchMode("hail");$("#b-radar").onclick=()=>switchMode("radar");$("#b-rain").onclick=()=>switchMode("rain");
+  const rf=$("#radar"),tl=$("#tl");$("#b-radar").setAttribute("aria-pressed",m==="radar");$("#b-tl").setAttribute("aria-pressed",m!=="radar");
+  if(m==="radar"){if(!rf.src)rf.src=RADAR_URL;rf.hidden=false;tl.hidden=true;return}
+  rf.hidden=true;tl.hidden=false;renderTL();
+}
+const switchMode=m=>setMode(m);
+$("#b-tl").onclick=()=>setMode("tl");$("#b-radar").onclick=()=>setMode("radar");
+function renderTL(){
+  const el=$("#tl");if(!el||el.hidden)return;const d=DATA[tlPlace];
+  const seg=`<div class="seg" role="group" aria-label="Lugar">${PLACES.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===tlPlace}">${i?"Autódromo":"Casa"}</button>`).join("")}</div>`;
+  if(!d||!d.hours){el.innerHTML=`<div class="tlhead">${seg}<div class="tlsum">Cargando pronóstico…</div></div>`;bindTL();return}
+  const hrs=d.hours.slice(0,12),mx=Math.max(4,...hrs.map(h=>h.h.precipitation||0));
+  const tot=hrs.reduce((a,h)=>a+(h.h.precipitation||0),0),pk=hrs.reduce((a,b)=>b.hs>a.hs?b:a,hrs[0]);
+  el.innerHTML=`<div class="tlhead">${seg}<div class="tlsum">Próximas 12 h: lluvia <b>${tot.toFixed(1)} mm</b> · granizo máx <b class="l${pk.hl}">${pk.hs}%</b>${pk.hs>=10?` a las ${hhmm(pk.t)}`:""}</div></div>
+  <div class="tlrows"><div class="tlr hd"><span>Hora</span><span></span><span>Lluvia</span><span class="tmm">mm</span><span class="tpp">Prob.</span><span>Granizo</span></div>
+  ${hrs.map((h,k)=>{const mm=h.h.precipitation||0,pp=Math.round(h.h.precipitation_probability??0);let c="#5ad8e6";for(const[t,col]of RAINC)if(mm>=t)c=col;
+    return `<div class="tlr${k===0?" now":""}"><span>${k===0?"Ahora":hhmm(h.t).slice(0,2)+"h"}</span>${ic(nowIcon(h.h),22)}<div class="tbar"><i style="width:${mm>0?Math.max(4,mm/mx*100):0}%;background:${c}"></i></div><span class="tmm">${mm>=.05?mm.toFixed(1):"—"}</span><span class="tpp">${pp}%</span><span class="thail l${h.hl}">${h.hs>=10?"🧊 "+h.hs+"%":""}</span></div>`}).join("")}</div>`;
+  bindTL();
+}
+function bindTL(){$("#tl").querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{tlPlace=+b.dataset.i;renderTL()})}
 
 /* --- iPhone (app en pantalla de inicio): usar todo el alto real de la pantalla --- */
 function fitStandalone(){
@@ -701,7 +723,7 @@ async function checkUpdate(){try{
 }catch(e){}}
 setTimeout(checkUpdate,4000);setInterval(checkUpdate,3*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate()});
-syncBtn();fitStandalone();load();initGrid();loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
+syncBtn();fitStandalone();load();setMode("tl");loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>
