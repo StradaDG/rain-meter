@@ -1,8 +1,20 @@
 {
- "updated": "2026-10-22T16:02:41.279Z",
+ "updated": "2026-10-22T17:02:17.321Z",
  "date": "2026-10-22",
- "noticias": 9,
+ "noticias": 8,
  "barrios": [
+  {
+   "name": "Centro",
+   "first": "2026-10-22T12:23:51.000Z",
+   "sources": [
+    {
+     "src": "Cadena 3",
+     "time": "2026-10-22T12:23:51.000Z",
+     "title": "Frenaron de golpe debajo de un puente para evitar el granizo y casi causan una tragedia en Córdoba - Cadena 3 Argentina",
+     "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxQZUtReFozR3ZsUUFWeUx5aVVTS0E4Nm5UOGpqYTVWMlhJb3otbFdicV9rNTNqSUN4QkcwTU00cm1JLVB3YWdYVW1VSWZ1UDBZYTRSU1BaX05lck5XVGk0Tlg3N3RQaTZFQkx1NFdwWmJDeEtLYVNFSVAwM2JLUElwaHFWLW1yWXA1V3lsZk1LRk5kMGFyQUZYYlRiZEJpcEdKN1h2WWpvVUs3QzdjNTRCbzkwQ3RNaEN4TmRUN3c2RWRRMllOQlFOdjJ5U1RobDJyYjdRNnkyUkl0VFQwUkppY25LeUpvTDQ?oc=5"
+    }
+   ]
+  },
   {
    "name": "Malvinas Argentinas",
    "first": "2026-10-22T12:23:51.000Z",
@@ -109,17 +121,16 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 44",
+  "Google Noticias 200 43",
   "* La Voz del Interior: Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuer -> https://www.lavoz.com.ar/servicios/lluvia-alertas-amarillo-naranja-avisos-corto-cordoba-tormentas-fuertes-granizo_0_qgT4x5Oxj1.html (22 párrafos)",
   "* Vía País: La lista de zonas bajo alerta por granizo en Córdoba - Vía País -> https://viapais.com.ar/cordoba/alerta-granizo-cordoba-zonas-riesgo_0_Y0beFraifJ.html (15 párrafos)",
   "- Vía País: Alerta por tormentas y granizo en Córdoba: cuáles son las zonas afectadas - Vía País (pronóstico, se ignora)",
   "* Cadena 3 Argentina: Frenaron de golpe debajo de un puente para evitar el granizo y casi causan una tragedia en -> https://www.cadena3.com/noticia/radioinforme-3/frenaron-de-golpe-debajo-de-un-puente-para-evitar-el-granizo-y-casi-causan-una-tragedia-en-cordoba_606021 (62 párrafos)",
-  "Google Noticias 200 3",
-  "* Cadena 3 Argentina: Frenaron de golpe debajo de un puente para evitar el granizo y casi causan una tragedia en -> https://www.cadena3.com/noticia/radioinforme-3/frenaron-de-golpe-debajo-de-un-puente-para-evitar-el-granizo-y-casi-causan-una-tragedia-en-cordoba_606021 (62 párrafos)",
+  "Google Noticias 200 4",
   "Google Noticias 200 100",
   "* Cadena 3 Argentina: Frenaron de golpe debajo de un puente para evitar el granizo y casi causan una tragedia en -> https://www.cadena3.com/noticia/radioinforme-3/frenaron-de-golpe-debajo-de-un-puente-para-evitar-el-granizo-y-casi-causan-una-tragedia-en-cordoba_606021 (62 párrafos)",
   "* La Voz del Interior: Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuer -> https://www.lavoz.com.ar/servicios/lluvia-alertas-amarillo-naranja-avisos-corto-cordoba-tormentas-fuertes-granizo_0_qgT4x5Oxj1.html (22 párrafos)",
-  "Google Noticias 200 4",
+  "Google Noticias 200 6",
   "* Vía País: La lista de zonas bajo alerta por granizo en Córdoba - Vía País -> https://viapais.com.ar/cordoba/alerta-granizo-cordoba-zonas-riesgo_0_Y0beFraifJ.html (15 párrafos)",
   "- Vía País: Alerta por tormentas y granizo en Córdoba: cuáles son las zonas afectadas - Vía País (pronóstico, se ignora)"
  ]
