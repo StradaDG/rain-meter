@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-22T21:00:12.186Z",
+ "updated": "2026-10-22T21:31:39.763Z",
  "date": "2026-10-22",
- "noticias": 12,
+ "noticias": 13,
  "barrios": [
   {
    "name": "Malvinas Argentinas",
@@ -48,12 +48,6 @@
    "link": "https://www.lavoz.com.ar/servicios/lluvia-alertas-amarillo-naranja-avisos-corto-cordoba-tormentas-fuertes-granizo_0_qgT4x5Oxj1.html"
   },
   {
-   "src": "Cba24n",
-   "time": "2026-10-22T18:15:57.000Z",
-   "title": "Tormentas en Córdoba: cayó granizo en varias localidades del interior provincial",
-   "link": "https://www.cba24n.com.ar/cordoba/tormentas-en-cordoba--cayo-granizo-en-varias-localidades-del-interior-provincial_a6ada51b01773f855c7f2dcc9"
-  },
-  {
    "src": "Vía País",
    "time": "2026-10-22T14:54:34.000Z",
    "title": "La lista de zonas bajo alerta por granizo en Córdoba",
@@ -70,23 +64,30 @@
    "time": "2026-10-22T15:30:58.000Z",
    "title": "tormenta granizo san francisco cordoba alerta amarillo - Temas",
    "link": "https://www.cadena3.com/pagina/tag/tormenta-granizo-san-francisco-cordoba-alerta-amarillo"
+  },
+  {
+   "src": "Cba24n",
+   "time": "2026-10-22T18:15:57.000Z",
+   "title": "Tormentas en Córdoba: cayó granizo en varias localidades del interior provincial",
+   "link": "https://www.cba24n.com.ar/cordoba/tormentas-en-cordoba--cayo-granizo-en-varias-localidades-del-interior-provincial_a6ada51b01773f855c7f2dcc9"
   }
  ],
  "debug": [
-  "Google Noticias 200 49",
+  "Google Noticias 200 48",
   "* La Voz del Interior: Se mantienen las alertas amarilla, naranja y avisos a corto para Córdoba por tormentas fue -> https://www.lavoz.com.ar/servicios/lluvia-alertas-amarillo-naranja-avisos-corto-cordoba-tormentas-fuertes-granizo_0_qgT4x5Oxj1.html (20 párrafos)",
-  "* Cba24n: Tormentas en Córdoba: cayó granizo en varias localidades del interior provincial - Cba24n -> https://www.cba24n.com.ar/cordoba/tormentas-en-cordoba--cayo-granizo-en-varias-localidades-del-interior-provincial_a6ada51b01773f855c7f2dcc9 (0 párrafos)",
   "* Vía País: La lista de zonas bajo alerta por granizo en Córdoba - Vía País -> https://viapais.com.ar/cordoba/alerta-granizo-cordoba-zonas-riesgo_0_Y0beFraifJ.html (15 párrafos)",
+  "- Cadena 3 Argentina: Alerta por tormentas en Córdoba: dónde cayó granizo y qué se espera para este jueves - Cad (pronóstico, se ignora)",
   "- Vía País: Alerta por tormentas y granizo en Córdoba: cuáles son las zonas afectadas - Vía País (pronóstico, se ignora)",
-  "* Cadena 3 Argentina: Frenaron de golpe debajo de un puente para evitar el granizo y casi causan una tragedia en -> https://www.cadena3.com/noticia/radioinforme-3/frenaron-de-golpe-debajo-de-un-puente-para-evitar-el-granizo-y-casi-causan-una-tragedia-en-cordoba_606021 (63 párrafos)",
-  "Google Noticias 200 6",
-  "* Cba24n: Tormentas en Córdoba: cayó granizo en varias localidades del interior provincial - Cba24n -> https://www.cba24n.com.ar/cordoba/tormentas-en-cordoba--cayo-granizo-en-varias-localidades-del-interior-provincial_a6ada51b01773f855c7f2dcc9 (0 párrafos)",
+  "* Cadena 3 Argentina: Frenaron de golpe debajo de un puente para evitar el granizo y casi causan una tragedia en -> https://www.cadena3.com/noticia/radioinforme-3/frenaron-de-golpe-debajo-de-un-puente-para-evitar-el-granizo-y-casi-causan-una-tragedia-en-cordoba_606021 (62 párrafos)",
+  "Google Noticias 200 7",
+  "- Cadena 3 Argentina: Alerta por tormentas en Córdoba: dónde cayó granizo y qué se espera para este jueves - Cad (pronóstico, se ignora)",
   "Google Noticias 200 100",
-  "* Cadena 3 Argentina: Frenaron de golpe debajo de un puente para evitar el granizo y casi causan una tragedia en -> https://www.cadena3.com/noticia/radioinforme-3/frenaron-de-golpe-debajo-de-un-puente-para-evitar-el-granizo-y-casi-causan-una-tragedia-en-cordoba_606021 (63 párrafos)",
-  "* Cadena 3 Argentina: tormenta granizo san francisco cordoba alerta amarillo - Temas - Cadena 3 Argentina -> https://www.cadena3.com/pagina/tag/tormenta-granizo-san-francisco-cordoba-alerta-amarillo (13 párrafos)",
+  "- Cadena 3 Argentina: Alerta por tormentas en Córdoba: dónde cayó granizo y qué se espera para este jueves - Cad (pronóstico, se ignora)",
+  "* Cadena 3 Argentina: Frenaron de golpe debajo de un puente para evitar el granizo y casi causan una tragedia en -> https://www.cadena3.com/noticia/radioinforme-3/frenaron-de-golpe-debajo-de-un-puente-para-evitar-el-granizo-y-casi-causan-una-tragedia-en-cordoba_606021 (62 párrafos)",
+  "* Cadena 3 Argentina: tormenta granizo san francisco cordoba alerta amarillo - Temas - Cadena 3 Argentina -> https://www.cadena3.com/pagina/tag/tormenta-granizo-san-francisco-cordoba-alerta-amarillo (12 párrafos)",
   "* La Voz del Interior: Se mantienen las alertas amarilla, naranja y avisos a corto para Córdoba por tormentas fue -> https://www.lavoz.com.ar/servicios/lluvia-alertas-amarillo-naranja-avisos-corto-cordoba-tormentas-fuertes-granizo_0_qgT4x5Oxj1.html (20 párrafos)",
   "* Cba24n: Tormentas en Córdoba: cayó granizo en varias localidades del interior provincial - Cba24n -> https://www.cba24n.com.ar/cordoba/tormentas-en-cordoba--cayo-granizo-en-varias-localidades-del-interior-provincial_a6ada51b01773f855c7f2dcc9 (0 párrafos)",
-  "Google Noticias 200 9",
+  "Google Noticias 200 11",
   "* Vía País: La lista de zonas bajo alerta por granizo en Córdoba - Vía País -> https://viapais.com.ar/cordoba/alerta-granizo-cordoba-zonas-riesgo_0_Y0beFraifJ.html (15 párrafos)",
   "- Vía País: Alerta por tormentas y granizo en Córdoba: cuáles son las zonas afectadas - Vía País (pronóstico, se ignora)"
  ]
