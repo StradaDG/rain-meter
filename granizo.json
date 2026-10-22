@@ -1,13 +1,83 @@
 {
- "updated": "2026-10-22T10:09:26.269Z",
+ "updated": "2026-10-22T11:02:22.260Z",
  "date": "2026-10-22",
- "noticias": 0,
- "barrios": [],
- "reportes": [],
+ "noticias": 2,
+ "barrios": [
+  {
+   "name": "Observatorio",
+   "first": "2026-10-22T10:39:23.000Z",
+   "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-22T10:39:23.000Z",
+     "title": "Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuertes y granizo - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPQXotWndmQ1dEOVppdGJvNzF4dDlRQlprN0V5R19YWjdJbG1JNzIzeUFqV3pzcncxTGowbFZHT05HQ3hZQmdiZGlBWjNXOVd5U2swbXVIbG1PSUlUWENUMUo2QTg0MHNkQUtYR1RZTkdLUjFfU1JIRlFxcEFGWlRSemp3YnNJbzNqbHdUR3hwYzFqdjBvOVRXUHl4d2ZaY3F4MWdKcDU5RmJHdnprVkYtUENlcE5QSnpIcmZUSlgwSXI5dHU2R0pPN1lfVQ?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Saldán",
+   "first": "2026-10-22T10:39:23.000Z",
+   "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-22T10:39:23.000Z",
+     "title": "Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuertes y granizo - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPQXotWndmQ1dEOVppdGJvNzF4dDlRQlprN0V5R19YWjdJbG1JNzIzeUFqV3pzcncxTGowbFZHT05HQ3hZQmdiZGlBWjNXOVd5U2swbXVIbG1PSUlUWENUMUo2QTg0MHNkQUtYR1RZTkdLUjFfU1JIRlFxcEFGWlRSemp3YnNJbzNqbHdUR3hwYzFqdjBvOVRXUHl4d2ZaY3F4MWdKcDU5RmJHdnprVkYtUENlcE5QSnpIcmZUSlgwSXI5dHU2R0pPN1lfVQ?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "La Calera",
+   "first": "2026-10-22T10:39:23.000Z",
+   "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-22T10:39:23.000Z",
+     "title": "Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuertes y granizo - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPQXotWndmQ1dEOVppdGJvNzF4dDlRQlprN0V5R19YWjdJbG1JNzIzeUFqV3pzcncxTGowbFZHT05HQ3hZQmdiZGlBWjNXOVd5U2swbXVIbG1PSUlUWENUMUo2QTg0MHNkQUtYR1RZTkdLUjFfU1JIRlFxcEFGWlRSemp3YnNJbzNqbHdUR3hwYzFqdjBvOVRXUHl4d2ZaY3F4MWdKcDU5RmJHdnprVkYtUENlcE5QSnpIcmZUSlgwSXI5dHU2R0pPN1lfVQ?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Carlos Paz",
+   "first": "2026-10-22T10:39:23.000Z",
+   "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-22T10:39:23.000Z",
+     "title": "Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuertes y granizo - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPQXotWndmQ1dEOVppdGJvNzF4dDlRQlprN0V5R19YWjdJbG1JNzIzeUFqV3pzcncxTGowbFZHT05HQ3hZQmdiZGlBWjNXOVd5U2swbXVIbG1PSUlUWENUMUo2QTg0MHNkQUtYR1RZTkdLUjFfU1JIRlFxcEFGWlRSemp3YnNJbzNqbHdUR3hwYzFqdjBvOVRXUHl4d2ZaY3F4MWdKcDU5RmJHdnprVkYtUENlcE5QSnpIcmZUSlgwSXI5dHU2R0pPN1lfVQ?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Río Segundo",
+   "first": "2026-10-22T10:39:23.000Z",
+   "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-22T10:39:23.000Z",
+     "title": "Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuertes y granizo - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPQXotWndmQ1dEOVppdGJvNzF4dDlRQlprN0V5R19YWjdJbG1JNzIzeUFqV3pzcncxTGowbFZHT05HQ3hZQmdiZGlBWjNXOVd5U2swbXVIbG1PSUlUWENUMUo2QTg0MHNkQUtYR1RZTkdLUjFfU1JIRlFxcEFGWlRSemp3YnNJbzNqbHdUR3hwYzFqdjBvOVRXUHl4d2ZaY3F4MWdKcDU5RmJHdnprVkYtUENlcE5QSnpIcmZUSlgwSXI5dHU2R0pPN1lfVQ?oc=5"
+    }
+   ]
+  }
+ ],
+ "reportes": [
+  {
+   "src": "La Voz del Interior",
+   "time": "2026-10-22T10:39:23.000Z",
+   "title": "Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuertes y granizo",
+   "link": "https://www.lavoz.com.ar/servicios/lluvia-alertas-amarillo-naranja-avisos-corto-cordoba-tormentas-fuertes-granizo_0_qgT4x5Oxj1.html"
+  }
+ ],
  "debug": [
   "Google Noticias 200 47",
-  "Google Noticias 200 1",
+  "* La Voz del Interior: Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuer -> https://www.lavoz.com.ar/servicios/lluvia-alertas-amarillo-naranja-avisos-corto-cordoba-tormentas-fuertes-granizo_0_qgT4x5Oxj1.html (21 párrafos)",
+  "Google Noticias 200 0",
   "Google Noticias 200 100",
-  "Google Noticias 200 1"
+  "* La Voz del Interior: Tras la lluvia, alertas amarillo, naranja y avisos a corto para Córdoba por tormentas fuer -> https://www.lavoz.com.ar/servicios/lluvia-alertas-amarillo-naranja-avisos-corto-cordoba-tormentas-fuertes-granizo_0_qgT4x5Oxj1.html (21 párrafos)",
+  "Google Noticias 200 2"
  ]
 }
