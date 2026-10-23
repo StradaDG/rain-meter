@@ -1,16 +1,16 @@
 {
- "updated": "2026-10-23T16:06:34.185Z",
+ "updated": "2026-10-23T17:03:32.173Z",
  "date": "2026-10-23",
  "noticias": 2,
  "barrios": [
   {
    "name": "Observatorio",
-   "first": "2026-10-23T10:02:00.000Z",
+   "first": "2026-10-23T10:03:45.000Z",
    "sources": [
     {
      "src": "La Voz del Interior",
-     "time": "2026-10-23T10:02:00.000Z",
-     "title": "Clima en Córdoba: tiempo inestable alerta por tormentas fuertes con posibilidad de caída de granizo - La Voz del Interior",
+     "time": "2026-10-23T10:03:45.000Z",
+     "title": "Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caída de granizo - La Voz del Interior",
      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQT1lxTjM4VWdLcjdYVmY2bTk4dG1YYzhYaEhxMjgyV0lqMWdoRDdtTG10V09EVm5fR18yXzdMc1pVTHVGUVNpNV9LLVJCTHNaLUVLODhxZWpJTjVMRDZMcmc5TGIzY3Y1dEdnaFBOaHJHcTZhSy1IWXpucFlxNUZyNjF1YnlCN3Z5ZjdZTkhDWHRQNlVmU09zV1g2Wl9pdUlIaG0tLVRaSzVYSk5mUnJ4V00wazEzLWhobWp1WDc5QWVxekR4UTdRY2VWdw?oc=5"
     }
    ]
@@ -19,15 +19,15 @@
  "reportes": [
   {
    "src": "La Voz del Interior",
-   "time": "2026-10-23T10:02:00.000Z",
-   "title": "Clima en Córdoba: tiempo inestable alerta por tormentas fuertes con posibilidad de caída de granizo",
+   "time": "2026-10-23T10:03:45.000Z",
+   "title": "Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caída de granizo",
    "link": "https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html"
   }
  ],
  "debug": [
-  "Google Noticias 200 52",
-  "* La Voz del Interior: Clima en Córdoba: tiempo inestable alerta por tormentas fuertes con posibilidad de caída d -> https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html (25 párrafos)",
-  "Google Noticias 200 22",
+  "Google Noticias 200 54",
+  "* La Voz del Interior: Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caí -> https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html (25 párrafos)",
+  "Google Noticias 200 20",
   "Google Noticias 200 100",
   "* La Voz del Interior: Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caí -> https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html (25 párrafos)",
   "Google Noticias 200 36"
