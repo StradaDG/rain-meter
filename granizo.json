@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-23T23:23:22.547Z",
+ "updated": "2026-10-23T23:53:05.748Z",
  "date": "2026-10-23",
- "noticias": 2,
+ "noticias": 4,
  "barrios": [
   {
    "name": "Observatorio",
@@ -25,11 +25,13 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 27",
+  "Google Noticias 200 49",
+  "- Cadena 3 Argentina: Alerta por tormentas fuertes en Córdoba: advierten por granizo y ráfagas de hasta 90 km/h  (pronóstico, se ignora)",
   "* La Voz del Interior: Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caí -> https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html (25 párrafos)",
-  "Google Noticias 200 7",
+  "Google Noticias 200 8",
   "Google Noticias 200 100",
+  "- Cadena 3 Argentina: Alerta por tormentas fuertes en Córdoba: advierten por granizo y ráfagas de hasta 90 km/h  (pronóstico, se ignora)",
   "* La Voz del Interior: Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caí -> https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html (25 párrafos)",
-  "Google Noticias 200 33"
+  "Google Noticias 200 32"
  ]
 }
