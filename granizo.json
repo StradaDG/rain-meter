@@ -1,39 +1,13 @@
 {
- "updated": "2026-10-24T02:59:29.764Z",
- "date": "2026-10-23",
- "noticias": 6,
- "barrios": [
-  {
-   "name": "Observatorio",
-   "first": "2026-10-23T10:03:45.000Z",
-   "sources": [
-    {
-     "src": "La Voz del Interior",
-     "time": "2026-10-23T10:03:45.000Z",
-     "title": "Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caída de granizo - La Voz del Interior",
-     "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQT1lxTjM4VWdLcjdYVmY2bTk4dG1YYzhYaEhxMjgyV0lqMWdoRDdtTG10V09EVm5fR18yXzdMc1pVTHVGUVNpNV9LLVJCTHNaLUVLODhxZWpJTjVMRDZMcmc5TGIzY3Y1dEdnaFBOaHJHcTZhSy1IWXpucFlxNUZyNjF1YnlCN3Z5ZjdZTkhDWHRQNlVmU09zV1g2Wl9pdUlIaG0tLVRaSzVYSk5mUnJ4V00wazEzLWhobWp1WDc5QWVxekR4UTdRY2VWdw?oc=5"
-    }
-   ]
-  }
- ],
- "reportes": [
-  {
-   "src": "La Voz del Interior",
-   "time": "2026-10-23T10:03:45.000Z",
-   "title": "Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caída de granizo",
-   "link": "https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html"
-  }
- ],
+ "updated": "2026-10-24T03:30:00.108Z",
+ "date": "2026-10-24",
+ "noticias": 0,
+ "barrios": [],
+ "reportes": [],
  "debug": [
-  "Google Noticias 200 50",
-  "- Cadena 3 Argentina: Alerta por tormentas fuertes en Córdoba: advierten por granizo y ráfagas de hasta 90 km/h  (pronóstico, se ignora)",
-  "- eldoce: Alerta amarilla en Córdoba: advierten tormentas con lluvias, granizo y ráfagas de viento - (pronóstico, se ignora)",
-  "* La Voz del Interior: Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caí -> https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html (25 párrafos)",
-  "Google Noticias 200 8",
+  "Google Noticias 200 49",
+  "Google Noticias 200 7",
   "Google Noticias 200 100",
-  "- Cadena 3 Argentina: Alerta por tormentas fuertes en Córdoba: advierten por granizo y ráfagas de hasta 90 km/h  (pronóstico, se ignora)",
-  "- eldoce: Alerta amarilla en Córdoba: advierten tormentas con lluvias, granizo y ráfagas de viento - (pronóstico, se ignora)",
-  "* La Voz del Interior: Clima en Córdoba: tiempo inestable con alerta por tormentas fuertes con posibilidad de caí -> https://www.lavoz.com.ar/servicios/clima-cordoba-preven-tormentas-aisladas-decenso-temperatura-viernes-23-octubre_0_KQ4FkjtjBP.html (25 párrafos)",
-  "Google Noticias 200 32"
+  "Google Noticias 200 31"
  ]
 }
