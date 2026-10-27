@@ -272,6 +272,26 @@ body{background:transparent!important}
 .arhint{font-size:11px;color:var(--muted)}
 @media (max-width:700px){.arw{flex-direction:column;flex-wrap:nowrap;gap:6px}.arsvg{height:auto;flex:1;min-height:0;width:auto;max-width:100%}.arside{flex:none}
   .arside{max-width:none;width:100%;gap:4px}.armv{font-size:12px;flex-direction:row;gap:6px;flex-wrap:wrap}.arhint{display:none}}
+/* Pronóstico unificado */
+.fc-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.fc-mv{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:#cfe3ff}
+.fc-hero{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;border-radius:16px;background:#1b2944}
+.fc-hero b{display:block;font:400 clamp(20px,3.4vw,28px)/1.05 "Anton","Impact",sans-serif;letter-spacing:.01em}
+.fc-hero span{font-size:13px;opacity:.9}
+.fc-hero.ok{background:#14513f}.fc-hero.rain{background:#1d3f86}.fc-hero.warn{background:#9a4b0c}.fc-hero.bad{background:#a3172a}
+.fc-hail{text-align:center;flex:none;padding:6px 10px;border-radius:12px;background:#0000003a}
+.fc-hail small{display:block;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+.fc-hail b{font-size:24px}
+.fc-sec{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fc-chart{width:100%;height:auto;max-height:160px;display:block;flex:none}
+.fc-chart .bv{fill:#eaf2ff;font:700 17px var(--f-data)} .fc-chart .bl{fill:#8fa0bb;font:600 15px var(--f-data)}
+.fc-later{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:4px}
+.fc-h{display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;border-radius:10px;background:#ffffff08;font:600 12px var(--f-data);min-width:0}
+.fc-h .t{color:var(--muted);font-size:11px}.fc-h .mm{font-size:12px}.fc-h .hz{font:700 10px var(--f-body);min-height:12px}
+.fc-h .ic{width:22px!important;height:22px!important}
+.tl .fc-h .hz.l0{color:var(--ok)}.tl .fc-h .hz.l1{color:var(--warn)}.tl .fc-h .hz.l2{color:var(--bad)}
+@media (max-width:700px){.fc-hero{padding:8px 10px;border-radius:12px}.fc-hero b{font-size:19px}.fc-hero span{font-size:11px}.fc-hail b{font-size:18px}
+  .fc-later{grid-template-columns:repeat(5,minmax(0,1fr))}.fc-h:nth-child(n+6){display:none}.fc-h{padding:3px 0;font-size:11px}.fc-h .ic{width:18px!important;height:18px!important}.fc-mv{font-size:11px}}
 </style>
 </head>
 <body>
@@ -310,8 +330,7 @@ body{background:transparent!important}
     <div class="sathead">
       <h2><svg class="ic" style="--s:26px"><use href="#i-storm"/></svg>Lluvia y granizo</h2>
       <div class="seg" role="group" aria-label="Qué mostrar">
-        <button type="button" id="b-tl" aria-pressed="true">Próximas horas</button>
-        <button type="button" id="b-ar" aria-pressed="false">Llegada</button>
+        <button type="button" id="b-tl" aria-pressed="true">Pronóstico</button>
         <button type="button" id="b-radar" aria-pressed="false">Radar</button>
       </div>
       <button type="button" id="mfull" class="mfull" aria-label="Agrandar mapa" title="Agrandar mapa"></button>
@@ -319,7 +338,7 @@ body{background:transparent!important}
     <div class="mapbox">
       <div id="map" class="frame"></div>
       <div id="tl" class="tl"></div>
-      <div id="ar" class="tl ar" hidden></div>
+      
       <div id="nh" class="nh" hidden></div>
       <iframe id="radar" class="frame radarf" title="Radar real del SMN (Windy)" hidden allowfullscreen></iframe>
       <div class="mleg" id="mleg"></div>
@@ -329,7 +348,7 @@ body{background:transparent!important}
         <span id="mtime">Ahora</span>
       </div>
     </div>
-    <div class="satnote">Pronóstico hora por hora: barra = lluvia (mm), 🧊 = probabilidad de granizo. "Radar": lo que llueve ahora (SMN) y arriba la próxima hora.</div>
+    <div class="satnote">Pronóstico: arriba lo que pasa en las próximas 2 h (cada 15 min), abajo el resto del día. "Radar": lo que está lloviendo ahora (SMN).</div>
   </section>
 
 </div>
@@ -678,7 +697,7 @@ let tlPlace=0;
 let NEXT=null;
 async function loadNext(){try{
   const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${PLACES.map(p=>p.lat)}&longitude=${PLACES.map(p=>p.lon)}&minutely_15=precipitation&forecast_minutely_15=10&timezone=America%2FArgentina%2FCordoba`);
-  if(!r.ok)return;let j=await r.json();if(!Array.isArray(j))j=[j];NEXT=j.map(x=>rain15(x).slice(1,9));renderNH()}catch(e){}}
+  if(!r.ok)return;let j=await r.json();if(!Array.isArray(j))j=[j];NEXT=j.map(x=>rain15(x).slice(1,9));renderTL()}catch(e){}}
 function renderNH(){const el=$("#nh");if(!el||el.hidden)return;const d=DATA[tlPlace];
   const name=tlPlace?"Autódromo":"Casa";let steps=NEXT?.[tlPlace];
   if(!steps&&d?.hours){steps=[...Array(8)].map((_,k)=>({h:{precipitation:d.hours[k<4?0:1]?.h.precipitation||0}}))}
@@ -687,7 +706,7 @@ function renderNH(){const el=$("#nh");if(!el||el.hidden)return;const d=DATA[tlPl
   const W=320,H=74,bw=W/8,mx=Math.max(2,...steps.map(x=>x.h.precipitation||0));
   const bars=steps.map((x,k)=>{const mm=x.h.precipitation||0;let c="#5ad8e6";for(const[t,col]of RAINC)if(mm>=t)c=col;
     const bh=mm>=.05?Math.max(4,(mm/mx)*(H-30)):2,xx=k*bw+5,y=H-16-bh;
-    return `<rect x="${xx}" y="${y}" width="${bw-10}" height="${bh}" rx="4" fill="${mm>=.05?c:"#ffffff22"}"/>`+
+    return `<rect x="${xx}" y="${y}" width="${bw-16}" height="${bh}" rx="4" fill="${mm>=.05?c:"#ffffff22"}"/>`+
       (mm>=.05?`<text x="${xx+(bw-10)/2}" y="${y-4}" text-anchor="middle" class="bv">${mm.toFixed(1)}</text>`:"")+
       `<text x="${xx+(bw-10)/2}" y="${H-3}" text-anchor="middle" class="bl">+${(k+1)*15}'</text>`}).join("");
   /* movimiento de las tormentas: viento en altura (las tormentas se desplazan con él) */
@@ -701,57 +720,49 @@ function renderNH(){const el=$("#nh");if(!el||el.hidden)return;const d=DATA[tlPl
   $(".mapbox").style.setProperty("--nhh",el.offsetHeight+"px");
 }
 function setMode(m){
-  const rf=$("#radar"),tl=$("#tl"),ar=$("#ar"),nh=$("#nh"),box=$(".mapbox");
-  $("#b-radar").setAttribute("aria-pressed",m==="radar");$("#b-tl").setAttribute("aria-pressed",m==="tl");$("#b-ar").setAttribute("aria-pressed",m==="ar");
-  rf.hidden=m!=="radar";nh.hidden=m!=="radar";tl.hidden=m!=="tl";ar.hidden=m!=="ar";box.classList.toggle("nhon",m==="radar");
-  if(m==="radar"){if(!rf.src)rf.src=RADAR_URL;renderNH()}else if(m==="tl")renderTL();else renderAR();
+  const rf=$("#radar"),tl=$("#tl"),nh=$("#nh"),box=$(".mapbox");
+  $("#b-radar").setAttribute("aria-pressed",m==="radar");$("#b-tl").setAttribute("aria-pressed",m!=="radar");
+  rf.hidden=m!=="radar";tl.hidden=m==="radar";nh.hidden=true;box.classList.remove("nhon");
+  if(m==="radar"){if(!rf.src)rf.src=RADAR_URL}else renderTL();
 }
 const switchMode=m=>setMode(m);
-$("#b-tl").onclick=()=>setMode("tl");$("#b-ar").onclick=()=>setMode("ar");$("#b-radar").onclick=()=>setMode("radar");
-function renderTL(){renderNH();renderAR();
+$("#b-tl").onclick=()=>setMode("tl");$("#b-radar").onclick=()=>setMode("radar");
+/* --- Pronóstico unificado: titular claro + próximas 2 h (cada 15') + resto del día --- */
+const rainName=mm=>mm<1?"débil":mm<4?"moderada":mm<8?"fuerte":"muy fuerte";
+function renderTL(){
   const el=$("#tl");if(!el||el.hidden)return;const d=DATA[tlPlace];
   const seg=`<div class="seg" role="group" aria-label="Lugar">${PLACES.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===tlPlace}">${i?"Autódromo":"Casa"}</button>`).join("")}</div>`;
-  if(!d||!d.hours){el.innerHTML=`<div class="tlhead">${seg}<div class="tlsum">Cargando pronóstico…</div></div>`;bindTL();return}
-  const hrs=d.hours.slice(0,12),mx=Math.max(4,...hrs.map(h=>h.h.precipitation||0));
-  const tot=hrs.reduce((a,h)=>a+(h.h.precipitation||0),0),pk=hrs.reduce((a,b)=>b.hs>a.hs?b:a,hrs[0]);
-  el.innerHTML=`<div class="tlhead">${seg}<div class="tlsum">Próximas 12 h: lluvia <b>${tot.toFixed(1)} mm</b> · granizo máx <b class="l${pk.hl}">${pk.hs}%</b>${pk.hs>=10?` a las ${hhmm(pk.t)}`:""}</div></div>
-  <div class="tlrows"><div class="tlr hd"><span>Hora</span><span></span><span>Lluvia</span><span class="tmm">mm</span><span class="tpp">Prob.</span><span>Granizo</span></div>
-  ${hrs.map((h,k)=>{const mm=h.h.precipitation||0,pp=Math.round(h.h.precipitation_probability??0);let c="#5ad8e6";for(const[t,col]of RAINC)if(mm>=t)c=col;
-    return `<div class="tlr${k===0?" now":""}"><span>${k===0?"Ahora":hhmm(h.t).slice(0,2)+"h"}</span>${ic(nowIcon(h.h),22)}<div class="tbar"><i style="width:${mm>0?Math.max(4,mm/mx*100):0}%;background:${c}"></i></div><span class="tmm">${mm>=.05?mm.toFixed(1):"—"}</span><span class="tpp">${pp}%</span><span class="thail l${h.hl}">${h.hs>=10?"🧊 "+h.hs+"%":""}</span></div>`}).join("")}</div>`;
+  if(!d?.hours){el.innerHTML=`<div class="fc-top">${seg}</div><div class="fc-hero">Cargando pronóstico…</div>`;bindTL();return}
+  let steps=NEXT?.[tlPlace];
+  if(!steps)steps=[...Array(8)].map((_,k)=>({t:Date.now()+(k+1)*9e5,h:{precipitation:d.hours[k<4?0:1]?.h.precipitation||0}}));
+  const now=d.hours[0].h.precipitation||0,first=steps.findIndex(x=>(x.h.precipitation||0)>=.2);
+  const pk=steps.reduce((a,x)=>Math.max(a,x.h.precipitation||0),0);
+  const hz=Math.max(d.hours[0].hs,d.hours[1]?.hs||0,d.hours[2]?.hs||0),hl=hailLevel(hz);
+  let title,sub,tone;
+  if(now>=.2){title="☔ Está lloviendo";sub=`Lluvia ${rainName(Math.max(now,pk))} · hasta ${pk.toFixed(1)} mm/h en 2 h`;tone="rain"}
+  else if(first>=0){title=`☔ Lluvia en ~${(first+1)*15} min`;sub=`Llega ${rainName(pk)} · hasta ${pk.toFixed(1)} mm/h`;tone="rain"}
+  else{title="☀️ Sin lluvia en las próximas 2 h";sub="Tranquilo por ahora";tone="ok"}
+  if(hl===2)tone="bad";else if(hl===1)tone="warn";
+  /* movimiento de las tormentas */
+  const h0=d.hours[0].h,from=h0.wind_direction_500hPa??270,to=(from+180)%360,sp=Math.round((h0.wind_speed_500hPa||0)*.6);
+  const dirs=["N","NE","E","SE","S","SO","O","NO"],dn=dirs[Math.round(from/45)%8];
+  /* barras: próximas 2 h */
+  const W=640,H=120,bw=W/8,mx=Math.max(2,pk);
+  const bars=steps.map((x,k)=>{const mm=x.h.precipitation||0;let c="#5ad8e6";for(const[t,col]of RAINC)if(mm>=t)c=col;
+    const bh=mm>=.05?Math.max(6,(mm/mx)*(H-44)):4,xx=k*bw+8,y=H-22-bh;
+    return `<rect x="${xx}" y="${y}" width="${bw-10}" height="${bh}" rx="4" fill="${mm>=.05?c:"#ffffff1f"}"/>`+
+      (mm>=.05?`<text x="${xx+(bw-16)/2}" y="${y-6}" text-anchor="middle" class="bv">${mm.toFixed(1)}</text>`:"")+
+      `<text x="${xx+(bw-16)/2}" y="${H-4}" text-anchor="middle" class="bl">+${(k+1)*15}'</text>`}).join("");
+  /* resto del día: columnas por hora */
+  const later=d.hours.slice(2,12).map(h=>{const mm=h.h.precipitation||0;let c=null;for(const[t,col]of RAINC)if(mm>=t)c=col;
+    return `<div class="fc-h"><span class="t">${hhmm(h.t).slice(0,2)}h</span>${ic(nowIcon(h.h),24)}<span class="mm" style="${c?`color:${c}`:""}">${mm>=.05?mm.toFixed(1):"—"}</span><span class="hz l${h.hl}">${h.hs>=10?"🧊"+h.hs+"%":""}</span></div>`}).join("");
+  el.innerHTML=`<div class="fc-top">${seg}<span class="fc-mv"><svg viewBox="0 0 24 24" width="18" height="18" style="transform:rotate(${to}deg)"><path d="M12 3l6 9h-4v9h-4v-9H6z" fill="currentColor"/></svg>Tormentas desde el ${dn} · ${sp} km/h</span></div>
+  <div class="fc-hero ${tone}"><div><b>${title}</b><span>${sub}</span></div><div class="fc-hail l${hl}"><small>Granizo</small><b>${hz}%</b></div></div>
+  <div class="fc-sec">Próximas 2 horas · mm/h</div><svg class="fc-chart" viewBox="0 0 ${W} ${H}">${bars}</svg>
+  <div class="fc-sec">Resto del día</div><div class="fc-later">${later}</div>`;
   bindTL();
 }
-/* --- Llegada: blanco centrado en el lugar; anillos = +15 min; color = lluvia; flecha = desde dónde vienen --- */
-function renderAR(){
-  const el=$("#ar");if(!el||el.hidden)return;const d=DATA[tlPlace];
-  const seg=`<div class="seg" role="group" aria-label="Lugar">${PLACES.map((p,i)=>`<button type="button" data-i="${i}" aria-pressed="${i===tlPlace}">${i?"Autódromo":"Casa"}</button>`).join("")}</div>`;
-  let steps=NEXT?.[tlPlace];
-  if(!d?.hours){el.innerHTML=`<div class="tlhead">${seg}<div class="tlsum">Cargando pronóstico…</div></div>`;bindAR();return}
-  if(!steps)steps=[...Array(8)].map((_,k)=>({t:Date.now()+(k+1)*9e5,h:{precipitation:d.hours[k<4?0:1]?.h.precipitation||0}}));
-  const hzAt=t=>{const h=d.hours.find(x=>t>=x.t&&t<x.t+36e5)||d.hours[0];return h};
-  const S=360,C=S/2,R0=34,dr=(C-46-R0)/8;let rings="",labels="",ice="";
-  steps.forEach((x,k)=>{const mm=x.h.precipitation||0;let c=null;for(const[t,col]of RAINC)if(mm>=t)c=col;const r=R0+dr*(k+.5);
-    rings+=`<circle cx="${C}" cy="${C}" r="${r}" fill="none" stroke="${c||"#ffffff10"}" stroke-width="${dr-2}"/>`;
-    if(k%2===1)labels+=`<text x="${C}" y="${C-r+3}" class="arl">+${(k+1)*15}'</text>`;
-    const hh=hzAt(x.t||Date.now()+(k+1)*9e5);if(hh.hs>=30&&mm>=.3)ice+=`<text x="${C+r*.71}" y="${C+r*.71+5}" class="ari">🧊</text>`;
-  });
-  const h0=d.hours[0].h,from=h0.wind_direction_500hPa??270,sp=Math.round((h0.wind_speed_500hPa||0)*.6);
-  const dirs=["N","NE","E","SE","S","SO","O","NO"],dn=dirs[Math.round(from/45)%8];
-  /* flecha que entra desde el borde (lado de donde vienen) hacia el centro */
-  const arrow=`<g transform="rotate(${from} ${C} ${C})"><line x1="${C}" y1="34" x2="${C}" y2="${C-R0-6}" stroke="#ffffffcc" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 9"/><path d="M${C-11} ${C-R0-22} L${C} ${C-R0-4} L${C+11} ${C-R0-22} Z" fill="#fff"/></g>`;
-  const card=["N","E","S","O"].map((t,i)=>{const a=i*90*Math.PI/180,x=C+Math.sin(a)*(C-14),y=C-Math.cos(a)*(C-14)+4;return `<text x="${x}" y="${y}" class="arc">${t}</text>`}).join("");
-  const now=d.hours[0].h.precipitation||0,first=steps.findIndex(x=>(x.h.precipitation||0)>=.2);
-  const msg=now>=.2?`Lloviendo ahora (${now.toFixed(1)} mm/h)`:first>=0?`Lluvia en ~${(first+1)*15} min`:`Sin lluvia en las próximas 2 h`;
-  const pk=steps.reduce((a,x)=>Math.max(a,x.h.precipitation||0),0);
-  el.innerHTML=`<div class="tlhead">${seg}<div class="tlsum"><b>${msg}</b> · máx ${pk.toFixed(1)} mm/h</div></div>
-  <div class="arw"><svg viewBox="0 0 ${S} ${S}" class="arsvg">
-    <circle cx="${C}" cy="${C}" r="${C-26}" fill="#0c1424" stroke="#ffffff14"/>${rings}${labels}${ice}${card}
-    <circle cx="${C}" cy="${C}" r="${R0-4}" fill="#1b2944"/><text x="${C}" y="${C-2}" class="arh">🏠</text><text x="${C}" y="${C+16}" class="arn">ahora</text>${arrow}</svg>
-  <div class="arside"><div class="armv"><b>Las tormentas llegan desde el ${dn}</b><span>se mueven a ~${sp} km/h</span></div>
-    <div class="arleg">${[["#5ad8e6","Débil"],["#6ef05a","Moderada"],["#ffe14a","Fuerte"],["#ff9d2e","Muy fuerte"],["#ff3b4f","Intensa"]].map(([c,t])=>`<span><i style="background:${c}"></i>${t}</span>`).join("")}</div>
-    <div class="arhint">Centro = ahora · cada anillo = +15 min · 🧊 = posible granizo</div></div></div>`;
-  bindAR();
-}
-function bindAR(){$("#ar").querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{tlPlace=+b.dataset.i;renderTL();renderAR()})}
+function renderAR(){}
 function bindTL(){$("#tl").querySelectorAll(".seg button").forEach(b=>b.onclick=()=>{tlPlace=+b.dataset.i;renderTL()})}
 
 /* --- iPhone (app en pantalla de inicio): usar todo el alto real de la pantalla --- */
