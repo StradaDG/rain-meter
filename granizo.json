@@ -1,35 +1,13 @@
 {
- "updated": "2026-10-28T02:37:29.851Z",
- "date": "2026-10-27",
- "noticias": 2,
- "barrios": [
-  {
-   "name": "Carlos Paz",
-   "first": "2026-10-27T11:30:42.000Z",
-   "sources": [
-    {
-     "src": "Vía País",
-     "time": "2026-10-27T11:30:42.000Z",
-     "title": "Se vienen tormentas en Córdoba y caída de granizo: a qué hora llegarán - Vía País",
-     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOMU5tbTZKZ2cxcjctWWQ5aTdNWVhQYk92WjVyQWZNdnFTdE9BNDh0VGdGMUoza19UczlBR2U4NUlvQUR3QlltZzhlQ2R2MlRZTWZTQmRiLWpsSXBpOEltZGZoVUZ4X3FQZk5MR0FqSFBhMEE1M1I5T2txOGlRUVpNcnM3N2t2Y1BFelF4MkU2WThrb1VlcDJGWUpIcUdIQmpybUhiUVNPQm52QWUwSGRQbFNiczd5dV9FbUZEYWtB?oc=5"
-    }
-   ]
-  }
- ],
- "reportes": [
-  {
-   "src": "Vía País",
-   "time": "2026-10-27T11:30:42.000Z",
-   "title": "Se vienen tormentas en Córdoba y caída de granizo: a qué hora llegarán",
-   "link": "https://viapais.com.ar/cordoba/clima-cordoba-martes-27-octubre-alerta-tormentas-fuertes-posible-granizo_0_OglCimKtl2.html"
-  }
- ],
+ "updated": "2026-10-28T03:35:04.181Z",
+ "date": "2026-10-28",
+ "noticias": 0,
+ "barrios": [],
+ "reportes": [],
  "debug": [
-  "Google Noticias 200 20",
-  "* Vía País: Se vienen tormentas en Córdoba y caída de granizo: a qué hora llegarán - Vía País -> https://viapais.com.ar/cordoba/clima-cordoba-martes-27-octubre-alerta-tormentas-fuertes-posible-granizo_0_OglCimKtl2.html (15 párrafos)",
+  "Google Noticias 200 19",
   "Google Noticias 200 0",
   "Google Noticias 200 100",
-  "Google Noticias 200 79",
-  "* Vía País: Se vienen tormentas en Córdoba y caída de granizo: a qué hora llegarán - Vía País -> https://viapais.com.ar/cordoba/clima-cordoba-martes-27-octubre-alerta-tormentas-fuertes-posible-granizo_0_OglCimKtl2.html (15 párrafos)"
+  "Google Noticias 200 79"
  ]
 }
