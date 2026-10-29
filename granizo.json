@@ -1,13 +1,22 @@
 {
- "updated": "2026-10-29T18:38:25.366Z",
+ "updated": "2026-10-29T19:42:08.580Z",
  "date": "2026-10-29",
- "noticias": 0,
+ "noticias": 2,
  "barrios": [],
- "reportes": [],
+ "reportes": [
+  {
+   "src": "La Voz del Interior",
+   "time": "2026-10-29T18:40:39.000Z",
+   "title": "Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfagas",
+   "link": "https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 6",
+  "Google Noticias 200 7",
+  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (17 párrafos)",
   "Google Noticias 200 0",
-  "Google Noticias 200 60",
+  "Google Noticias 200 56",
+  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (17 párrafos)",
   "Google Noticias 200 2"
  ]
 }
