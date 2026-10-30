@@ -1,12 +1,18 @@
 {
- "updated": "2026-10-30T22:04:09.309Z",
+ "updated": "2026-10-30T23:02:55.399Z",
  "date": "2026-10-30",
  "noticias": 4,
  "barrios": [
   {
    "name": "Observatorio",
-   "first": "2026-10-30T11:32:13.000Z",
+   "first": "2026-10-30T10:35:00.000Z",
    "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-30T10:35:00.000Z",
+     "title": "Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfagas - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPbG11Nl9HY0JiRFdjQ3pZTVU1NVVLdTVEMlV5cnAzLXdNd05tYV92NE1QX3NhamU2b1FLNGE5Z1ZqSjhaZEpJeGswU1RFb21fY0xBanZnNkNLVUM3TmdLNHNYZmYwX3NSTG9pcV9XQ3FJMG5wTU9MczYxV29iTHB3TkphX1VNU0tiMHZpSjNiWjdXOUkxSVhiN1pURkNZUmo1Qmpyb0RtSEV0UGhVbUNkN3Bjd2RUYU5SWndFSnppTlR2UQ?oc=5"
+    },
     {
      "src": "Vía País",
      "time": "2026-10-30T11:32:13.000Z",
@@ -43,12 +49,12 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 39",
-  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (17 párrafos)",
+  "Google Noticias 200 27",
+  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (19 párrafos)",
   "* Vía País: ¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y advierten por ines -> https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html (14 párrafos)",
-  "Google Noticias 200 3",
+  "Google Noticias 200 4",
   "Google Noticias 200 100",
-  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (17 párrafos)",
+  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (19 párrafos)",
   "Google Noticias 200 4",
   "* Vía País: ¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y advierten por ines -> https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html (14 párrafos)"
  ]
