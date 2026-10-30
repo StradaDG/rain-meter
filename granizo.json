@@ -1,29 +1,17 @@
 {
- "updated": "2026-10-30T21:12:31.769Z",
+ "updated": "2026-10-30T22:04:09.309Z",
  "date": "2026-10-30",
  "noticias": 4,
  "barrios": [
   {
    "name": "Observatorio",
-   "first": "2026-10-30T10:35:00.000Z",
+   "first": "2026-10-30T11:32:13.000Z",
    "sources": [
-    {
-     "src": "La Voz del Interior",
-     "time": "2026-10-30T10:35:00.000Z",
-     "title": "Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfagas - La Voz del Interior",
-     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxPbG11Nl9HY0JiRFdjQ3pZTVU1NVVLdTVEMlV5cnAzLXdNd05tYV92NE1QX3NhamU2b1FLNGE5Z1ZqSjhaZEpJeGswU1RFb21fY0xBanZnNkNLVUM3TmdLNHNYZmYwX3NSTG9pcV9XQ3FJMG5wTU9MczYxV29iTHB3TkphX1VNU0tiMHZpSjNiWjdXOUkxSVhiN1pURkNZUmo1Qmpyb0RtSEV0UGhVbUNkN3Bjd2RUYU5SWndFSnppTlR2UQ?oc=5"
-    },
     {
      "src": "Vía País",
      "time": "2026-10-30T11:32:13.000Z",
      "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y advierten por inestabilidad este viernes - Vía País",
      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPSHo1YXN2REUyTFAxWEVKOEZHRGVLMnRHQVhqX2hYZlZKb0VrejRXalFmUkNTbFFETWdYUEVlTDc1QmZURHFYZy1nalBvdEh4N1pJemFsN0haeFZ3SlNhVjlaVDNEZlowODhEdncxVG9jVEhPS0ZBaVhTOVRqSDFKMmhMNUY3bE16VUxrVHFTWDFGX2NXSFdKTTBhMXluYWFUNWFUMGVUMWh3ZWFDN2tTZTQxTGtsRTNHT2tRa3VVTHA?oc=5"
-    },
-    {
-     "src": "Vía País",
-     "time": "2026-10-30T11:32:13.000Z",
-     "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabilidad este viernes - Vía País",
-     "link": "https://news.google.com/rss/articles/CBMiyAJBVV95cUxNMGdGQmVKUGx0bEh3eVhUa1ZHd3h3aEtTNzNncGtLeVpLSWJzYzlHSnpIODd3T2NkS1pOaW54a3lpZVNrdlFaZkJpQThuNnoxQldHSHRFQ21Nb2tZTTAyN2x4SVY5cXNJcWJzUVFPRno3Sl9PcUJlRTlnUWZ6VDVyeF9NYU52QmZYZXhncTd6alNSOWFrcGRMOHloSXBNSVR2UVRvenQzZFMySDhmLWxTazRKZUVvYkt2OEdGY0pGOWJTZEJiNnE0RmVnWmNSU2t6MjVSaVRzUUxvcS1aVFZSdW5tbGd6VUVZRjEzQWhqUTAydnBPWklnVVNGWUhQV2xST1V1NG15TFN3cnF0bEpYNmNVOFFHWXd5ejVBNG9WNWNqX3ZYSkk2d2dKVkNneGlfMVM5ZF9GR1UzMEhZdUVXMkhLeVNxd2lS?oc=5"
     }
    ]
   },
@@ -36,12 +24,6 @@
      "time": "2026-10-30T11:32:13.000Z",
      "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y advierten por inestabilidad este viernes - Vía País",
      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPSHo1YXN2REUyTFAxWEVKOEZHRGVLMnRHQVhqX2hYZlZKb0VrejRXalFmUkNTbFFETWdYUEVlTDc1QmZURHFYZy1nalBvdEh4N1pJemFsN0haeFZ3SlNhVjlaVDNEZlowODhEdncxVG9jVEhPS0ZBaVhTOVRqSDFKMmhMNUY3bE16VUxrVHFTWDFGX2NXSFdKTTBhMXluYWFUNWFUMGVUMWh3ZWFDN2tTZTQxTGtsRTNHT2tRa3VVTHA?oc=5"
-    },
-    {
-     "src": "Vía País",
-     "time": "2026-10-30T11:32:13.000Z",
-     "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabilidad este viernes - Vía País",
-     "link": "https://news.google.com/rss/articles/CBMiyAJBVV95cUxNMGdGQmVKUGx0bEh3eVhUa1ZHd3h3aEtTNzNncGtLeVpLSWJzYzlHSnpIODd3T2NkS1pOaW54a3lpZVNrdlFaZkJpQThuNnoxQldHSHRFQ21Nb2tZTTAyN2x4SVY5cXNJcWJzUVFPRno3Sl9PcUJlRTlnUWZ6VDVyeF9NYU52QmZYZXhncTd6alNSOWFrcGRMOHloSXBNSVR2UVRvenQzZFMySDhmLWxTazRKZUVvYkt2OEdGY0pGOWJTZEJiNnE0RmVnWmNSU2t6MjVSaVRzUUxvcS1aVFZSdW5tbGd6VUVZRjEzQWhqUTAydnBPWklnVVNGWUhQV2xST1V1NG15TFN3cnF0bEpYNmNVOFFHWXd5ejVBNG9WNWNqX3ZYSkk2d2dKVkNneGlfMVM5ZF9GR1UzMEhZdUVXMkhLeVNxd2lS?oc=5"
     }
    ]
   }
@@ -58,22 +40,16 @@
    "time": "2026-10-30T11:32:13.000Z",
    "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y advierten por inestabilidad este viernes",
    "link": "https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html"
-  },
-  {
-   "src": "Vía País",
-   "time": "2026-10-30T11:32:13.000Z",
-   "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabilidad este viernes",
-   "link": "https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html,/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html"
   }
  ],
  "debug": [
-  "Google Noticias 200 40",
-  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (19 párrafos)",
+  "Google Noticias 200 39",
+  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (17 párrafos)",
   "* Vía País: ¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y advierten por ines -> https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html (14 párrafos)",
   "Google Noticias 200 3",
   "Google Noticias 200 100",
-  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (19 párrafos)",
-  "Google Noticias 200 5",
-  "* Vía País: ¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabil -> https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html,/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html (14 párrafos)"
+  "* La Voz del Interior: Clima. Advierten por tormentas en Córdoba: prevén abundante caída de agua, granizo y ráfag -> https://www.lavoz.com.ar/servicios/advierten-tormentas-cordoba-preven-abundante-caida-agua-granizo-rafagas_0_SOnFmNGy6R.html (17 párrafos)",
+  "Google Noticias 200 4",
+  "* Vía País: ¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y advierten por ines -> https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html (14 párrafos)"
  ]
 }
