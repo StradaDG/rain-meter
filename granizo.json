@@ -1,13 +1,47 @@
 {
- "updated": "2026-10-30T11:29:02.092Z",
+ "updated": "2026-10-30T12:11:59.345Z",
  "date": "2026-10-30",
- "noticias": 0,
- "barrios": [],
- "reportes": [],
+ "noticias": 2,
+ "barrios": [
+  {
+   "name": "Observatorio",
+   "first": "2026-10-30T11:32:13.000Z",
+   "sources": [
+    {
+     "src": "Vía País",
+     "time": "2026-10-30T11:32:13.000Z",
+     "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabilidad este viernes - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPSHo1YXN2REUyTFAxWEVKOEZHRGVLMnRHQVhqX2hYZlZKb0VrejRXalFmUkNTbFFETWdYUEVlTDc1QmZURHFYZy1nalBvdEh4N1pJemFsN0haeFZ3SlNhVjlaVDNEZlowODhEdncxVG9jVEhPS0ZBaVhTOVRqSDFKMmhMNUY3bE16VUxrVHFTWDFGX2NXSFdKTTBhMXluYWFUNWFUMGVUMWh3ZWFDN2tTZTQxTGtsRTNHT2tRa3VVTHA?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Carlos Paz",
+   "first": "2026-10-30T11:32:13.000Z",
+   "sources": [
+    {
+     "src": "Vía País",
+     "time": "2026-10-30T11:32:13.000Z",
+     "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabilidad este viernes - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPSHo1YXN2REUyTFAxWEVKOEZHRGVLMnRHQVhqX2hYZlZKb0VrejRXalFmUkNTbFFETWdYUEVlTDc1QmZURHFYZy1nalBvdEh4N1pJemFsN0haeFZ3SlNhVjlaVDNEZlowODhEdncxVG9jVEhPS0ZBaVhTOVRqSDFKMmhMNUY3bE16VUxrVHFTWDFGX2NXSFdKTTBhMXluYWFUNWFUMGVUMWh3ZWFDN2tTZTQxTGtsRTNHT2tRa3VVTHA?oc=5"
+    }
+   ]
+  }
+ ],
+ "reportes": [
+  {
+   "src": "Vía País",
+   "time": "2026-10-30T11:32:13.000Z",
+   "title": "¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabilidad este viernes",
+   "link": "https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 32",
+  "Google Noticias 200 26",
+  "* Vía País: ¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabil -> https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html (14 párrafos)",
   "Google Noticias 200 3",
   "Google Noticias 200 100",
-  "Google Noticias 200 2"
+  "Google Noticias 200 4",
+  "* Vía País: ¡Alerta por tormentas y granizo en Córdoba! El calor llega a los 30°C y llega la inestabil -> https://viapais.com.ar/cordoba/clima-cordoba-viernes-30-octubre-advierten-tormentas-fuertes-rafagas-calor_0_H86WRtV9jT.html (14 párrafos)"
  ]
 }
