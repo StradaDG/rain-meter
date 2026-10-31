@@ -1,13 +1,36 @@
 {
- "updated": "2026-10-31T12:01:29.528Z",
+ "updated": "2026-10-31T13:20:41.950Z",
  "date": "2026-10-31",
- "noticias": 0,
- "barrios": [],
- "reportes": [],
+ "noticias": 3,
+ "barrios": [
+  {
+   "name": "Carlos Paz",
+   "first": "2026-10-31T12:05:38.000Z",
+   "sources": [
+    {
+     "src": "Vía País",
+     "time": "2026-10-31T12:05:38.000Z",
+     "title": "Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZFdpaXpFaTRJbXlIX2tCZVpNMXM2LUVzVGxEZnphcVQzOE1IUmJaS1U5SUFaWkJwMzlCVWJjcFlLTUJMMFNtWHRJcjNDWURlLXMyZWlPR2JLSUVSaF9pRzhMR1ZNZlRtNWJMNEJQdmE4VmZJV3d4OUdUemEzeXgwQW1hV3RnVWcyMk9lRmNBV2NIM1dOSHV5MTRWRDhlSVdLWGRGcUJURzlGc3R6V29R?oc=5"
+    }
+   ]
+  }
+ ],
+ "reportes": [
+  {
+   "src": "Vía País",
+   "time": "2026-10-31T12:05:38.000Z",
+   "title": "Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo",
+   "link": "https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 26",
-  "Google Noticias 200 3",
+  "Google Noticias 200 39",
+  "- Hoy Día Córdoba: Alerta por tormentas en Córdoba: prevén lluvias intensas y posible granizo | 31 de octubre (pronóstico, se ignora)",
+  "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
+  "Google Noticias 200 2",
   "Google Noticias 200 100",
-  "Google Noticias 200 2"
+  "Google Noticias 200 5",
+  "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)"
  ]
 }
