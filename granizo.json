@@ -1,18 +1,12 @@
 {
- "updated": "2026-10-31T20:25:35.848Z",
+ "updated": "2026-10-31T21:02:24.553Z",
  "date": "2026-10-31",
- "noticias": 19,
+ "noticias": 18,
  "barrios": [
   {
    "name": "Carlos Paz",
    "first": "2026-10-31T12:05:38.000Z",
    "sources": [
-    {
-     "src": "La Voz del Interior",
-     "time": "2026-10-31T17:33:25.000Z",
-     "title": "Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla - La Voz del Interior",
-     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNajR4VzNjWVNVUkFLN2RzY3l0RlF6aVZ1U0lrdlE4S1pDb0JEY2dpNEp0WmM3b0pxUTVVWGNzTk9nUU9vUFlRU2swRjN2WmVSUGVYZUZjMGpJc1Q4V09aRUViNVEzZ2dwRzVoT2FPTTNEUEFTVm5BLU5TLU14Und1czFBRjdTa3JtWGNKMmFNV2llVDRWN2psbjVka0JIbm1pR0htNDJHWTRTeEVYQmVmaHdjZHZSS01CNEJj?oc=5"
-    },
     {
      "src": "Vía País",
      "time": "2026-10-31T17:32:17.000Z",
@@ -56,18 +50,6 @@
      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPVGRFVVBJTV9RTVJfLTZ4WGFFUkczVnlVanFHSEVCWHRSRHFRTDhwUWVYR2lWalpkOFJVRFVKMFYwd3lMSTh2Vnd2SFRyQTVibjg1UmM4N0tfUHZheWJFeDNQTWt0VlpXeUF5RWJDdk5taUVtejNjbDBGUEotclVlTUh0RkVYMzdGejhWVW9XTVZsY0h6VVVIZHBQUjV6Tk8yZ19FamhFbUFNTkxlQWJnMmZ2V1FFVHNSMlZ4ZzlWaEVpYjFvVkRaSUE5X056UURmR2tjVXo4bzdiYXJRdGfSAeMBQVVfeXFMTkZrRDN3N04xV05vbWtyMVpzRnNtYmsxNi1OTnpROTZ4WGtmdlF2eTZPZXZxS2R4RDZZSHB1Rnppbk9oRFpEdk9PZ3NHWU5jQ2NPbmdEUnF1X2tKS2o1dWFQTjhIaWVQdnlvNm1oUkJicVBEQi1aZlBJRGNvM0cxTlU2dGo4MDNtU3RUNzZmTGMzNDR2emJrUVdtQkV6U1RMLV9qOG82UUFMRGZROUlIVWwwNUZkb3lRSkp1djBxNFYyWHhQV3JwcjFFLUNBUTdyTGVoaXh6alBmVkwwZGZPenlRczQ?oc=5"
     }
    ]
-  },
-  {
-   "name": "Río Ceballos",
-   "first": "2026-10-31T17:33:25.000Z",
-   "sources": [
-    {
-     "src": "La Voz del Interior",
-     "time": "2026-10-31T17:33:25.000Z",
-     "title": "Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla - La Voz del Interior",
-     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNajR4VzNjWVNVUkFLN2RzY3l0RlF6aVZ1U0lrdlE4S1pDb0JEY2dpNEp0WmM3b0pxUTVVWGNzTk9nUU9vUFlRU2swRjN2WmVSUGVYZUZjMGpJc1Q4V09aRUViNVEzZ2dwRzVoT2FPTTNEUEFTVm5BLU5TLU14Und1czFBRjdTa3JtWGNKMmFNV2llVDRWN2psbjVka0JIbm1pR0htNDJHWTRTeEVYQmVmaHdjZHZSS01CNEJj?oc=5"
-    }
-   ]
   }
  ],
  "reportes": [
@@ -76,12 +58,6 @@
    "time": "2026-10-31T18:04:58.000Z",
    "title": "Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica",
    "link": "https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a"
-  },
-  {
-   "src": "La Voz del Interior",
-   "time": "2026-10-31T17:33:25.000Z",
-   "title": "Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla",
-   "link": "https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html"
   },
   {
    "src": "Cadena 3",
@@ -109,27 +85,26 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 35",
+  "Google Noticias 200 23",
+  "- La Voz del Interior: Alerta amarilla. Diluvio y granizo: por dónde pasó la tormenta en Córdoba - La Voz del Int (pronóstico, se ignora)",
   "* Cba24n: Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica - Cba2 -> https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a (0 párrafos)",
-  "* La Voz del Interior: Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla  -> https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html (21 párrafos)",
   "- Hoy Día Córdoba: Alerta por tormentas en Córdoba: prevén lluvias intensas y posible granizo | 31 de octubre (pronóstico, se ignora)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
-  "* eldoce: El granizo sorprendió en Sierras Chicas - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/ (0 párrafos)",
   "Google Noticias 200 6",
+  "- La Voz del Interior: Alerta amarilla. Diluvio y granizo: por dónde pasó la tormenta en Córdoba - La Voz del Int (pronóstico, se ignora)",
   "* Cba24n: Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica - Cba2 -> https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a (0 párrafos)",
-  "* La Voz del Interior: Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla  -> https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html (21 párrafos)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
   "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)",
   "Google Noticias 200 100",
-  "* La Voz del Interior: Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla  -> https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html (21 párrafos)",
+  "- La Voz del Interior: Alerta amarilla. Diluvio y granizo: por dónde pasó la tormenta en Córdoba - La Voz del Int (pronóstico, se ignora)",
   "* eldoce: El granizo sorprendió en Sierras Chicas - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/ (0 párrafos)",
   "* Cba24n: Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica - Cba2 -> https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a (0 párrafos)",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
-  "Google Noticias 200 16",
+  "Google Noticias 200 18",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
   "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)"
  ]
