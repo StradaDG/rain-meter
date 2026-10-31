@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-31T15:01:59.522Z",
+ "updated": "2026-10-31T15:59:59.240Z",
  "date": "2026-10-31",
- "noticias": 3,
+ "noticias": 5,
  "barrios": [
   {
    "name": "Carlos Paz",
@@ -25,11 +25,13 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 26",
+  "Google Noticias 200 33",
+  "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "- Hoy Día Córdoba: Alerta por tormentas en Córdoba: prevén lluvias intensas y posible granizo | 31 de octubre (pronóstico, se ignora)",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
-  "Google Noticias 200 1",
+  "Google Noticias 200 2",
   "Google Noticias 200 100",
+  "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "Google Noticias 200 5",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)"
  ]
