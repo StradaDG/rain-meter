@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-31T16:36:21.180Z",
+ "updated": "2026-10-31T17:25:22.164Z",
  "date": "2026-10-31",
- "noticias": 5,
+ "noticias": 9,
  "barrios": [
   {
    "name": "Carlos Paz",
@@ -14,6 +14,30 @@
      "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNZFdpaXpFaTRJbXlIX2tCZVpNMXM2LUVzVGxEZnphcVQzOE1IUmJaS1U5SUFaWkJwMzlCVWJjcFlLTUJMMFNtWHRJcjNDWURlLXMyZWlPR2JLSUVSaF9pRzhMR1ZNZlRtNWJMNEJQdmE4VmZJV3d4OUdUemEzeXgwQW1hV3RnVWcyMk9lRmNBV2NIM1dOSHV5MTRWRDhlSVdLWGRGcUJURzlGc3R6V29R?oc=5"
     }
    ]
+  },
+  {
+   "name": "Alta Gracia",
+   "first": "2026-10-31T17:19:16.000Z",
+   "sources": [
+    {
+     "src": "Cadena 3",
+     "time": "2026-10-31T17:19:16.000Z",
+     "title": "Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Cadena 3 Argentina",
+     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPVGRFVVBJTV9RTVJfLTZ4WGFFUkczVnlVanFHSEVCWHRSRHFRTDhwUWVYR2lWalpkOFJVRFVKMFYwd3lMSTh2Vnd2SFRyQTVibjg1UmM4N0tfUHZheWJFeDNQTWt0VlpXeUF5RWJDdk5taUVtejNjbDBGUEotclVlTUh0RkVYMzdGejhWVW9XTVZsY0h6VVVIZHBQUjV6Tk8yZ19FamhFbUFNTkxlQWJnMmZ2V1FFVHNSMlZ4ZzlWaEVpYjFvVkRaSUE5X056UURmR2tjVXo4bzdiYXJRdGfSAeMBQVVfeXFMTkZrRDN3N04xV05vbWtyMVpzRnNtYmsxNi1OTnpROTZ4WGtmdlF2eTZPZXZxS2R4RDZZSHB1Rnppbk9oRFpEdk9PZ3NHWU5jQ2NPbmdEUnF1X2tKS2o1dWFQTjhIaWVQdnlvNm1oUkJicVBEQi1aZlBJRGNvM0cxTlU2dGo4MDNtU3RUNzZmTGMzNDR2emJrUVdtQkV6U1RMLV9qOG82UUFMRGZROUlIVWwwNUZkb3lRSkp1djBxNFYyWHhQV3JwcjFFLUNBUTdyTGVoaXh6alBmVkwwZGZPenlRczQ?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Jesús María",
+   "first": "2026-10-31T17:19:16.000Z",
+   "sources": [
+    {
+     "src": "Cadena 3",
+     "time": "2026-10-31T17:19:16.000Z",
+     "title": "Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Cadena 3 Argentina",
+     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPVGRFVVBJTV9RTVJfLTZ4WGFFUkczVnlVanFHSEVCWHRSRHFRTDhwUWVYR2lWalpkOFJVRFVKMFYwd3lMSTh2Vnd2SFRyQTVibjg1UmM4N0tfUHZheWJFeDNQTWt0VlpXeUF5RWJDdk5taUVtejNjbDBGUEotclVlTUh0RkVYMzdGejhWVW9XTVZsY0h6VVVIZHBQUjV6Tk8yZ19FamhFbUFNTkxlQWJnMmZ2V1FFVHNSMlZ4ZzlWaEVpYjFvVkRaSUE5X056UURmR2tjVXo4bzdiYXJRdGfSAeMBQVVfeXFMTkZrRDN3N04xV05vbWtyMVpzRnNtYmsxNi1OTnpROTZ4WGtmdlF2eTZPZXZxS2R4RDZZSHB1Rnppbk9oRFpEdk9PZ3NHWU5jQ2NPbmdEUnF1X2tKS2o1dWFQTjhIaWVQdnlvNm1oUkJicVBEQi1aZlBJRGNvM0cxTlU2dGo4MDNtU3RUNzZmTGMzNDR2emJrUVdtQkV6U1RMLV9qOG82UUFMRGZROUlIVWwwNUZkb3lRSkp1djBxNFYyWHhQV3JwcjFFLUNBUTdyTGVoaXh6alBmVkwwZGZPenlRczQ?oc=5"
+    }
+   ]
   }
  ],
  "reportes": [
@@ -22,16 +46,32 @@
    "time": "2026-10-31T12:05:38.000Z",
    "title": "Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo",
    "link": "https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html"
+  },
+  {
+   "src": "Cadena 3",
+   "time": "2026-10-31T17:19:16.000Z",
+   "title": "Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba",
+   "link": "https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959"
+  },
+  {
+   "src": "eldoce",
+   "time": "2026-10-31T16:18:02.000Z",
+   "title": "El granizo sorprendió en Sierras Chicas",
+   "link": "https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/?outputType"
   }
  ],
  "debug": [
-  "Google Noticias 200 35",
+  "Google Noticias 200 38",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "- Hoy Día Córdoba: Alerta por tormentas en Córdoba: prevén lluvias intensas y posible granizo | 31 de octubre (pronóstico, se ignora)",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
-  "Google Noticias 200 3",
+  "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
+  "Google Noticias 200 5",
+  "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
   "Google Noticias 200 100",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
+  "* eldoce: El granizo sorprendió en Sierras Chicas - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/?outputType (0 párrafos)",
+  "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
   "Google Noticias 200 5",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)"
  ]
