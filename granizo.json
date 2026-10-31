@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-31T21:02:24.553Z",
+ "updated": "2026-10-31T21:59:58.221Z",
  "date": "2026-10-31",
- "noticias": 18,
+ "noticias": 24,
  "barrios": [
   {
    "name": "Carlos Paz",
@@ -50,6 +50,18 @@
      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPVGRFVVBJTV9RTVJfLTZ4WGFFUkczVnlVanFHSEVCWHRSRHFRTDhwUWVYR2lWalpkOFJVRFVKMFYwd3lMSTh2Vnd2SFRyQTVibjg1UmM4N0tfUHZheWJFeDNQTWt0VlpXeUF5RWJDdk5taUVtejNjbDBGUEotclVlTUh0RkVYMzdGejhWVW9XTVZsY0h6VVVIZHBQUjV6Tk8yZ19FamhFbUFNTkxlQWJnMmZ2V1FFVHNSMlZ4ZzlWaEVpYjFvVkRaSUE5X056UURmR2tjVXo4bzdiYXJRdGfSAeMBQVVfeXFMTkZrRDN3N04xV05vbWtyMVpzRnNtYmsxNi1OTnpROTZ4WGtmdlF2eTZPZXZxS2R4RDZZSHB1Rnppbk9oRFpEdk9PZ3NHWU5jQ2NPbmdEUnF1X2tKS2o1dWFQTjhIaWVQdnlvNm1oUkJicVBEQi1aZlBJRGNvM0cxTlU2dGo4MDNtU3RUNzZmTGMzNDR2emJrUVdtQkV6U1RMLV9qOG82UUFMRGZROUlIVWwwNUZkb3lRSkp1djBxNFYyWHhQV3JwcjFFLUNBUTdyTGVoaXh6alBmVkwwZGZPenlRczQ?oc=5"
     }
    ]
+  },
+  {
+   "name": "Valle Escondido",
+   "first": "2026-10-31T21:40:51.000Z",
+   "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-31T21:40:51.000Z",
+     "title": "Diluvio y granizo. En fotos y videos, así pasó la tormenta por diversas localidades de Córdoba - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQX0VzWF9GRXQtR3ZJSHVZOElPaWR1RDVxZVB3R2lhZEhuZmFRUGZWYWtFdUpQUzBpT3dVUEVjZ2lzRUszUlY0dU5WcHktbGM0Y3VPWDh3b3h0MWY1eGJiXzJ6eVdScDFaaXdXWWtOX3dCa3AzTFJnbjNId2hGb1VTVmdBdlhtbXk1TWhERWdydjhkVF9RaGJIdkJmRDMwM3UzYWtxNEU2ODRBb1VSWXc?oc=5"
+    }
+   ]
   }
  ],
  "reportes": [
@@ -72,6 +84,18 @@
    "link": "https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html"
   },
   {
+   "src": "eldoce",
+   "time": "2026-10-31T21:37:32.000Z",
+   "title": "Cayó granizo en Córdoba capital: los videos en diferentes barrios",
+   "link": "https://eldoce.tv/videos/actualidad/2026/10/31/cayo-granizo-en-cordoba-capital-los-videos-en-diferentes-barrios/"
+  },
+  {
+   "src": "La Voz del Interior",
+   "time": "2026-10-31T21:40:51.000Z",
+   "title": "Diluvio y granizo. En fotos y videos, así pasó la tormenta por diversas localidades de Córdoba",
+   "link": "https://www.lavoz.com.ar/ciudadanos/fotos-videos-paso-tormenta-diversas-localidades-cordoba_0_b6xz2iiB8S.html"
+  },
+  {
    "src": "Vía País",
    "time": "2026-10-31T12:05:38.000Z",
    "title": "Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo",
@@ -85,26 +109,32 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 23",
+  "Google Noticias 200 40",
   "- La Voz del Interior: Alerta amarilla. Diluvio y granizo: por dónde pasó la tormenta en Córdoba - La Voz del Int (pronóstico, se ignora)",
   "* Cba24n: Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica - Cba2 -> https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a (0 párrafos)",
   "- Hoy Día Córdoba: Alerta por tormentas en Córdoba: prevén lluvias intensas y posible granizo | 31 de octubre (pronóstico, se ignora)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)",
+  "* eldoce: Cayó granizo en Córdoba capital: los videos en diferentes barrios - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/cayo-granizo-en-cordoba-capital-los-videos-en-diferentes-barrios/ (0 párrafos)",
+  "* La Voz del Interior: Diluvio y granizo. En fotos y videos, así pasó la tormenta por diversas localidades de Cór -> https://www.lavoz.com.ar/ciudadanos/fotos-videos-paso-tormenta-diversas-localidades-cordoba_0_b6xz2iiB8S.html (9 párrafos)",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
-  "Google Noticias 200 6",
+  "* eldoce: El granizo sorprendió en Sierras Chicas - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/ (0 párrafos)",
+  "Google Noticias 200 9",
   "- La Voz del Interior: Alerta amarilla. Diluvio y granizo: por dónde pasó la tormenta en Córdoba - La Voz del Int (pronóstico, se ignora)",
   "* Cba24n: Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica - Cba2 -> https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a (0 párrafos)",
+  "* eldoce: Cayó granizo en Córdoba capital: los videos en diferentes barrios - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/cayo-granizo-en-cordoba-capital-los-videos-en-diferentes-barrios/ (0 párrafos)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
   "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)",
   "Google Noticias 200 100",
   "- La Voz del Interior: Alerta amarilla. Diluvio y granizo: por dónde pasó la tormenta en Córdoba - La Voz del Int (pronóstico, se ignora)",
+  "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
+  "* La Voz del Interior: Diluvio y granizo. En fotos y videos, así pasó la tormenta por diversas localidades de Cór -> https://www.lavoz.com.ar/ciudadanos/fotos-videos-paso-tormenta-diversas-localidades-cordoba_0_b6xz2iiB8S.html (9 párrafos)",
+  "* eldoce: Cayó granizo en Córdoba capital: los videos en diferentes barrios - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/cayo-granizo-en-cordoba-capital-los-videos-en-diferentes-barrios/ (0 párrafos)",
   "* eldoce: El granizo sorprendió en Sierras Chicas - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/ (0 párrafos)",
   "* Cba24n: Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica - Cba2 -> https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a (0 párrafos)",
-  "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
-  "Google Noticias 200 18",
+  "Google Noticias 200 20",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
   "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)"
  ]
