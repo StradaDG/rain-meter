@@ -1,7 +1,7 @@
 {
- "updated": "2026-10-31T18:38:54.756Z",
+ "updated": "2026-10-31T19:30:25.309Z",
  "date": "2026-10-31",
- "noticias": 18,
+ "noticias": 19,
  "barrios": [
   {
    "name": "Carlos Paz",
@@ -42,6 +42,12 @@
      "time": "2026-10-31T17:32:17.000Z",
      "title": "Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País",
      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQU3hOdHBMTVRwVnRwV1lwRHFVYi15VlVRaEJZUDRydmd2aWZSM09EOEU3WVFrRXlpY2hseVRwUWlrYlE1U2lBVUZkX2ZIVk8tdE1SSnQtZ2ZSSG10NDFSTVRfb3g3V3hJZnVBRF85dDJjN0tGRTdXSGp5VUVQNHBSZE9FUzJUbGtBVHF3SVRCSU03blk1cTQzeFFCTWQ3N0NYcVlpQk1uZF9teG5TcjJqUFFWbF9UVXhuUHV5N0s0dDVabUJ3bENMdnNR?oc=5"
+    },
+    {
+     "src": "Vía País",
+     "time": "2026-10-31T17:32:17.000Z",
+     "title": "Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMi2wJBVV95cUxNNTBlRkYzS3ZyNkdJMmxiczhuWGVhdTBHYXRnRGFIdG9SdnRmQUozRklnUXl6VlRyeWl6MlJONHR1TE1EeEQ2bmtLWWtkZnV6bkxGcEJfV2htcFIzWmdaZTlvT1hfbVlubUNjbGZxSGFJSFJhdDFBRXVRcjZhRVozSG94NWNsWlhkaGVoajFnYVpoODhYWnkxcl9XVDdCWWdzZDJwdUprUjA2bkZDM1pjOUt3VWJyZURaTVpRRDNQSUtLbUhNRnJMN1R3VjJUSVJMWFg4Z0NDRFN3M1NkQjdzZzliZ2FJMk96cTdzMHhPWDJkMmVERkNrVUlpSFRVcTRoREo0VnVWazlMQkFac1lrUEtrMXQwa0d6a1FXSndzNEp5OEZLamJrLXJqSmJLUjIyYzVpUTNvODlnSUxLNTVtSUxrMVRuRDJyWDRsYk4yV0hwdmZnc0VsNWJ5dw?oc=5"
     }
    ]
   },
@@ -109,13 +115,13 @@
   },
   {
    "src": "Vía País",
-   "time": "2026-10-31T12:05:38.000Z",
-   "title": "Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo",
-   "link": "https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html,/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html"
+   "time": "2026-10-31T17:32:17.000Z",
+   "title": "Cayó granizo en Córdoba y rige alerta por tormentas para la Capital",
+   "link": "https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html,/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html"
   }
  ],
  "debug": [
-  "Google Noticias 200 21",
+  "Google Noticias 200 34",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "* La Voz del Interior: Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla  -> https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html (21 párrafos)",
   "- Hoy Día Córdoba: Alerta por tormentas en Córdoba: prevén lluvias intensas y posible granizo | 31 de octubre (pronóstico, se ignora)",
@@ -123,6 +129,7 @@
   "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)",
   "* Cba24n: Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica - Cba2 -> https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a (0 párrafos)",
   "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
+  "* eldoce: El granizo sorprendió en Sierras Chicas - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/ (0 párrafos)",
   "Google Noticias 200 6",
   "* La Voz del Interior: Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla  -> https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html (21 párrafos)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
@@ -134,8 +141,8 @@
   "* Cba24n: Córdoba: cayó granizo en Sierras Chicas y Altas Cumbres y rige alerta meteorológica - Cba2 -> https://www.cba24n.com.ar/cordoba/cordoba--cayo-granizo-en-sierras-chicas-y-altas-cumbres-y-rige-alerta-meteorologica_a6ae62ccbfb7504726ea6e17a (0 párrafos)",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
-  "Google Noticias 200 10",
-  "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html,/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
-  "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)"
+  "Google Noticias 200 13",
+  "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
+  "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html,/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)"
  ]
 }
