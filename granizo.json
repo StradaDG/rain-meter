@@ -1,12 +1,24 @@
 {
- "updated": "2026-10-31T17:25:22.164Z",
+ "updated": "2026-10-31T17:58:31.843Z",
  "date": "2026-10-31",
- "noticias": 9,
+ "noticias": 14,
  "barrios": [
   {
    "name": "Carlos Paz",
    "first": "2026-10-31T12:05:38.000Z",
    "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-31T17:33:25.000Z",
+     "title": "Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNajR4VzNjWVNVUkFLN2RzY3l0RlF6aVZ1U0lrdlE4S1pDb0JEY2dpNEp0WmM3b0pxUTVVWGNzTk9nUU9vUFlRU2swRjN2WmVSUGVYZUZjMGpJc1Q4V09aRUViNVEzZ2dwRzVoT2FPTTNEUEFTVm5BLU5TLU14Und1czFBRjdTa3JtWGNKMmFNV2llVDRWN2psbjVka0JIbm1pR0htNDJHWTRTeEVYQmVmaHdjZHZSS01CNEJj?oc=5"
+    },
+    {
+     "src": "Vía País",
+     "time": "2026-10-31T17:32:17.000Z",
+     "title": "Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQU3hOdHBMTVRwVnRwV1lwRHFVYi15VlVRaEJZUDRydmd2aWZSM09EOEU3WVFrRXlpY2hseVRwUWlrYlE1U2lBVUZkX2ZIVk8tdE1SSnQtZ2ZSSG10NDFSTVRfb3g3V3hJZnVBRF85dDJjN0tGRTdXSGp5VUVQNHBSZE9FUzJUbGtBVHF3SVRCSU03blk1cTQzeFFCTWQ3N0NYcVlpQk1uZF9teG5TcjJqUFFWbF9UVXhuUHV5N0s0dDVabUJ3bENMdnNR?oc=5"
+    },
     {
      "src": "Vía País",
      "time": "2026-10-31T12:05:38.000Z",
@@ -17,11 +29,17 @@
   },
   {
    "name": "Alta Gracia",
-   "first": "2026-10-31T17:19:16.000Z",
+   "first": "2026-10-31T17:22:07.000Z",
    "sources": [
     {
+     "src": "Vía País",
+     "time": "2026-10-31T17:32:17.000Z",
+     "title": "Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQU3hOdHBMTVRwVnRwV1lwRHFVYi15VlVRaEJZUDRydmd2aWZSM09EOEU3WVFrRXlpY2hseVRwUWlrYlE1U2lBVUZkX2ZIVk8tdE1SSnQtZ2ZSSG10NDFSTVRfb3g3V3hJZnVBRF85dDJjN0tGRTdXSGp5VUVQNHBSZE9FUzJUbGtBVHF3SVRCSU03blk1cTQzeFFCTWQ3N0NYcVlpQk1uZF9teG5TcjJqUFFWbF9UVXhuUHV5N0s0dDVabUJ3bENMdnNR?oc=5"
+    },
+    {
      "src": "Cadena 3",
-     "time": "2026-10-31T17:19:16.000Z",
+     "time": "2026-10-31T17:22:07.000Z",
      "title": "Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Cadena 3 Argentina",
      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPVGRFVVBJTV9RTVJfLTZ4WGFFUkczVnlVanFHSEVCWHRSRHFRTDhwUWVYR2lWalpkOFJVRFVKMFYwd3lMSTh2Vnd2SFRyQTVibjg1UmM4N0tfUHZheWJFeDNQTWt0VlpXeUF5RWJDdk5taUVtejNjbDBGUEotclVlTUh0RkVYMzdGejhWVW9XTVZsY0h6VVVIZHBQUjV6Tk8yZ19FamhFbUFNTkxlQWJnMmZ2V1FFVHNSMlZ4ZzlWaEVpYjFvVkRaSUE5X056UURmR2tjVXo4bzdiYXJRdGfSAeMBQVVfeXFMTkZrRDN3N04xV05vbWtyMVpzRnNtYmsxNi1OTnpROTZ4WGtmdlF2eTZPZXZxS2R4RDZZSHB1Rnppbk9oRFpEdk9PZ3NHWU5jQ2NPbmdEUnF1X2tKS2o1dWFQTjhIaWVQdnlvNm1oUkJicVBEQi1aZlBJRGNvM0cxTlU2dGo4MDNtU3RUNzZmTGMzNDR2emJrUVdtQkV6U1RMLV9qOG82UUFMRGZROUlIVWwwNUZkb3lRSkp1djBxNFYyWHhQV3JwcjFFLUNBUTdyTGVoaXh6alBmVkwwZGZPenlRczQ?oc=5"
     }
@@ -29,50 +47,73 @@
   },
   {
    "name": "Jesús María",
-   "first": "2026-10-31T17:19:16.000Z",
+   "first": "2026-10-31T17:22:07.000Z",
    "sources": [
     {
      "src": "Cadena 3",
-     "time": "2026-10-31T17:19:16.000Z",
+     "time": "2026-10-31T17:22:07.000Z",
      "title": "Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Cadena 3 Argentina",
      "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxPVGRFVVBJTV9RTVJfLTZ4WGFFUkczVnlVanFHSEVCWHRSRHFRTDhwUWVYR2lWalpkOFJVRFVKMFYwd3lMSTh2Vnd2SFRyQTVibjg1UmM4N0tfUHZheWJFeDNQTWt0VlpXeUF5RWJDdk5taUVtejNjbDBGUEotclVlTUh0RkVYMzdGejhWVW9XTVZsY0h6VVVIZHBQUjV6Tk8yZ19FamhFbUFNTkxlQWJnMmZ2V1FFVHNSMlZ4ZzlWaEVpYjFvVkRaSUE5X056UURmR2tjVXo4bzdiYXJRdGfSAeMBQVVfeXFMTkZrRDN3N04xV05vbWtyMVpzRnNtYmsxNi1OTnpROTZ4WGtmdlF2eTZPZXZxS2R4RDZZSHB1Rnppbk9oRFpEdk9PZ3NHWU5jQ2NPbmdEUnF1X2tKS2o1dWFQTjhIaWVQdnlvNm1oUkJicVBEQi1aZlBJRGNvM0cxTlU2dGo4MDNtU3RUNzZmTGMzNDR2emJrUVdtQkV6U1RMLV9qOG82UUFMRGZROUlIVWwwNUZkb3lRSkp1djBxNFYyWHhQV3JwcjFFLUNBUTdyTGVoaXh6alBmVkwwZGZPenlRczQ?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Río Ceballos",
+   "first": "2026-10-31T17:33:25.000Z",
+   "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-10-31T17:33:25.000Z",
+     "title": "Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNajR4VzNjWVNVUkFLN2RzY3l0RlF6aVZ1U0lrdlE4S1pDb0JEY2dpNEp0WmM3b0pxUTVVWGNzTk9nUU9vUFlRU2swRjN2WmVSUGVYZUZjMGpJc1Q4V09aRUViNVEzZ2dwRzVoT2FPTTNEUEFTVm5BLU5TLU14Und1czFBRjdTa3JtWGNKMmFNV2llVDRWN2psbjVka0JIbm1pR0htNDJHWTRTeEVYQmVmaHdjZHZSS01CNEJj?oc=5"
     }
    ]
   }
  ],
  "reportes": [
   {
+   "src": "La Voz del Interior",
+   "time": "2026-10-31T17:33:25.000Z",
+   "title": "Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla",
+   "link": "https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html"
+  },
+  {
    "src": "Vía País",
-   "time": "2026-10-31T12:05:38.000Z",
-   "title": "Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo",
-   "link": "https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html"
+   "time": "2026-10-31T17:32:17.000Z",
+   "title": "Cayó granizo en Córdoba y rige alerta por tormentas para la Capital",
+   "link": "https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html"
   },
   {
    "src": "Cadena 3",
-   "time": "2026-10-31T17:19:16.000Z",
+   "time": "2026-10-31T17:22:07.000Z",
    "title": "Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba",
    "link": "https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959"
   },
   {
-   "src": "eldoce",
-   "time": "2026-10-31T16:18:02.000Z",
-   "title": "El granizo sorprendió en Sierras Chicas",
-   "link": "https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/?outputType"
+   "src": "Vía País",
+   "time": "2026-10-31T12:05:38.000Z",
+   "title": "Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo",
+   "link": "https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html"
   }
  ],
  "debug": [
-  "Google Noticias 200 38",
+  "Google Noticias 200 22",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
   "- Hoy Día Córdoba: Alerta por tormentas en Córdoba: prevén lluvias intensas y posible granizo | 31 de octubre (pronóstico, se ignora)",
-  "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
+  "* La Voz del Interior: Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla  -> https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html (21 párrafos)",
+  "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
-  "Google Noticias 200 5",
+  "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
+  "Google Noticias 200 6",
+  "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)",
+  "* La Voz del Interior: Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla  -> https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html (21 párrafos)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
   "Google Noticias 200 100",
+  "* La Voz del Interior: Córdoba. Cayó granizo en Agua de Oro, Anisacate y las Altas Cumbres: rige alerta amarilla  -> https://www.lavoz.com.ar/servicios/cayo-granizo-agua-oro-anisacate-altas-cumbres-rige-alerta-amarilla_0_UckE2ab0ir.html (21 párrafos)",
   "- Cba24n: Alerta por tormentas en Córdoba: probabilidad de ráfagas fuertes y granizo - Cba24n (pronóstico, se ignora)",
-  "* eldoce: El granizo sorprendió en Sierras Chicas - eldoce -> https://eldoce.tv/videos/actualidad/2026/10/31/el-granizo-sorprendio-en-sierras-chicas/?outputType (0 párrafos)",
   "* Cadena 3 Argentina: Impactantes imágenes: así fue la caída de granizo en distintas localidades de Córdoba - Ca -> https://www.cadena3.com/noticia/una-manana-para-todos/impactantes-imagenes-asi-fue-la-caida-de-granizo-en-distintas-localidades-de-cordoba_608959 (69 párrafos)",
-  "Google Noticias 200 5",
-  "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)"
+  "Google Noticias 200 6",
+  "* Vía País: Anticiparon un cambio de tiempo para Córdoba: cuándo llegarían las tormentas con granizo - -> https://viapais.com.ar/cordoba/clima-cordoba-sabado-31-octubre-rige-alerta-tormentas-fuertes_0_M0sIs9YjrV.html (14 párrafos)",
+  "* Vía País: Cayó granizo en Córdoba y rige alerta por tormentas para la Capital - Vía País -> https://viapais.com.ar/cordoba/cayo-granizo-cordoba-pedrea-sierras-chicas-rige-alerta-amarilla-tormentas-fuertes_0_a4aihzHEDM.html (16 párrafos)"
  ]
 }
