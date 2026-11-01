@@ -1,13 +1,27 @@
 {
- "updated": "2026-11-01T03:42:43.816Z",
+ "updated": "2026-11-01T04:42:53.889Z",
  "date": "2026-11-01",
- "noticias": 0,
- "barrios": [],
+ "noticias": 1,
+ "barrios": [
+  {
+   "name": "Carlos Paz",
+   "first": "2026-11-01T04:11:34.000Z",
+   "sources": [
+    {
+     "src": "Vía País",
+     "time": "2026-11-01T04:11:34.000Z",
+     "title": "Alerta amarilla en Villa Carlos Paz para este domingo: anuncian tormentas y posible caída de granizo - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQMTR5UGNoNldfWXVoM3pYR1BDQmlHVjRLQlpVekpHQmpnNjM1cm5TbWR3bF95VVJFMzBiUFpwVUx6QndQNTlFcGRQQ1E2ZzVvZnVES0NjZ05sTjRydnh5RVVvRGF5QTdEOWsxaU9TMGcwNUk0d2M3RXRQZHROa002V09Na0xxMHZDbXN2UVJOejN0eWhFbFJoMVdJa2VCYXVSZlM4dVFhRkl0RjFRcEtKeXZTYmNYSzVKWEpwU0E2U0QzcG9XME1DeDlzTmZhZw?oc=5"
+    }
+   ]
+  }
+ ],
  "reportes": [],
  "debug": [
-  "Google Noticias 200 31",
-  "Google Noticias 200 11",
+  "Google Noticias 200 43",
+  "Google Noticias 200 9",
   "Google Noticias 200 100",
-  "Google Noticias 200 33"
+  "Google Noticias 200 34",
+  "- Vía País: Alerta amarilla en Villa Carlos Paz para este domingo: anuncian tormentas y posible caída  (pronóstico, se ignora)"
  ]
 }
