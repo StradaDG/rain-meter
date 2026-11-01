@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01T17:02:10.834Z",
+ "updated": "2026-11-01T17:58:20.034Z",
  "date": "2026-11-01",
  "noticias": 4,
  "barrios": [
@@ -18,13 +18,13 @@
  ],
  "reportes": [],
  "debug": [
-  "Google Noticias 200 40",
+  "Google Noticias 200 32",
   "- Perfil fuera de la sección Córdoba, se ignora",
-  "Google Noticias 200 11",
+  "Google Noticias 200 10",
   "- Perfil fuera de la sección Córdoba, se ignora",
   "Google Noticias 200 100",
   "- Perfil fuera de la sección Córdoba, se ignora",
-  "Google Noticias 200 32",
+  "Google Noticias 200 31",
   "- Vía País: Alerta amarilla en Villa Carlos Paz para este domingo: anuncian tormentas y posible caída  (pronóstico, se ignora)"
  ]
 }
