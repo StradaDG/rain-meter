@@ -1,13 +1,15 @@
 {
- "updated": "2026-11-03T11:21:34.904Z",
+ "updated": "2026-11-03T12:14:07.399Z",
  "date": "2026-11-03",
- "noticias": 0,
+ "noticias": 2,
  "barrios": [],
  "reportes": [],
  "debug": [
-  "Google Noticias 200 36",
+  "Google Noticias 200 28",
+  "- Perfil: Alerta naranja por tormentas en Córdoba: prevén granizo y lluvias intensas - Perfil (pronóstico, se ignora)",
   "Google Noticias 200 1",
-  "Google Noticias 200 43",
-  "Google Noticias 200 9"
+  "Google Noticias 200 40",
+  "- Perfil: Alerta naranja por tormentas en Córdoba: prevén granizo y lluvias intensas - Perfil (pronóstico, se ignora)",
+  "Google Noticias 200 11"
  ]
 }
