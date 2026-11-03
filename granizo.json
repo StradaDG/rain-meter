@@ -1,22 +1,13 @@
 {
- "updated": "2026-11-03T02:42:49.951Z",
- "date": "2026-11-02",
- "noticias": 2,
+ "updated": "2026-11-03T03:42:40.446Z",
+ "date": "2026-11-03",
+ "noticias": 0,
  "barrios": [],
- "reportes": [
-  {
-   "src": "Hoy Día Córdoba",
-   "time": "2026-11-02T14:18:16.000Z",
-   "title": "Declararon la emergencia agropecuaria para productores hortícolas afectados por el granizo | 2 de noviembre",
-   "link": "https://hoydia.com.ar/hoy-cordoba/declararon-la-emergencia-agropecuaria-para-productores-horticolas-afectados-por-el-granizo/"
-  }
- ],
+ "reportes": [],
  "debug": [
-  "Google Noticias 200 40",
-  "* Hoy Día Córdoba: Declararon la emergencia agropecuaria para productores hortícolas afectados por el granizo -> https://hoydia.com.ar/hoy-cordoba/declararon-la-emergencia-agropecuaria-para-productores-horticolas-afectados-por-el-granizo/ (16 párrafos)",
+  "Google Noticias 200 27",
   "Google Noticias 200 1",
   "Google Noticias 200 47",
-  "* Hoy Día Córdoba: Declararon la emergencia agropecuaria para productores hortícolas afectados por el granizo -> https://hoydia.com.ar/hoy-cordoba/declararon-la-emergencia-agropecuaria-para-productores-horticolas-afectados-por-el-granizo/ (16 párrafos)",
-  "Google Noticias 200 5"
+  "Google Noticias 200 6"
  ]
 }
