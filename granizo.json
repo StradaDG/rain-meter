@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T01:51:19.842Z",
+ "updated": "2026-11-04T02:41:10.088Z",
  "date": "2026-11-03",
  "noticias": 10,
  "barrios": [
@@ -18,16 +18,16 @@
  ],
  "reportes": [
   {
-   "src": "Cba24n",
-   "time": "2026-11-03T22:34:03.000Z",
-   "title": "Córdoba bajo alerta: tormentas y granizo en diferentes zonas de la provincia",
-   "link": "https://www.cba24n.com.ar/cordoba/cordoba-bajo-alerta--tormentas-y-granizo-en-diferentes-zonas-de-la-provincia_a6aea5f22fd9a277ed0d0d331"
-  },
-  {
    "src": "La Voz del Interior",
    "time": "2026-11-03T23:28:03.000Z",
    "title": "Atención. Tormenta en Córdoba: las localidades donde cayó granizo y cómo seguirá el tiempo",
    "link": "https://www.lavoz.com.ar/servicios/tormenta-cordoba-localidades-cayo-granizo-seguira-tiempo_0_iy0lDenMXS.html"
+  },
+  {
+   "src": "Cba24n",
+   "time": "2026-11-03T22:34:03.000Z",
+   "title": "Córdoba bajo alerta: tormentas y granizo en diferentes zonas de la provincia",
+   "link": "https://www.cba24n.com.ar/cordoba/cordoba-bajo-alerta--tormentas-y-granizo-en-diferentes-zonas-de-la-provincia_a6aea5f22fd9a277ed0d0d331"
   },
   {
    "src": "eldoce",
@@ -37,10 +37,10 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 28",
+  "Google Noticias 200 29",
+  "* La Voz del Interior: Atención. Tormenta en Córdoba: las localidades donde cayó granizo y cómo seguirá el tiempo -> https://www.lavoz.com.ar/servicios/tormenta-cordoba-localidades-cayo-granizo-seguira-tiempo_0_iy0lDenMXS.html (27 párrafos)",
   "* Cba24n: Córdoba bajo alerta: tormentas y granizo en diferentes zonas de la provincia - Cba24n -> https://www.cba24n.com.ar/cordoba/cordoba-bajo-alerta--tormentas-y-granizo-en-diferentes-zonas-de-la-provincia_a6aea5f22fd9a277ed0d0d331 (0 párrafos)",
   "- Perfil: Alerta naranja por tormentas en Córdoba: prevén granizo y lluvias intensas - Perfil (pronóstico, se ignora)",
-  "* La Voz del Interior: Atención. Tormenta en Córdoba: las localidades donde cayó granizo y cómo seguirá el tiempo -> https://www.lavoz.com.ar/servicios/tormenta-cordoba-localidades-cayo-granizo-seguira-tiempo_0_iy0lDenMXS.html (27 párrafos)",
   "* eldoce: Se cubrió el suelo de blanco: el granizó sorprendió a una localidad del interior de Córdob -> https://eldoce.tv/videos/actualidad/2026/11/03/se-cubrio-el-suelo-de-blanco-el-granizo-sorprendio-a-una-localidad-del-interior-de-cordoba/ (1 párrafos)",
   "Google Noticias 200 6",
   "* La Voz del Interior: Atención. Tormenta en Córdoba: las localidades donde cayó granizo y cómo seguirá el tiempo -> https://www.lavoz.com.ar/servicios/tormenta-cordoba-localidades-cayo-granizo-seguira-tiempo_0_iy0lDenMXS.html (27 párrafos)",
@@ -50,6 +50,6 @@
   "* eldoce: Se cubrió el suelo de blanco: el granizó sorprendió a una localidad del interior de Córdob -> https://eldoce.tv/videos/actualidad/2026/11/03/se-cubrio-el-suelo-de-blanco-el-granizo-sorprendio-a-una-localidad-del-interior-de-cordoba/ (1 párrafos)",
   "- Perfil: Alerta naranja por tormentas en Córdoba: prevén granizo y lluvias intensas - Perfil (pronóstico, se ignora)",
   "* Cba24n: Córdoba bajo alerta: tormentas y granizo en diferentes zonas de la provincia - Cba24n -> https://www.cba24n.com.ar/cordoba/cordoba-bajo-alerta--tormentas-y-granizo-en-diferentes-zonas-de-la-provincia_a6aea5f22fd9a277ed0d0d331 (0 párrafos)",
-  "Google Noticias 200 20"
+  "Google Noticias 200 18"
  ]
 }
