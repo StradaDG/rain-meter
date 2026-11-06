@@ -1,13 +1,22 @@
 {
- "updated": "2026-11-05T19:46:21.782Z",
+ "updated": "2026-11-06T00:48:35.182Z",
  "date": "2026-11-05",
- "noticias": 0,
+ "noticias": 2,
  "barrios": [],
- "reportes": [],
+ "reportes": [
+  {
+   "src": "Cadena 3",
+   "time": "2026-11-06T00:05:42.000Z",
+   "title": "\"El Niño\" en Córdoba: advierten por lluvias y granizo, pero descartan escenario de extrema gravedad",
+   "link": "https://www.cadena3.com/noticia/informados-al-regreso/el-nino-en-cordoba-advierten-por-lluvias-y-granizo-pero-descartan-escenario-de-extrema-gravedad_610662"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 20",
-  "Google Noticias 200 1",
-  "Google Noticias 200 77",
-  "Google Noticias 200 12"
+  "Google Noticias 200 12",
+  "* Cadena 3 Argentina: \"El Niño\" en Córdoba: advierten por lluvias y granizo, pero descartan escenario de extrema -> https://www.cadena3.com/noticia/informados-al-regreso/el-nino-en-cordoba-advierten-por-lluvias-y-granizo-pero-descartan-escenario-de-extrema-gravedad_610662 (73 párrafos)",
+  "Google Noticias 200 0",
+  "Google Noticias 200 71",
+  "* Cadena 3 Argentina: \"El Niño\" en Córdoba: advierten por lluvias y granizo, pero descartan escenario de extrema -> https://www.cadena3.com/noticia/informados-al-regreso/el-nino-en-cordoba-advierten-por-lluvias-y-granizo-pero-descartan-escenario-de-extrema-gravedad_610662 (73 párrafos)",
+  "Google Noticias 200 10"
  ]
 }
