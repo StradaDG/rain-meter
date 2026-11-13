@@ -1,13 +1,35 @@
 {
- "updated": "2026-11-13T11:23:47.172Z",
+ "updated": "2026-11-13T18:39:45.330Z",
  "date": "2026-11-13",
- "noticias": 0,
- "barrios": [],
- "reportes": [],
+ "noticias": 2,
+ "barrios": [
+  {
+   "name": "Juárez Celman",
+   "first": "2026-11-13T18:28:00.000Z",
+   "sources": [
+    {
+     "src": "Cadena 3",
+     "time": "2026-11-13T18:28:00.000Z",
+     "title": "Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca - Cadena 3 Argentina",
+     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNSnNkaWsxMW5Nb2hqZHctRG5wNTdZTkNpT1FYTlUtVVVwaEIwVWNHMFMwOGJYV01qYllheVNmWDcyb3lhdHNXR1hRTjBmdm15MkVubEJSdmprRjNmZHZLRXVlcnlrbG02U0FlbnJsM19zTm02b25SNVJOcVRJUE1Ga0lkNDZqRElXUC0zLXh4aDFtWVd5VUpKa0xpQ0VFdU5objBlZnZmYTRlVDdHQndScUsxM09xWXc5YkpVM05jRGppc1hnRHlOejFzUGRpQzjSAdQBQVVfeXFMTmI1WjJIRnB5b2swcXV5enNub0hJcTVtYlcwa002TU9mVUdmVVdmellMQXBWdjdkTDlUOGtpbzc0SGs3RjRjcnA0czRUWkJmWWZiQWtTbGJCcVNDMGxwN2h1eTJpd0xybnNoYWU0eEFuazJETnNkbEtpSkc2TzM0blFpcmRzQ0ltYUJlTHNyRl9HOXFIU2pFNUJ2bVpCd29xdWRvLWN0NklRRTN6c0xhUVI2VmNPQUFsV3h6RV9LbDNFOG4td25PUVR0VXo0SVlVT0I0bE0?oc=5"
+    }
+   ]
+  }
+ ],
+ "reportes": [
+  {
+   "src": "Cadena 3",
+   "time": "2026-11-13T18:28:00.000Z",
+   "title": "Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca",
+   "link": "https://www.cadena3.com/noticia/sociedad/fuerte-caida-de-granizo-en-cordoba-las-piedras-sorprendieron-a-vecinos-de-general-roca_612937"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 15",
-  "Google Noticias 200 0",
-  "Google Noticias 200 18",
-  "Google Noticias 200 25"
+  "Google Noticias 200 23",
+  "* Cadena 3 Argentina: Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca -  -> https://www.cadena3.com/noticia/sociedad/fuerte-caida-de-granizo-en-cordoba-las-piedras-sorprendieron-a-vecinos-de-general-roca_612937 (72 párrafos)",
+  "Google Noticias 200 1",
+  "Google Noticias 200 32",
+  "* Cadena 3 Argentina: Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca -  -> https://www.cadena3.com/noticia/sociedad/fuerte-caida-de-granizo-en-cordoba-las-piedras-sorprendieron-a-vecinos-de-general-roca_612937 (72 párrafos)",
+  "Google Noticias 200 15"
  ]
 }
