@@ -1,22 +1,13 @@
 {
- "updated": "2026-11-12T22:36:31.670Z",
- "date": "2026-11-12",
- "noticias": 2,
+ "updated": "2026-11-13T03:10:22.935Z",
+ "date": "2026-11-13",
+ "noticias": 0,
  "barrios": [],
- "reportes": [
-  {
-   "src": "Vía País",
-   "time": "2026-11-12T16:20:19.000Z",
-   "title": "Preocupación en Córdoba por un informe: anuncian calor sofocante y granizo",
-   "link": "https://viapais.com.ar/cordoba/alerta-calor-cordoba-informe-oficial-preve-picos-38c-tormentas_0_XS3Ob7VSiT.html"
-  }
- ],
+ "reportes": [],
  "debug": [
-  "Google Noticias 200 11",
-  "* Vía País: Preocupación en Córdoba por un informe: anuncian calor sofocante y granizo - Vía País -> https://viapais.com.ar/cordoba/alerta-calor-cordoba-informe-oficial-preve-picos-38c-tormentas_0_XS3Ob7VSiT.html (14 párrafos)",
+  "Google Noticias 200 13",
   "Google Noticias 200 0",
-  "Google Noticias 200 16",
-  "Google Noticias 200 7",
-  "* Vía País: Preocupación en Córdoba por un informe: anuncian calor sofocante y granizo - Vía País -> https://viapais.com.ar/cordoba/alerta-calor-cordoba-informe-oficial-preve-picos-38c-tormentas_0_XS3Ob7VSiT.html (14 párrafos)"
+  "Google Noticias 200 19",
+  "Google Noticias 200 24"
  ]
 }
