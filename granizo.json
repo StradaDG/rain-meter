@@ -1,99 +1,13 @@
 {
- "updated": "2026-11-14T00:13:09.033Z",
- "date": "2026-11-13",
- "noticias": 18,
- "barrios": [
-  {
-   "name": "Observatorio",
-   "first": "2026-11-13T18:28:00.000Z",
-   "sources": [
-    {
-     "src": "Cadena 3",
-     "time": "2026-11-13T18:28:00.000Z",
-     "title": "Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca - Cadena 3 Argentina",
-     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNSnNkaWsxMW5Nb2hqZHctRG5wNTdZTkNpT1FYTlUtVVVwaEIwVWNHMFMwOGJYV01qYllheVNmWDcyb3lhdHNXR1hRTjBmdm15MkVubEJSdmprRjNmZHZLRXVlcnlrbG02U0FlbnJsM19zTm02b25SNVJOcVRJUE1Ga0lkNDZqRElXUC0zLXh4aDFtWVd5VUpKa0xpQ0VFdU5objBlZnZmYTRlVDdHQndScUsxM09xWXc5YkpVM05jRGppc1hnRHlOejFzUGRpQzjSAdQBQVVfeXFMTmI1WjJIRnB5b2swcXV5enNub0hJcTVtYlcwa002TU9mVUdmVVdmellMQXBWdjdkTDlUOGtpbzc0SGs3RjRjcnA0czRUWkJmWWZiQWtTbGJCcVNDMGxwN2h1eTJpd0xybnNoYWU0eEFuazJETnNkbEtpSkc2TzM0blFpcmRzQ0ltYUJlTHNyRl9HOXFIU2pFNUJ2bVpCd29xdWRvLWN0NklRRTN6c0xhUVI2VmNPQUFsV3h6RV9LbDNFOG4td25PUVR0VXo0SVlVT0I0bE0?oc=5"
-    }
-   ]
-  },
-  {
-   "name": "Juárez Celman",
-   "first": "2026-11-13T18:28:00.000Z",
-   "sources": [
-    {
-     "src": "Cadena 3",
-     "time": "2026-11-13T18:28:00.000Z",
-     "title": "Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca - Cadena 3 Argentina",
-     "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNSnNkaWsxMW5Nb2hqZHctRG5wNTdZTkNpT1FYTlUtVVVwaEIwVWNHMFMwOGJYV01qYllheVNmWDcyb3lhdHNXR1hRTjBmdm15MkVubEJSdmprRjNmZHZLRXVlcnlrbG02U0FlbnJsM19zTm02b25SNVJOcVRJUE1Ga0lkNDZqRElXUC0zLXh4aDFtWVd5VUpKa0xpQ0VFdU5objBlZnZmYTRlVDdHQndScUsxM09xWXc5YkpVM05jRGppc1hnRHlOejFzUGRpQzjSAdQBQVVfeXFMTmI1WjJIRnB5b2swcXV5enNub0hJcTVtYlcwa002TU9mVUdmVVdmellMQXBWdjdkTDlUOGtpbzc0SGs3RjRjcnA0czRUWkJmWWZiQWtTbGJCcVNDMGxwN2h1eTJpd0xybnNoYWU0eEFuazJETnNkbEtpSkc2TzM0blFpcmRzQ0ltYUJlTHNyRl9HOXFIU2pFNUJ2bVpCd29xdWRvLWN0NklRRTN6c0xhUVI2VmNPQUFsV3h6RV9LbDNFOG4td25PUVR0VXo0SVlVT0I0bE0?oc=5"
-    }
-   ]
-  }
- ],
- "reportes": [
-  {
-   "src": "La Voz del Interior",
-   "time": "2026-11-13T19:03:26.000Z",
-   "title": "Córdoba. Con fuertes vientos y granizo la tormenta llegó a la Capital: alertas en toda la provincia",
-   "link": "https://www.lavoz.com.ar/servicios/sur-cordoba-granizo-alerta-naranja-general-roca-enormes_0_dAQHu3dyQ6.html"
-  },
-  {
-   "src": "Cadena 3",
-   "time": "2026-11-13T18:28:00.000Z",
-   "title": "Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca",
-   "link": "https://www.cadena3.com/noticia/sociedad/fuerte-caida-de-granizo-en-cordoba-las-piedras-sorprendieron-a-vecinos-de-general-roca_612937"
-  },
-  {
-   "src": "Cba24n",
-   "time": "2026-11-13T22:36:00.000Z",
-   "title": "Tras una jornada sofocante, llegó la tormenta con granizo a Córdoba capital",
-   "link": "https://www.cba24n.com.ar/cordoba/tras-una-jornada-sofocante--llego-la-tormenta-con-granizo-a-cordoba-capital_a6af6f1099142397d126d3d68"
-  },
-  {
-   "src": "Perfil",
-   "time": "2026-11-13T19:48:13.000Z",
-   "title": "Córdoba bajo alerta por tormentas severas: cayó granizo en el interior y se esperan lluvias intensas",
-   "link": "https://www.perfil.com/noticias/amp/cordoba/cordoba-bajo-alerta-por-tormentas-severas-cayo-granizo-en-el-interior-y-se-esperan-lluvias-intensas-ajHJz7z66fhL.phtml"
-  },
-  {
-   "src": "La Voz del Interior",
-   "time": "2026-11-13T23:46:43.000Z",
-   "title": "Tormenta. Lluvia y granizo en Córdoba: Noche de los Museos, suspendida",
-   "link": "https://www.lavoz.com.ar/ciudadanos/lluvia-granizo-cordoba-noche-museos-suspendida_0_esATewNQcQ.html"
-  },
-  {
-   "src": "La Nueva Mañana",
-   "time": "2026-11-13T20:20:00.000Z",
-   "title": "Córdoba: tras el intenso calor se desató una fuerte lluvia con vientos y caída de granizo",
-   "link": "https://lmdiario.com.ar/contenido/533712/cordoba-tras-el-intenso-calor-se-desato-una-fuerte-lluvia-con-vientos-y-caida-de"
-  },
-  {
-   "src": "Cadena 3",
-   "time": "2026-11-13T18:39:39.000Z",
-   "title": "tormenta granizo cordoba - Temas",
-   "link": "https://www.cadena3.com/pagina/tag/tormenta-granizo-cordoba"
-  }
- ],
+ "updated": "2026-11-14T06:53:04.346Z",
+ "date": "2026-11-14",
+ "noticias": 0,
+ "barrios": [],
+ "reportes": [],
  "debug": [
-  "Google Noticias 200 35",
-  "* La Voz del Interior: Córdoba. Con fuertes vientos y granizo la tormenta llegó a la Capital: alertas en toda la  -> https://www.lavoz.com.ar/servicios/sur-cordoba-granizo-alerta-naranja-general-roca-enormes_0_dAQHu3dyQ6.html (16 párrafos)",
-  "- Vía País: Alerta por temporal: llegó el granizo a Córdoba - Vía País (pronóstico, se ignora)",
-  "* Cadena 3 Argentina: Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca -  -> https://www.cadena3.com/noticia/sociedad/fuerte-caida-de-granizo-en-cordoba-las-piedras-sorprendieron-a-vecinos-de-general-roca_612937 (73 párrafos)",
-  "* Cba24n: Tras una jornada sofocante, llegó la tormenta con granizo a Córdoba capital - Cba24n -> https://www.cba24n.com.ar/cordoba/tras-una-jornada-sofocante--llego-la-tormenta-con-granizo-a-cordoba-capital_a6af6f1099142397d126d3d68 (0 párrafos)",
-  "- Hoy Día Córdoba: Alerta por tormentas severas en Córdoba: prevén ráfagas de 90 km/h y granizo | 13 de novie (pronóstico, se ignora)",
-  "* Perfil: Córdoba bajo alerta por tormentas severas: cayó granizo en el interior y se esperan lluvia -> https://www.perfil.com/noticias/amp/cordoba/cordoba-bajo-alerta-por-tormentas-severas-cayo-granizo-en-el-interior-y-se-esperan-lluvias-intensas-ajHJz7z66fhL.phtml (9 párrafos)",
-  "* La Voz del Interior: Tormenta. Lluvia y granizo en Córdoba: Noche de los Museos, suspendida - La Voz del Interi -> https://www.lavoz.com.ar/ciudadanos/lluvia-granizo-cordoba-noche-museos-suspendida_0_esATewNQcQ.html (16 párrafos)",
-  "* La Nueva Mañana: Córdoba: tras el intenso calor se desató una fuerte lluvia con vientos y caída de granizo  -> https://lmdiario.com.ar/contenido/533712/cordoba-tras-el-intenso-calor-se-desato-una-fuerte-lluvia-con-vientos-y-caida-de (0 párrafos)",
-  "Google Noticias 200 6",
-  "* La Voz del Interior: Tormenta. Lluvia y granizo en Córdoba: Noche de los Museos, suspendida - La Voz del Interi -> https://www.lavoz.com.ar/ciudadanos/lluvia-granizo-cordoba-noche-museos-suspendida_0_esATewNQcQ.html (16 párrafos)",
-  "* Perfil: Córdoba bajo alerta por tormentas severas: cayó granizo en el interior y se esperan lluvia -> https://www.perfil.com/noticias/amp/cordoba/cordoba-bajo-alerta-por-tormentas-severas-cayo-granizo-en-el-interior-y-se-esperan-lluvias-intensas-ajHJz7z66fhL.phtml (9 párrafos)",
+  "Google Noticias 200 42",
+  "Google Noticias 200 5",
   "Google Noticias 200 100",
-  "* La Voz del Interior: Córdoba. Con fuertes vientos y granizo la tormenta llegó a la Capital: alertas en toda la  -> https://www.lavoz.com.ar/servicios/sur-cordoba-granizo-alerta-naranja-general-roca-enormes_0_dAQHu3dyQ6.html (16 párrafos)",
-  "* La Voz del Interior: Tormenta. Lluvia y granizo en Córdoba: Noche de los Museos, suspendida - La Voz del Interi -> https://www.lavoz.com.ar/ciudadanos/lluvia-granizo-cordoba-noche-museos-suspendida_0_esATewNQcQ.html (16 párrafos)",
-  "* Cadena 3 Argentina: tormenta granizo cordoba - Temas - Cadena 3 Argentina -> https://www.cadena3.com/pagina/tag/tormenta-granizo-cordoba (12 párrafos)",
-  "* Cba24n: Tras una jornada sofocante, llegó la tormenta con granizo a Córdoba capital - Cba24n -> https://www.cba24n.com.ar/cordoba/tras-una-jornada-sofocante--llego-la-tormenta-con-granizo-a-cordoba-capital_a6af6f1099142397d126d3d68 (0 párrafos)",
-  "* Perfil: Córdoba bajo alerta por tormentas severas: cayó granizo en el interior y se esperan lluvia -> https://www.perfil.com/noticias/amp/cordoba/cordoba-bajo-alerta-por-tormentas-severas-cayo-granizo-en-el-interior-y-se-esperan-lluvias-intensas-ajHJz7z66fhL.phtml (9 párrafos)",
-  "* La Nueva Mañana: Córdoba: tras el intenso calor se desató una fuerte lluvia con vientos y caída de granizo  -> https://lmdiario.com.ar/contenido/533712/cordoba-tras-el-intenso-calor-se-desato-una-fuerte-lluvia-con-vientos-y-caida-de (0 párrafos)",
-  "* Cadena 3 Argentina: Fuerte caída de granizo en Córdoba: las piedras sorprendieron a vecinos de General Roca -  -> https://www.cadena3.com/noticia/sociedad/fuerte-caida-de-granizo-en-cordoba-las-piedras-sorprendieron-a-vecinos-de-general-roca_612937 (73 párrafos)",
-  "Google Noticias 200 13",
-  "- Vía País: Alerta por temporal: llegó el granizo a Córdoba - Vía País (pronóstico, se ignora)"
+  "Google Noticias 200 6"
  ]
 }
