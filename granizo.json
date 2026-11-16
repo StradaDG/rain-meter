@@ -1,13 +1,51 @@
 {
- "updated": "2026-11-16T08:20:51.915Z",
+ "updated": "2026-11-16T18:47:14.752Z",
  "date": "2026-11-16",
- "noticias": 0,
- "barrios": [],
- "reportes": [],
+ "noticias": 6,
+ "barrios": [
+  {
+   "name": "Observatorio",
+   "first": "2026-11-16T12:42:32.000Z",
+   "sources": [
+    {
+     "src": "eldoce",
+     "time": "2026-11-16T12:42:32.000Z",
+     "title": "La hora clave por la llegada tormentas severas con granizo a Córdoba: hay alerta naranja - eldoce",
+     "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPOV84aDlud2h3MW51MzJmWHp4d2hzcVkzZ2UwWWxBYWY2UmpBc05rTVBrZWlZcFhwYkNuSk1Eb05vU0lKM3dpUzRtLW1oektkRVVqVEU2cWl1WkVLNEN2RWRSbE1xY28yY2p4RTNJVElScF9yVm1IdWVUNzNWUDY2dk02QUNBMXdCVEF4aVc3T1VvQWwtVW05YnBERWdycHBWaERxQzQ5MXZLTmZvUk55Y1QzYXNaNE44ODBmdkk5T0lMSGRxVEpz0gHbAUFVX3lxTFBRbzFuc0lXQzQxamVfQnFkOFBWbmxYNldfT2d3c280Sk9DQWRPenNFQkJRaVFnd1E1YnQzUFlVMUIwWjNBQkpjYzJWSnhucDRPaGhPeDYtNERPXy1WSkxJZldETU5WLVp0eGV3UENGTzV5cklLTXlDQ3g5MGZEQzZoTDEzQlpJOXF2STFZWGl0c0RVVXF5djRGUTVPUURsbnhoa0hFS2NtNkpYcDlDY1RxaVB1UWRrS3d0M1VsU0lGbXdFNG54UGdBRW5rU2hLTXE2Q1EydDg2RENYTQ?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Talleres",
+   "first": "2026-11-16T12:42:32.000Z",
+   "sources": [
+    {
+     "src": "eldoce",
+     "time": "2026-11-16T12:42:32.000Z",
+     "title": "La hora clave por la llegada tormentas severas con granizo a Córdoba: hay alerta naranja - eldoce",
+     "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPOV84aDlud2h3MW51MzJmWHp4d2hzcVkzZ2UwWWxBYWY2UmpBc05rTVBrZWlZcFhwYkNuSk1Eb05vU0lKM3dpUzRtLW1oektkRVVqVEU2cWl1WkVLNEN2RWRSbE1xY28yY2p4RTNJVElScF9yVm1IdWVUNzNWUDY2dk02QUNBMXdCVEF4aVc3T1VvQWwtVW05YnBERWdycHBWaERxQzQ5MXZLTmZvUk55Y1QzYXNaNE44ODBmdkk5T0lMSGRxVEpz0gHbAUFVX3lxTFBRbzFuc0lXQzQxamVfQnFkOFBWbmxYNldfT2d3c280Sk9DQWRPenNFQkJRaVFnd1E1YnQzUFlVMUIwWjNBQkpjYzJWSnhucDRPaGhPeDYtNERPXy1WSkxJZldETU5WLVp0eGV3UENGTzV5cklLTXlDQ3g5MGZEQzZoTDEzQlpJOXF2STFZWGl0c0RVVXF5djRGUTVPUURsbnhoa0hFS2NtNkpYcDlDY1RxaVB1UWRrS3d0M1VsU0lGbXdFNG54UGdBRW5rU2hLTXE2Q1EydDg2RENYTQ?oc=5"
+    }
+   ]
+  }
+ ],
+ "reportes": [
+  {
+   "src": "eldoce",
+   "time": "2026-11-16T12:42:32.000Z",
+   "title": "La hora clave por la llegada tormentas severas con granizo a Córdoba: hay alerta naranja",
+   "link": "https://eldoce.tv/actualidad/2026/11/16/la-hora-clave-por-la-llegada-tormentas-severas-con-granizo-a-cordoba-hay-alerta-naranja/"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 24",
-  "Google Noticias 200 0",
-  "Google Noticias 200 59",
-  "Google Noticias 200 7"
+  "Google Noticias 200 33",
+  "* eldoce: La hora clave por la llegada tormentas severas con granizo a Córdoba: hay alerta naranja - -> https://eldoce.tv/actualidad/2026/11/16/la-hora-clave-por-la-llegada-tormentas-severas-con-granizo-a-cordoba-hay-alerta-naranja/ (11 párrafos)",
+  "- Cba24n: Tormentas y posible granizo: ¿A qué hora se larga con más fuerza en Córdoba? - Cba24n (pronóstico, se ignora)",
+  "- Vía País: Alerta naranja en Córdoba por tormentas y granizo: cuándo llegarán los fenómenos más inten (pronóstico, se ignora)",
+  "Google Noticias 200 1",
+  "Google Noticias 200 100",
+  "* eldoce: La hora clave por la llegada tormentas severas con granizo a Córdoba: hay alerta naranja - -> https://eldoce.tv/actualidad/2026/11/16/la-hora-clave-por-la-llegada-tormentas-severas-con-granizo-a-cordoba-hay-alerta-naranja/ (11 párrafos)",
+  "- Cba24n: Tormentas y posible granizo: ¿A qué hora se larga con más fuerza en Córdoba? - Cba24n (pronóstico, se ignora)",
+  "Google Noticias 200 8",
+  "- Vía País: Alerta naranja en Córdoba por tormentas y granizo: cuándo llegarán los fenómenos más inten (pronóstico, se ignora)"
  ]
 }
