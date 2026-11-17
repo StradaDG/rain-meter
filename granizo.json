@@ -1,12 +1,18 @@
 {
- "updated": "2026-11-16T18:47:14.752Z",
+ "updated": "2026-11-17T02:19:57.691Z",
  "date": "2026-11-16",
- "noticias": 6,
+ "noticias": 16,
  "barrios": [
   {
    "name": "Observatorio",
    "first": "2026-11-16T12:42:32.000Z",
    "sources": [
+    {
+     "src": "Vía País",
+     "time": "2026-11-16T18:19:19.000Z",
+     "title": "Continúa el alerta naranja en Córdoba por intensas tormentas, viento y granizo - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNMkFoVHA1Q1ZKSFRvbWxGSVkxZVVqM09OeDVGRDFtVzZMUkRwczdQVC1veHAySG0zUXRuTE9BTElIM19hYXhUOTBxRXVncXBCbkpvaHg0ZFB0SHhKaUl4WmhUU281RGliSDVHeFA5VHhXNUk1VkZHSUFpS0Vpb1k3clZ5SGhMdEpJSkVkT0VFN0N3WWpFUHhDdi1PM194clQ5Yy1OTXlrS0ZXcENnMzhYYm8yUXB1VjRr?oc=5"
+    },
     {
      "src": "eldoce",
      "time": "2026-11-16T12:42:32.000Z",
@@ -26,26 +32,78 @@
      "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPOV84aDlud2h3MW51MzJmWHp4d2hzcVkzZ2UwWWxBYWY2UmpBc05rTVBrZWlZcFhwYkNuSk1Eb05vU0lKM3dpUzRtLW1oektkRVVqVEU2cWl1WkVLNEN2RWRSbE1xY28yY2p4RTNJVElScF9yVm1IdWVUNzNWUDY2dk02QUNBMXdCVEF4aVc3T1VvQWwtVW05YnBERWdycHBWaERxQzQ5MXZLTmZvUk55Y1QzYXNaNE44ODBmdkk5T0lMSGRxVEpz0gHbAUFVX3lxTFBRbzFuc0lXQzQxamVfQnFkOFBWbmxYNldfT2d3c280Sk9DQWRPenNFQkJRaVFnd1E1YnQzUFlVMUIwWjNBQkpjYzJWSnhucDRPaGhPeDYtNERPXy1WSkxJZldETU5WLVp0eGV3UENGTzV5cklLTXlDQ3g5MGZEQzZoTDEzQlpJOXF2STFZWGl0c0RVVXF5djRGUTVPUURsbnhoa0hFS2NtNkpYcDlDY1RxaVB1UWRrS3d0M1VsU0lGbXdFNG54UGdBRW5rU2hLTXE2Q1EydDg2RENYTQ?oc=5"
     }
    ]
+  },
+  {
+   "name": "Carlos Paz",
+   "first": "2026-11-16T18:19:19.000Z",
+   "sources": [
+    {
+     "src": "Vía País",
+     "time": "2026-11-16T18:19:19.000Z",
+     "title": "Continúa el alerta naranja en Córdoba por intensas tormentas, viento y granizo - Vía País",
+     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNMkFoVHA1Q1ZKSFRvbWxGSVkxZVVqM09OeDVGRDFtVzZMUkRwczdQVC1veHAySG0zUXRuTE9BTElIM19hYXhUOTBxRXVncXBCbkpvaHg0ZFB0SHhKaUl4WmhUU281RGliSDVHeFA5VHhXNUk1VkZHSUFpS0Vpb1k3clZ5SGhMdEpJSkVkT0VFN0N3WWpFUHhDdi1PM194clQ5Yy1OTXlrS0ZXcENnMzhYYm8yUXB1VjRr?oc=5"
+    }
+   ]
   }
  ],
  "reportes": [
+  {
+   "src": "La Voz del Interior",
+   "time": "2026-11-17T01:21:00.000Z",
+   "title": "Inestable. Alerta naranja en Córdoba: la tormenta llegó a la ciudad, sin granizo por el momento",
+   "link": "https://www.lavoz.com.ar/servicios/alerta-naranja-tormentas-cordoba-preven-rafagas-granizo-lluvias-lunes-16-noviembre_0_SRrkP9LM72.html"
+  },
+  {
+   "src": "Vía País",
+   "time": "2026-11-16T18:19:19.000Z",
+   "title": "Continúa el alerta naranja en Córdoba por intensas tormentas, viento y granizo",
+   "link": "https://viapais.com.ar/cordoba/alerta-naranja-cordoba-tormentas-granizo-llegaran-fenomenos-intensos_0_36AKybSgQz.html"
+  },
+  {
+   "src": "Cadena 3",
+   "time": "2026-11-17T00:10:12.000Z",
+   "title": "Reportan fuerte tormenta con granizo en Río Cuarto y el sur de Córdoba",
+   "link": "https://www.cadena3.com/noticia/viva-la-radio/reportan-fuerte-tormenta-con-granizo-en-rio-cuarto-y-el-sur-de-cordoba_613701"
+  },
   {
    "src": "eldoce",
    "time": "2026-11-16T12:42:32.000Z",
    "title": "La hora clave por la llegada tormentas severas con granizo a Córdoba: hay alerta naranja",
    "link": "https://eldoce.tv/actualidad/2026/11/16/la-hora-clave-por-la-llegada-tormentas-severas-con-granizo-a-cordoba-hay-alerta-naranja/"
+  },
+  {
+   "src": "La Voz del Interior",
+   "time": "2026-11-17T02:10:30.000Z",
+   "title": "Atención. Temporal en Córdoba: cayó granizo, hubo destrozos y sigue la alerta naranja por tormentas",
+   "link": "https://www.lavoz.com.ar/servicios/temporal-cordoba-cayo-granizo-destrozos-sigue-alerta-naranja-tormentas_0_gn3J2KwhD5.html"
+  },
+  {
+   "src": "eldoce",
+   "time": "2026-11-16T21:42:39.000Z",
+   "title": "Granizo y lluvia en medio del alerta por tormenta en Córdoba",
+   "link": "https://eldoce.tv/videos/actualidad/2026/11/16/granizo-y-lluvia-en-hernando-en-medio-del-alerta-por-tormentas-fuertes/"
   }
  ],
  "debug": [
-  "Google Noticias 200 33",
+  "Google Noticias 200 39",
+  "* La Voz del Interior: Inestable. Alerta naranja en Córdoba: la tormenta llegó a la ciudad, sin granizo por el mo -> https://www.lavoz.com.ar/servicios/alerta-naranja-tormentas-cordoba-preven-rafagas-granizo-lluvias-lunes-16-noviembre_0_SRrkP9LM72.html (33 párrafos)",
+  "- Cba24n: Alerta en Córdoba por tormentas fuertes y posible caída de granizo - Cba24n (pronóstico, se ignora)",
+  "* Vía País: Continúa el alerta naranja en Córdoba por intensas tormentas, viento y granizo - Vía País -> https://viapais.com.ar/cordoba/alerta-naranja-cordoba-tormentas-granizo-llegaran-fenomenos-intensos_0_36AKybSgQz.html (14 párrafos)",
+  "* Cadena 3 Argentina: Reportan fuerte tormenta con granizo en Río Cuarto y el sur de Córdoba - Cadena 3 Argentin -> https://www.cadena3.com/noticia/viva-la-radio/reportan-fuerte-tormenta-con-granizo-en-rio-cuarto-y-el-sur-de-cordoba_613701 (66 párrafos)",
   "* eldoce: La hora clave por la llegada tormentas severas con granizo a Córdoba: hay alerta naranja - -> https://eldoce.tv/actualidad/2026/11/16/la-hora-clave-por-la-llegada-tormentas-severas-con-granizo-a-cordoba-hay-alerta-naranja/ (11 párrafos)",
-  "- Cba24n: Tormentas y posible granizo: ¿A qué hora se larga con más fuerza en Córdoba? - Cba24n (pronóstico, se ignora)",
+  "* La Voz del Interior: Atención. Temporal en Córdoba: cayó granizo, hubo destrozos y sigue la alerta naranja por  -> https://www.lavoz.com.ar/servicios/temporal-cordoba-cayo-granizo-destrozos-sigue-alerta-naranja-tormentas_0_gn3J2KwhD5.html (19 párrafos)",
+  "* eldoce: Granizo y lluvia en medio del alerta por tormenta en Córdoba - eldoce -> https://eldoce.tv/videos/actualidad/2026/11/16/granizo-y-lluvia-en-hernando-en-medio-del-alerta-por-tormentas-fuertes/ (0 párrafos)",
   "- Vía País: Alerta naranja en Córdoba por tormentas y granizo: cuándo llegarán los fenómenos más inten (pronóstico, se ignora)",
-  "Google Noticias 200 1",
+  "Google Noticias 200 8",
+  "* La Voz del Interior: Atención. Temporal en Córdoba: cayó granizo, hubo destrozos y sigue la alerta naranja por  -> https://www.lavoz.com.ar/servicios/temporal-cordoba-cayo-granizo-destrozos-sigue-alerta-naranja-tormentas_0_gn3J2KwhD5.html (19 párrafos)",
+  "* La Voz del Interior: Inestable. Alerta naranja en Córdoba: la tormenta llegó a la ciudad, sin granizo por el mo -> https://www.lavoz.com.ar/servicios/alerta-naranja-tormentas-cordoba-preven-rafagas-granizo-lluvias-lunes-16-noviembre_0_SRrkP9LM72.html (33 párrafos)",
   "Google Noticias 200 100",
   "* eldoce: La hora clave por la llegada tormentas severas con granizo a Córdoba: hay alerta naranja - -> https://eldoce.tv/actualidad/2026/11/16/la-hora-clave-por-la-llegada-tormentas-severas-con-granizo-a-cordoba-hay-alerta-naranja/ (11 párrafos)",
-  "- Cba24n: Tormentas y posible granizo: ¿A qué hora se larga con más fuerza en Córdoba? - Cba24n (pronóstico, se ignora)",
-  "Google Noticias 200 8",
-  "- Vía País: Alerta naranja en Córdoba por tormentas y granizo: cuándo llegarán los fenómenos más inten (pronóstico, se ignora)"
+  "* La Voz del Interior: Atención. Temporal en Córdoba: cayó granizo, hubo destrozos y sigue la alerta naranja por  -> https://www.lavoz.com.ar/servicios/temporal-cordoba-cayo-granizo-destrozos-sigue-alerta-naranja-tormentas_0_gn3J2KwhD5.html (19 párrafos)",
+  "* Cadena 3 Argentina: Reportan fuerte tormenta con granizo en Río Cuarto y el sur de Córdoba - Cadena 3 Argentin -> https://www.cadena3.com/noticia/viva-la-radio/reportan-fuerte-tormenta-con-granizo-en-rio-cuarto-y-el-sur-de-cordoba_613701 (66 párrafos)",
+  "* eldoce: Granizo y lluvia en medio del alerta por tormenta en Córdoba - eldoce -> https://eldoce.tv/videos/actualidad/2026/11/16/granizo-y-lluvia-en-hernando-en-medio-del-alerta-por-tormentas-fuertes/ (0 párrafos)",
+  "- Cba24n: Alerta en Córdoba por tormentas fuertes y posible caída de granizo - Cba24n (pronóstico, se ignora)",
+  "* La Voz del Interior: Inestable. Alerta naranja en Córdoba: la tormenta llegó a la ciudad, sin granizo por el mo -> https://www.lavoz.com.ar/servicios/alerta-naranja-tormentas-cordoba-preven-rafagas-granizo-lluvias-lunes-16-noviembre_0_SRrkP9LM72.html (33 párrafos)",
+  "Google Noticias 429 0"
  ]
 }
