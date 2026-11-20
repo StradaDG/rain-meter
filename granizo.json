@@ -1,13 +1,22 @@
 {
- "updated": "2026-11-20T08:54:54.969Z",
+ "updated": "2026-11-20T17:34:42.643Z",
  "date": "2026-11-20",
- "noticias": 0,
+ "noticias": 2,
  "barrios": [],
- "reportes": [],
+ "reportes": [
+  {
+   "src": "La Voz del Interior",
+   "time": "2026-11-20T12:19:08.000Z",
+   "title": "Temporal en el sur de Córdoba: granizo, calles anegadas, evacuados, clases suspendidas y más de 100 milímetros de lluvia",
+   "link": "https://www.lavoz.com.ar/ciudadanos/temporal-sur-cordoba-granizo-calles-anegadas-evacuados-clases-suspendidas-80-milimetros-lluvia_0_C1Raw00iro.html"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 26",
+  "Google Noticias 200 24",
+  "* La Voz del Interior: Temporal en el sur de Córdoba: granizo, calles anegadas, evacuados, clases suspendidas y m -> https://www.lavoz.com.ar/ciudadanos/temporal-sur-cordoba-granizo-calles-anegadas-evacuados-clases-suspendidas-80-milimetros-lluvia_0_C1Raw00iro.html (23 párrafos)",
   "Google Noticias 200 9",
-  "Google Noticias 200 86",
+  "Google Noticias 200 52",
+  "* La Voz del Interior: Temporal en el sur de Córdoba: granizo, calles anegadas, evacuados, clases suspendidas y m -> https://www.lavoz.com.ar/ciudadanos/temporal-sur-cordoba-granizo-calles-anegadas-evacuados-clases-suspendidas-80-milimetros-lluvia_0_C1Raw00iro.html (23 párrafos)",
   "Google Noticias 200 30"
  ]
 }
