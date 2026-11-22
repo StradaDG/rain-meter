@@ -1,8 +1,21 @@
 {
- "updated": "2026-11-22T15:58:46.643Z",
+ "updated": "2026-11-22T21:40:35.376Z",
  "date": "2026-11-22",
  "noticias": 2,
- "barrios": [],
+ "barrios": [
+  {
+   "name": "Ciudad Universitaria",
+   "first": "2026-11-22T14:49:25.000Z",
+   "sources": [
+    {
+     "src": "Hoy Día Córdoba",
+     "time": "2026-11-22T14:49:25.000Z",
+     "title": "Una fuerte tormenta con granizo provocó destrozos y anegamientos | 22 de noviembre de 2026 - Hoy Día Córdoba",
+     "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPbEZHWWJvRlNBUVhtWWg3X2xKQk14cVREdjk5SGN2NmkzbFVRTXFCck1fbTdzdUo0ZmtoOE5EYy14YlQyTWd5Q0l6TGRfcHBBNVFNM3ZDLW1PdzMxaklBQXdDU2hwekdRandwSzlaVFhIWWJtdkZvTFF0RURyUlExM3NxZ1VaVkY4YjJFaV9kS2pNZmM4X2ZnTUpyZ2JLV3Aw0gGmAUFVX3lxTE1falJvTkdSeWd1UmRicUJMWERMMGh0cmhST0hTRzBvTG00UzBmcEk4eGFZNW90YTRsRnE1STJ1eHoycHczbEliSW5xWlVoaFA5LV9yQXl4TXcxMkpkRElxak53aXpFUWlvZVg4OXpYM1RKTFhmbERSampUTjhIN1VkM01NdWlXc0pnSGt4X2Q0ejBraURPODZqSG5zUlBxNUI5UEl2aGc?oc=5"
+    }
+   ]
+  }
+ ],
  "reportes": [
   {
    "src": "Hoy Día Córdoba",
@@ -12,11 +25,11 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 27",
+  "Google Noticias 200 23",
   "* Hoy Día Córdoba: Una fuerte tormenta con granizo provocó destrozos y anegamientos | 22 de noviembre de 2026 -> https://hoydia.com.ar/hoy-cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos/ (15 párrafos)",
   "Google Noticias 200 5",
   "Google Noticias 200 100",
   "* Hoy Día Córdoba: Una fuerte tormenta con granizo provocó destrozos y anegamientos | 22 de noviembre de 2026 -> https://hoydia.com.ar/hoy-cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos/ (15 párrafos)",
-  "Google Noticias 200 17"
+  "Google Noticias 200 13"
  ]
 }
