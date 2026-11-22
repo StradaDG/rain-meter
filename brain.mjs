@@ -14,7 +14,7 @@ const MVARS = "precipitation,precipitation_probability,weather_code,cape,lifted_
 /* ---------- Modelos ---------- */
 export async function fetchModels(PLACES) {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${PLACES.map(p => p.lat)}&longitude=${PLACES.map(p => p.lon)}&hourly=${MVARS}&models=${Object.keys(MODELS)}&forecast_hours=30&timezone=GMT`;
-  const r = await fetch(url); const j = await r.json();
+  const r = await fetch(url, { signal: AbortSignal.timeout(40000) }); const j = await r.json();
   if (!r.ok || j.error) throw new Error("modelos: " + (j.reason || r.status));
   return Array.isArray(j) ? j : [j];
 }
@@ -48,7 +48,7 @@ function inPoly(lat, lon, poly) {
 const tag = (x, t) => (x.match(new RegExp(`<(?:cap:)?${t}>([\\s\\S]*?)</(?:cap:)?${t}>`, "i")) || [])[1]?.trim() ?? "";
 const tags = (x, t) => [...x.matchAll(new RegExp(`<(?:cap:)?${t}>([\\s\\S]*?)</(?:cap:)?${t}>`, "gi"))].map(m => m[1].trim());
 export async function fetchSMN(PLACES) {
-  const rss = await (await fetch("https://ssl.smn.gob.ar/CAP/AR.php", { headers: { "User-Agent": "rain-meter" } })).text();
+  const rss = await (await fetch("https://ssl.smn.gob.ar/CAP/AR.php", { headers: { "User-Agent": "rain-meter" }, signal: AbortSignal.timeout(30000) })).text();
   const links = [...new Set([...rss.matchAll(/<item>[\s\S]*?<link>(.*?)<\/link>/g)].map(m => m[1].trim()))]
     .filter(l => !/viento|calor|frio|nieve|niebla|zonda|humo|polvo/i.test(l));
   const res = Object.fromEntries(PLACES.map(p => [p.id, []]));
@@ -56,7 +56,7 @@ export async function fetchSMN(PLACES) {
   for (let i = 0; i < links.length; i += 12) {
     await Promise.all(links.slice(i, i + 12).map(async link => {
       try {
-        const x = await (await fetch(link, { headers: { "User-Agent": "rain-meter" } })).text();
+        const x = await (await fetch(link, { headers: { "User-Agent": "rain-meter" }, signal: AbortSignal.timeout(20000) })).text();
         for (const info of tags(x, "info")) {
           const ev = tag(info, "event"), head = tag(info, "headline"), desc = tag(info, "description");
           const txt = `${ev} ${head} ${desc}`;

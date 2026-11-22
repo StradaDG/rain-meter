@@ -86,9 +86,10 @@ const url=`https://api.open-meteo.com/v1/forecast?latitude=${PLACES.map(p=>p.lat
 const STATE="state.json";
 const sent=fs.existsSync(STATE)?JSON.parse(fs.readFileSync(STATE,"utf8")):{};
 const now=Date.now();
-let j=await (await fetch(url)).json(); if(!Array.isArray(j)) j=[j];
-// Copia de respaldo para la página (si la consulta directa del usuario falla)
-fs.writeFileSync("data.json",JSON.stringify({updated:Date.now(),raw:j}));
+let j=null;
+for(let k=0;k<3&&!j;k++){try{const r=await fetch(url,{signal:AbortSignal.timeout(25000)});const x=await r.json();if(r.ok&&!x.error)j=Array.isArray(x)?x:[x]}catch(e){console.log("open-meteo",e.message);await new Promise(r=>setTimeout(r,5000))}}
+if(j) fs.writeFileSync("data.json",JSON.stringify({updated:Date.now(),raw:j}));   // respaldo para la página
+else {const b=loadJSON("data.json");if(!b)process.exit(0);j=b.raw;console.log("uso data.json de respaldo")}
 
 /* ---- Cerebro multi-fuente: 10 modelos + SMN + rayos satelitales ---- */
 let MC=loadJSON("models-cache.json");
