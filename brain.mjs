@@ -61,8 +61,10 @@ export async function fetchSMN(PLACES) {
           const ev = tag(info, "event"), head = tag(info, "headline"), desc = tag(info, "description");
           const txt = `${ev} ${head} ${desc}`;
           if (!/tormenta|lluvia|granizo|precipitaci/i.test(txt)) continue;
-          const exp = Date.parse(tag(info, "expires")) || now + 3 * 36e5;
-          const on = Date.parse(tag(info, "onset")) || Date.parse(tag(info, "effective")) || Date.parse(tag(x, "sent")) || now;
+          let exp = Date.parse(tag(info, "expires")) || now + 3 * 36e5;
+          let on = Date.parse(tag(info, "onset")) || Date.parse(tag(info, "effective")) || Date.parse(tag(x, "sent")) || now;
+          // Los avisos a corto plazo del SMN traen la hora UTC marcada como -03:00: se corrige.
+          if (/avisocortoplazo/.test(link) && on > now + 30 * 60e3) { on -= 3 * 36e5; exp -= 3 * 36e5 }
           if (exp < now) continue;
           const sev = tag(info, "severity");
           let lvl = /\bROJ/i.test(head) ? 3 : /NARANJ/i.test(head) ? 2 : /AMARILL/i.test(head) ? 1 : sev === "Extreme" ? 3 : sev === "Severe" ? 2 : 1;
@@ -101,7 +103,7 @@ export function fuse({ PLACES, hailScore, models, smn, glm, now = Date.now() }) 
       // SMN
       let smnF = 0, smnR = 0, smnTxt = "";
       for (const a of A) {
-        if (!(a.on - 36e5 <= t + 36e5 && a.exp > t)) continue;
+        if (a.acp ? !(a.on < t + 36e5 && a.exp > t) : !(a.on - 36e5 <= t + 36e5 && a.exp > t)) continue;
         let f = a.acp ? (a.hail ? 65 : 45) : a.lvl === 3 ? 75 : a.lvl === 2 ? (a.hail ? 55 : 40) : (a.hail ? 30 : 20);
         if (f > smnF) { smnF = f; smnTxt = (a.acp ? "Aviso SMN a corto plazo " : "Alerta SMN ") + ["", "amarilla", "naranja", "roja"][a.lvl] + (a.hail ? " con granizo" : "") }
         if (a.rain) smnR = Math.max(smnR, a.acp || a.lvl >= 2 ? 2 : 1);

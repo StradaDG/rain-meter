@@ -450,6 +450,11 @@ const rainIcon=l=>l===2?"heavy":l===1?"rain":"ok";
 
 /* --- Recuadro de alerta: peor caso de los dos lugares en 12 h --- */
 /* --- Barrios con granizo reportado hoy (noticias, actualizado cada 30 min) --- */
+let FUS=null;
+async function loadFUS(){try{const r=await fetch("fusion.json?t="+Date.now(),{cache:"no-store"});if(r.ok){const f=await r.json();if(Date.now()-f.updated<45*60e3){FUS=f;if(DATA.some(d=>d.hours))render()}}}catch(e){}}
+function applyFUS(){if(!FUS)return;for(const d of DATA){if(!d.hours)continue;const F=FUS.places?.[d.p.id]?.hours||[];
+  for(const h of d.hours){const f=F.find(x=>x.t===h.t);if(!f)continue;h.hs=f.p;h.hl=hailLevel(f.p);if(f.smnR>=2)h.rl=Math.max(h.rl,1);h.f=f}}}
+function srcLine(f){if(!f)return"";const s=[`🧠 ${f.agree}/${f.n} modelos ven granizo`];if(f.smnTxt)s.push("🚨 "+f.smnTxt);if(f.rayTxt)s.push("⚡ "+f.rayTxt);return s.join(" · ")}
 let HN=null;
 async function loadHN(){try{const r=await fetch("granizo.json?t="+Date.now());if(r.ok){HN=await r.json();renderAlert()}}catch(e){}}
 function hnLine(){
@@ -485,6 +490,10 @@ function tickMsgs(){
   m.push(hnLine()||'<span>🧊 Sin reportes de granizo hoy en Córdoba</span>');
   const ok=DATA.filter(d=>d.hours);
   if(ok.length)m.push(`<span>⛈️ Granizo 12 h: ${ok.map(d=>`${d.p.name.split(" ")[0]} ${Math.max(...d.hours.slice(0,12).map(h=>h.hs))}%`).join(" · ")}</span>`);
+  if(FUS)for(const d of ok){const P=FUS.places?.[d.p.id];if(!P)continue;const nm=d.p.name.split(" ")[0];
+    const a=P.smn?.[0];if(a)m.push(`<span>🚨 SMN ${nm}: ${a.head.toLowerCase()} · hasta ${hhmm(a.exp)}</span>`);
+    const g=P.glm?.now;if(P.glmFresh&&g&&g.r50)m.push(`<span>⚡ ${nm}: ${g.r50} rayos a menos de 50 km${g.near!=null?` · el más cerca a ${Math.round(g.near)} km`:""}</span>`);}
+  if(FUS)m.push(`<span>🧠 Análisis: ${FUS.places?.cba?.models||0} modelos + avisos SMN + rayos satelitales</span>`);
   const mi=mercInfo();
   m.push(mi.retro?`<span>☿ Mercurio retrógrado hasta el ${fmtD(mi.until)}</span>`:`<span>☿ Mercurio directo · retrógrado desde el ${fmtD(mi.until)}</span>`);
   return m;
@@ -507,7 +516,7 @@ function renderAlert(){
 }
 /* --- Render --- */
 function render(){
-  renderAlert();renderTL();renderMini();
+  applyFUS();renderAlert();renderTL();renderMini();
   $("#grid").innerHTML=DATA.map(d=>{
     if(!d.hours) return `<section class="card s0"><div class="top"><h2>${d.p.name}</h2></div><div class="next">Sin datos. Reintento en unos minutos.</div></section>`;
     const hrs=d.hours, cur=hrs[0].h, f=hrs.slice(0,12);
@@ -532,7 +541,7 @@ function render(){
         <div class="row">${ic("rain",24)}<div class="cells">${hrs.map(h=>`<i class="r${h.rl}" title="${hhmm(h.t)} · ${h.h.precipitation??0} mm"></i>`).join("")}</div></div>
         <div class="hours"><span></span>${lab}</div>
       </div>
-      <div class="why">Pico ${hhmm(peak.t)}: <span>CAPE <em>${Math.round(peak.h.cape??0)}</em></span><span>Cizalladura <em>${peak.sh} km/h</em></span><span>0° a <em>${((peak.h.freezing_level_height??0)/1000).toFixed(1)} km</em></span><span>Índice <em>${peak.hs}/100</em></span></div>
+      ${hrs[0].f?`<div class="why">${srcLine(hrs[0].f)}</div>`:""}<div class="why">Pico ${hhmm(peak.t)}: <span>CAPE <em>${Math.round(peak.h.cape??0)}</em></span><span>Cizalladura <em>${peak.sh} km/h</em></span><span>0° a <em>${((peak.h.freezing_level_height??0)/1000).toFixed(1)} km</em></span><span>Índice <em>${peak.hs}/100</em></span></div>
     </section>`}).join("");
 }
 
@@ -831,7 +840,7 @@ async function checkUpdate(){try{
 }catch(e){}}
 setTimeout(checkUpdate,4000);setInterval(checkUpdate,3*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)checkUpdate()});
-syncBtn();fitStandalone();load();setMode("tl");loadHN();setInterval(loadHN,10*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
+syncBtn();fitStandalone();load();setMode("tl");loadHN();setInterval(loadHN,10*60e3);loadFUS();setInterval(loadFUS,5*60e3);setInterval(()=>loadGrid(true),60*60e3);setInterval(()=>{if(graw){gdata=graw.map(x=>rain15(x));if(hraw)ghail=hraw.map(x=>to15(x));showGrid(Math.min(gidx,gdata[0].length-1))}},15*60e3);
 setInterval(load,30*60e3);setInterval(check,60e3);
 </script>
 </body>
