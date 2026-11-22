@@ -1,6 +1,7 @@
 // Rain Meter · avisos push al celular (ntfy) 2 h y 1 h antes del riesgo.
 // Corre en GitHub Actions cada 15 min. Usa el mismo análisis que la página.
 import fs from "node:fs";
+import {fetchModels,splitModels,fetchSMN,fuse,loadJSON} from "./brain.mjs";
 const TOPIC=process.env.NTFY_TOPIC||"rainmeter-8a86f00963";
 const PLACES=[
   {id:"cba",name:"Córdoba Capital",sub:"Casa",lat:-31.420,lon:-64.189},
@@ -88,9 +89,31 @@ const now=Date.now();
 let j=await (await fetch(url)).json(); if(!Array.isArray(j)) j=[j];
 // Copia de respaldo para la página (si la consulta directa del usuario falla)
 fs.writeFileSync("data.json",JSON.stringify({updated:Date.now(),raw:j}));
+
+/* ---- Cerebro multi-fuente: 10 modelos + SMN + rayos satelitales ---- */
+let MC=loadJSON("models-cache.json");
+if(!MC||now-MC.t>30*60e3){try{const raw=await fetchModels(PLACES);MC={t:now,m:raw.map(splitModels)};fs.writeFileSync("models-cache.json",JSON.stringify(MC))}catch(e){console.log("modelos",e.message)}}
+let SMN=null;try{SMN=await fetchSMN(PLACES)}catch(e){console.log("smn",e.message)}
+const GLM=loadJSON("glm.json");
+const FUS=fuse({PLACES,hailScore,models:MC?.m,smn:SMN,glm:GLM,now});
+fs.writeFileSync("fusion.json",JSON.stringify(FUS));
+for(const p of PLACES){const f=FUS.places[p.id];console.log(p.id,"modelos",f.models,"smn",f.smn.length,"glm",JSON.stringify(f.glm?.now),"→",f.hours.slice(0,4).map(h=>`${h.p}(ens ${h.ens} smn ${h.smn} ray ${h.ray})`).join(" "))}
+function applyF(hours,pid){const F=FUS.places[pid]?.hours||[];
+  for(const h of hours){const f=F.find(x=>x.t===h.t);if(!f)continue;h.hs=f.p;h.hl=hailLevel(f.p);if(f.smnR>=2)h.rl=Math.max(h.rl,1);h.f=f}
+  return hours}
+const HRS=PLACES.map((p,i)=>applyF(analyze(j[i]),p.id));
+const why=h=>{const f=h.f;if(!f)return"";const s=[`${f.agree}/${f.n} modelos`];if(f.smnTxt)s.push(f.smnTxt);if(f.rayTxt)s.push(f.rayTxt);return " · "+s.join(" · ")};
+const clean=s=>s.normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+
+// Aviso inmediato: nuevo aviso a corto plazo del SMN sobre el lugar
+for(const p of PLACES){for(const a of (SMN?.[p.id]||[]).filter(a=>a.acp)){const key="acp"+p.id+a.on;
+  if(!sent[key]){await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body:`${a.head} · hasta las ${hhmm(a.exp)}`,headers:{Title:clean(`SMN aviso ${["","amarillo","naranja","rojo"][a.lvl]} AHORA: ${p.name}`),Priority:a.lvl>=2?"urgent":"high",Tags:"rotating_light,cloud_with_lightning"}});sent[key]=now;console.log("Aviso SMN",key)}}}
+// Aviso inmediato: rayos a menos de 20 km (máx. uno cada 2 h por lugar)
+if(GLM&&now-GLM.data_until<25*60e3)for(const p of PLACES){const g=GLM.places?.[p.id]?.now;const key="ray"+p.id+Math.floor(now/(2*36e5));
+  if(g&&g.r20>=3&&!sent[key]){await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body:`${g.r20} rayos a menos de 20 km en 10 min (el más cerca a ${Math.round(g.near)} km) · Granizo ${HRS[PLACES.indexOf(p)][0]?.hs??0}%`,headers:{Title:clean(`Tormenta encima: ${p.name}`),Priority:"urgent",Tags:"zap,cloud_with_lightning"}});sent[key]=now;console.log("Aviso rayos",key)}}
 const WIN=[["2h",90,135,"En 2 horas"],["1h",30,75,"En 1 hora"]];
 for(const [i,p] of PLACES.entries()){
-  const hours=analyze(j[i]);
+  const hours=HRS[i];
   for(const e of episodes(hours)){
     const m=(e.t-now)/60000;
     for(const [tag,lo,hi,txt] of WIN){
@@ -99,7 +122,7 @@ for(const [i,p] of PLACES.entries()){
         const red=e.peakH===2||e.peakR===2;
         const pk=Math.max(...hours.filter(h=>h.t>=e.t&&h.t<e.t+6*36e5).map(h=>h.hs));
         const rr=Math.max(...hours.filter(h=>h.t>=e.t&&h.t<e.t+6*36e5).map(h=>h.h.precipitation??0));
-        const body=`${describe(e)} desde las ${hhmm(e.t)} · Granizo ${pk}% · Lluvia ${rr.toFixed(0)} mm/h`;
+        const body=`${describe(e)} desde las ${hhmm(e.t)} · Granizo ${pk}% · Lluvia ${rr.toFixed(0)} mm/h${why(e)}`;
         await fetch(`https://ntfy.sh/${TOPIC}`,{method:"POST",body,headers:{
           Title:`${txt}: ${p.name}`.normalize("NFD").replace(/[\u0300-\u036f]/g,""),
           Priority:red?"urgent":"high",Tags:red?"rotating_light,cloud_with_lightning":"warning,cloud_with_rain"}});
@@ -110,7 +133,7 @@ for(const [i,p] of PLACES.entries()){
 }
 // Avisos de ALERTA ROJA: cuando el riesgo sube a rojo (aunque ya hubiera riesgo menor antes)
 for(const [i,p] of PLACES.entries()){
-  const hours=analyze(j[i]);
+  const hours=HRS[i];
   const red=h=>Math.max(h.hl,h.rl)===2;
   for(let k=0;k<hours.length;k++){
     const h=hours[k];if(!red(h)||(k>0&&red(hours[k-1])))continue;
@@ -131,7 +154,7 @@ for(const [i,p] of PLACES.entries()){
 // Mientras está en ROJO: avisar cada vez que el granizo sube 10 puntos o la lluvia sube 10 mm/h
 const track=sent.track||{};
 for(const [i,p] of PLACES.entries()){
-  const hours=analyze(j[i]).slice(0,3);           // ahora y próximas 2 h
+  const hours=HRS[i].slice(0,3);           // ahora y próximas 2 h
   const isRed=hours.slice(0,2).some(h=>Math.max(h.hl,h.rl)===2);
   if(!isRed){delete track[p.id];continue}
   const hp=Math.max(...hours.map(h=>h.hs));

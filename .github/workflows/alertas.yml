@@ -1,12 +1,15 @@
 name: Avisos de granizo y lluvia
 
+# Corre en bucle: analiza cada 10 min durante ~5 h 40 min y al terminar se relanza sola.
+# El cron queda de respaldo por si la cadena se corta.
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "7,37 * * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: alertas
@@ -15,16 +18,34 @@ concurrency:
 jobs:
   avisar:
     runs-on: ubuntu-latest
+    timeout-minutes: 350
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Analizar pronóstico y avisar
-        run: node alerts.mjs
-      - name: Guardar avisos enviados
+      - name: Preparar
         run: |
+          pip install -q h5py numpy
           git config user.name "rain-meter-bot"
           git config user.email "rain-meter-bot@users.noreply.github.com"
-          git add state.json data.json
-          git diff --cached --quiet || (git commit -m "Avisos enviados [skip ci]" && git push)
+      - name: Analizar cada 10 min
+        run: |
+          END=$(( $(date +%s) + 340*60 ))
+          while [ $(date +%s) -lt $END ]; do
+            T0=$(date +%s)
+            git pull -q --rebase origin main || true
+            timeout 240 python3 glm.py > /dev/null || echo "rayos: sin datos"
+            timeout 300 node alerts.mjs || echo "alerts falló"
+            git add state.json data.json fusion.json
+            if ! git diff --cached --quiet; then
+              git commit -q -m "Avisos enviados [skip ci]"
+              for i in 1 2 3; do git pull -q --rebase origin main && git push -q && break; sleep 5; done
+            fi
+            S=$(( 600 - ($(date +%s) - T0) )); [ $S -gt 0 ] && sleep $S
+          done
+      - name: Relanzar
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST repos/${{ github.repository }}/actions/workflows/alertas.yml/dispatches -f ref=main || true
