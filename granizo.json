@@ -1,13 +1,22 @@
 {
- "updated": "2026-11-22T07:55:23.751Z",
+ "updated": "2026-11-22T15:58:46.643Z",
  "date": "2026-11-22",
- "noticias": 0,
+ "noticias": 2,
  "barrios": [],
- "reportes": [],
+ "reportes": [
+  {
+   "src": "Hoy Día Córdoba",
+   "time": "2026-11-22T14:49:25.000Z",
+   "title": "Una fuerte tormenta con granizo provocó destrozos y anegamientos | 22 de noviembre de 2026",
+   "link": "https://hoydia.com.ar/hoy-cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos/"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 25",
-  "Google Noticias 200 8",
+  "Google Noticias 200 27",
+  "* Hoy Día Córdoba: Una fuerte tormenta con granizo provocó destrozos y anegamientos | 22 de noviembre de 2026 -> https://hoydia.com.ar/hoy-cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos/ (15 párrafos)",
+  "Google Noticias 200 5",
   "Google Noticias 200 100",
-  "Google Noticias 200 26"
+  "* Hoy Día Córdoba: Una fuerte tormenta con granizo provocó destrozos y anegamientos | 22 de noviembre de 2026 -> https://hoydia.com.ar/hoy-cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos/ (15 párrafos)",
+  "Google Noticias 200 17"
  ]
 }
