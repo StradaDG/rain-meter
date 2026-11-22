@@ -1,35 +1,15 @@
 {
- "updated": "2026-11-21T20:37:57.422Z",
+ "updated": "2026-11-22T00:58:43.058Z",
  "date": "2026-11-21",
  "noticias": 2,
- "barrios": [
-  {
-   "name": "Carlos Paz",
-   "first": "2026-11-21T12:23:56.000Z",
-   "sources": [
-    {
-     "src": "Vía País",
-     "time": "2026-11-21T12:23:56.000Z",
-     "title": "Renovaron la alerta por tormentas y granizo en Córdoba: las zonas afectadas - Vía País",
-     "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPREFrUmc2aGV1b0xvSW1pd2lyb2dqQXJtaTZqdURDS3I5Rzl1S2pzWUVuWHFoZzJxQTh5RGl4U3o5WWtXc2VGNzNRLUtqOF9XREFveGc3SWdjdGhwRS1hbFlrdUEtdWZUSmduaHVaam9XVGp1LVVRQVZpbDZIalh1cFN3RlNuRGFVelRjNXNyTW9vVW12NVh4TERhZ0pXb3FQRDlhaXhxTmZidw?oc=5"
-    }
-   ]
-  }
- ],
- "reportes": [
-  {
-   "src": "Vía País",
-   "time": "2026-11-21T12:23:56.000Z",
-   "title": "Renovaron la alerta por tormentas y granizo en Córdoba: las zonas afectadas",
-   "link": "https://viapais.com.ar/cordoba/clima-cordoba-alerta-tormentas-tiempo-sabado-21-noviembre_0_QT2BVdYy8d.html"
-  }
- ],
+ "barrios": [],
+ "reportes": [],
  "debug": [
-  "Google Noticias 200 25",
-  "* Vía País: Renovaron la alerta por tormentas y granizo en Córdoba: las zonas afectadas - Vía País -> https://viapais.com.ar/cordoba/clima-cordoba-alerta-tormentas-tiempo-sabado-21-noviembre_0_QT2BVdYy8d.html (14 párrafos)",
-  "Google Noticias 200 9",
+  "Google Noticias 200 24",
+  "* Vía País: Renovaron la alerta por tormentas y granizo en Córdoba: las zonas afectadas - Vía País -> sin URL",
+  "Google Noticias 200 10",
   "Google Noticias 200 100",
-  "Google Noticias 200 18",
-  "* Vía País: Renovaron la alerta por tormentas y granizo en Córdoba: las zonas afectadas - Vía País -> https://viapais.com.ar/cordoba/clima-cordoba-alerta-tormentas-tiempo-sabado-21-noviembre_0_QT2BVdYy8d.html (14 párrafos)"
+  "Google Noticias 200 21",
+  "* Vía País: Renovaron la alerta por tormentas y granizo en Córdoba: las zonas afectadas - Vía País -> sin URL"
  ]
 }
