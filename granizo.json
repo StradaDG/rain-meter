@@ -1,13 +1,95 @@
 {
- "updated": "2026-11-23T11:02:11.154Z",
+ "updated": "2026-11-23T22:50:26.098Z",
  "date": "2026-11-23",
- "noticias": 0,
- "barrios": [],
- "reportes": [],
+ "noticias": 8,
+ "barrios": [
+  {
+   "name": "Juárez Celman",
+   "first": "2026-11-23T05:40:37.000Z",
+   "sources": [
+    {
+     "src": "La Voz del Interior",
+     "time": "2026-11-23T05:40:37.000Z",
+     "title": "Clima en Córdoba: advierten por fuertes tormentas y granizo para este lunes 23 de noviembre - La Voz del Interior",
+     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPaXlXZ3gzYktZa19pUUVoTG5BSmpLa3dWRkgtcHctd3V0TWFOUmoweTVtMk4yTEpneXJvTzNuanlhdlo3UTc1VmJFbGtnZU43TEdnaWotbWpwUm44TWliYVlPeWJQTElTV3NWY1plSU9QbnVsZ0Z0bGowZ1BQZ3g3MFJCLWw5RmFsY09Hb3c1UWUzUjNlT05lRkh4Vm1rVWswYWhaSWFlRmd3YmZvZEJiNnNmalZWZU80VXM4b2lvYw?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Ciudad Universitaria",
+   "first": "2026-11-23T12:33:47.000Z",
+   "sources": [
+    {
+     "src": "Hoy Día Córdoba",
+     "time": "2026-11-23T12:33:47.000Z",
+     "title": "Feriado en Córdoba: alertan por tormentas, ráfagas de 90 km/h y granizo | 23 de noviembre de 2026 - Hoy Día Córdoba",
+     "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNWF9va21WSVBuWVJKMFU3b29JcXFWMGg5TFBROXVvVWdrUV9UaklFYzJkYWh4eHF5b3ZnSGN6enN5T3V2TklaRUU0WnBvWkFyQ09CTlFNVERzd3dRSWFZbmZZQU53VkRNc190ZWh2R2VyTDhzRXd4SXFjSmJ5VFBLMWNleDFUYU5sc05SQVktRGJCTTFPSmhIa2YzWHlILUZ5cDloR0kxWdIBrAFBVV95cUxPakhIQWVVSFdZdnFqNERlRURIVFdhTDZ6czJsZnBMdHhkRnJnbjdpbTdTd2thOWJ4OUxodFFiWDBMVTRMdU9qUnJGVzBzSnZ0NTJFb25FMG5IeEFiMk1yYjFya2t1ek14ZFJ0T0h6SVlmT3ppZFRqTVB6cUhvakhNR001Tm5lTWUwVDgyeC1IZm5NZ1J4X2U2Q2duYUdMY1ppTmtJU01COUJsZ0g0?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Observatorio",
+   "first": "2026-11-23T15:09:28.000Z",
+   "sources": [
+    {
+     "src": "eldoce",
+     "time": "2026-11-23T15:09:28.000Z",
+     "title": "Un río de hielo y el suelo cubierto de blanco: las imágenes que dejó el granizo en el interior de Córdoba - eldoce",
+     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNR2ZLbkJibzdlOHNhejJXbzlIR1kzSElVVjhuTGJidGNTN2dPYnIxSzlnU2RIaTVQdHo4Vml6dVJzU1RnUHVodU1POS1DR3E5NHNKZlVoZUZLa1dfWmVtNFZXV0V0Tmp6M2xjdnpJOXZBWk5OUm5KZ0V5c1h2VTYwVC01Wm0wN2hCMWtxaWFhd0R6WGlKUXBVM0F4bGtRa0J2b0NlWTQxMkNJSmM5d2NtQ21LTW9sYTVEeWk0aU1Gb0V1ZWc5eERESG1ZdTdoRHI5YTJCYjRUVGFFc2tvZ2fSAfIBQVVfeXFMTzFqb3JuSFNTVUhWUUZTWTBCTWgxRVpqeVhQR0k2WmQ1UkpzSUZCenI2VG1PcnVRaDVoNk9STnZyaDBKbDZ5VWZMZkZrSllRSUI1VElOOVFoSFo3dXpDYlo3SXFtV1RWbGN3RVRzeUczcWRBUXh0NHNDNXNvdFk4eHk3MFZpYk53bHE5RG5VZmNzSDNhakRDQnY2bW5NdkdKWFpXU2IyUjR1eHNOREc3V3ZKeWtGeEJWYW0yMUxzNUlEaHpqS3o1U2k1RURqQ0F2OThoNEF4LVNYY3dPMXN5d3hxSVBtWjZWTHI0RkE0OGRfeVE?oc=5"
+    }
+   ]
+  },
+  {
+   "name": "Talleres",
+   "first": "2026-11-23T15:09:28.000Z",
+   "sources": [
+    {
+     "src": "eldoce",
+     "time": "2026-11-23T15:09:28.000Z",
+     "title": "Un río de hielo y el suelo cubierto de blanco: las imágenes que dejó el granizo en el interior de Córdoba - eldoce",
+     "link": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNR2ZLbkJibzdlOHNhejJXbzlIR1kzSElVVjhuTGJidGNTN2dPYnIxSzlnU2RIaTVQdHo4Vml6dVJzU1RnUHVodU1POS1DR3E5NHNKZlVoZUZLa1dfWmVtNFZXV0V0Tmp6M2xjdnpJOXZBWk5OUm5KZ0V5c1h2VTYwVC01Wm0wN2hCMWtxaWFhd0R6WGlKUXBVM0F4bGtRa0J2b0NlWTQxMkNJSmM5d2NtQ21LTW9sYTVEeWk0aU1Gb0V1ZWc5eERESG1ZdTdoRHI5YTJCYjRUVGFFc2tvZ2fSAfIBQVVfeXFMTzFqb3JuSFNTVUhWUUZTWTBCTWgxRVpqeVhQR0k2WmQ1UkpzSUZCenI2VG1PcnVRaDVoNk9STnZyaDBKbDZ5VWZMZkZrSllRSUI1VElOOVFoSFo3dXpDYlo3SXFtV1RWbGN3RVRzeUczcWRBUXh0NHNDNXNvdFk4eHk3MFZpYk53bHE5RG5VZmNzSDNhakRDQnY2bW5NdkdKWFpXU2IyUjR1eHNOREc3V3ZKeWtGeEJWYW0yMUxzNUlEaHpqS3o1U2k1RURqQ0F2OThoNEF4LVNYY3dPMXN5d3hxSVBtWjZWTHI0RkE0OGRfeVE?oc=5"
+    }
+   ]
+  }
+ ],
+ "reportes": [
+  {
+   "src": "Cadena 3",
+   "time": "2026-11-23T21:32:40.000Z",
+   "title": "Fuerte temporal en Córdoba: el granizo golpeó a numerosas localidades de Traslasierra",
+   "link": "https://www.cadena3.com/noticia/informados-al-regreso/fuerte-temporal-en-cordoba-el-granizo-golpeo-a-numerosas-localidades-de-traslasierra_615812"
+  },
+  {
+   "src": "eldoce",
+   "time": "2026-11-23T15:09:28.000Z",
+   "title": "Un río de hielo y el suelo cubierto de blanco: las imágenes que dejó el granizo en el interior de Córdoba",
+   "link": "https://eldoce.tv/actualidad/2026/11/23/un-rio-de-hielo-y-el-suelo-cubierto-de-blanco-las-imagenes-que-dejo-el-granizo-en-el-interior-de-cordoba/"
+  },
+  {
+   "src": "Hoy Día Córdoba",
+   "time": "2026-11-23T12:33:47.000Z",
+   "title": "Feriado en Córdoba: alertan por tormentas, ráfagas de 90 km/h y granizo | 23 de noviembre de 2026",
+   "link": "https://hoydia.com.ar/hoy-cordoba/feriado-en-cordoba-alertan-por-tormentas-rafagas-de-90-km-h-y-granizo/"
+  },
+  {
+   "src": "La Voz del Interior",
+   "time": "2026-11-23T05:40:37.000Z",
+   "title": "Clima en Córdoba: advierten por fuertes tormentas y granizo para este lunes 23 de noviembre",
+   "link": "https://www.lavoz.com.ar/servicios/clima-cordoba-smn-emitio-alerta-amarilla-tormentas-lunes-23-noviembre_0_bPr9s7ye6B.html"
+  }
+ ],
  "debug": [
-  "Google Noticias 200 21",
-  "Google Noticias 429 0",
-  "Google Noticias 200 90",
-  "Google Noticias 200 12"
+  "Google Noticias 200 26",
+  "* Cadena 3 Argentina: Fuerte temporal en Córdoba: el granizo golpeó a numerosas localidades de Traslasierra - Ca -> https://www.cadena3.com/noticia/informados-al-regreso/fuerte-temporal-en-cordoba-el-granizo-golpeo-a-numerosas-localidades-de-traslasierra_615812 (75 párrafos)",
+  "* eldoce: Un río de hielo y el suelo cubierto de blanco: las imágenes que dejó el granizo en el inte -> https://eldoce.tv/actualidad/2026/11/23/un-rio-de-hielo-y-el-suelo-cubierto-de-blanco-las-imagenes-que-dejo-el-granizo-en-el-interior-de-cordoba/ (7 párrafos)",
+  "* Hoy Día Córdoba: Feriado en Córdoba: alertan por tormentas, ráfagas de 90 km/h y granizo | 23 de noviembre  -> https://hoydia.com.ar/hoy-cordoba/feriado-en-cordoba-alertan-por-tormentas-rafagas-de-90-km-h-y-granizo/ (16 párrafos)",
+  "* La Voz del Interior: Clima en Córdoba: advierten por fuertes tormentas y granizo para este lunes 23 de noviembr -> https://www.lavoz.com.ar/servicios/clima-cordoba-smn-emitio-alerta-amarilla-tormentas-lunes-23-noviembre_0_bPr9s7ye6B.html (27 párrafos)",
+  "Google Noticias 200 9",
+  "Google Noticias 200 100",
+  "* Cadena 3 Argentina: Fuerte temporal en Córdoba: el granizo golpeó a numerosas localidades de Traslasierra - Ca -> https://www.cadena3.com/noticia/informados-al-regreso/fuerte-temporal-en-cordoba-el-granizo-golpeo-a-numerosas-localidades-de-traslasierra_615812 (75 párrafos)",
+  "* eldoce: Un río de hielo y el suelo cubierto de blanco: las imágenes que dejó el granizo en el inte -> https://eldoce.tv/actualidad/2026/11/23/un-rio-de-hielo-y-el-suelo-cubierto-de-blanco-las-imagenes-que-dejo-el-granizo-en-el-interior-de-cordoba/ (7 párrafos)",
+  "* La Voz del Interior: Clima en Córdoba: advierten por fuertes tormentas y granizo para este lunes 23 de noviembr -> https://www.lavoz.com.ar/servicios/clima-cordoba-smn-emitio-alerta-amarilla-tormentas-lunes-23-noviembre_0_bPr9s7ye6B.html (27 párrafos)",
+  "* Hoy Día Córdoba: Feriado en Córdoba: alertan por tormentas, ráfagas de 90 km/h y granizo | 23 de noviembre  -> https://hoydia.com.ar/hoy-cordoba/feriado-en-cordoba-alertan-por-tormentas-rafagas-de-90-km-h-y-granizo/ (16 párrafos)",
+  "Google Noticias 200 9"
  ]
 }
