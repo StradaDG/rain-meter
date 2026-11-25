@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-24T18:40:48.861Z",
+ "updated": "2026-11-25T02:56:26.884Z",
  "date": "2026-11-24",
- "noticias": 1,
+ "noticias": 2,
  "barrios": [
   {
    "name": "Observatorio",
@@ -37,10 +37,11 @@
   }
  ],
  "debug": [
-  "Google Noticias 200 21",
-  "Google Noticias 200 8",
+  "Google Noticias 200 23",
+  "* eldoce: Tormentas severas en Córdoba: rutas cortadas, granizo y casi 100 milímetros de lluvia - el -> https://eldoce.tv/actualidad/2026/11/23/tormentas-severas-en-cordoba-rutas-cortadas-granizo-y-casi-100-milimetros-de-lluvia/ (21 párrafos)",
+  "Google Noticias 200 3",
   "Google Noticias 200 100",
   "* eldoce: Tormentas severas en Córdoba: rutas cortadas, granizo y casi 100 milímetros de lluvia - el -> https://eldoce.tv/actualidad/2026/11/23/tormentas-severas-en-cordoba-rutas-cortadas-granizo-y-casi-100-milimetros-de-lluvia/ (21 párrafos)",
-  "Google Noticias 200 7"
+  "Google Noticias 200 6"
  ]
 }
